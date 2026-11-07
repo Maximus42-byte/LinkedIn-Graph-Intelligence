@@ -1,1 +1,1 @@
-"""Deterministic synthetic data generation."""
+"""Deterministic synthetic profile fixtures."""

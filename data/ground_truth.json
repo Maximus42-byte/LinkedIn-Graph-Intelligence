@@ -1,0 +1,46 @@
+{
+  "n": 10,
+  "profiles": {
+    "p01": {
+      "role": "Lead ML Engineer",
+      "team": "ML"
+    },
+    "p02": {
+      "role": "Senior ML Engineer",
+      "team": "ML"
+    },
+    "p03": {
+      "role": "Junior ML Engineer",
+      "team": "ML"
+    },
+    "p04": {
+      "role": "Platform Engineering Manager",
+      "team": "Platform"
+    },
+    "p05": {
+      "role": "Senior Platform Engineer",
+      "team": "Platform"
+    },
+    "p06": {
+      "role": "Platform Engineer",
+      "team": "Platform"
+    },
+    "p07": {
+      "role": "Security Director",
+      "team": "Security"
+    },
+    "p08": {
+      "role": "Senior Security Analyst",
+      "team": "Security"
+    },
+    "p09": {
+      "role": "Security Analyst",
+      "team": "Security"
+    },
+    "p10": {
+      "role": "Cross-team Integration Lead",
+      "team": "Bridge"
+    }
+  },
+  "seed": 73
+}
