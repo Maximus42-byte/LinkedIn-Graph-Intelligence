@@ -2375,7 +2375,19 @@
     {
       "clusters": {},
       "id": "p01",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.0,
+        "closeness": 0.340734540483,
+        "constraint": 0.427924463346,
+        "degree": 1.0,
+        "effective_size": 5.17050784354,
+        "eigenvector": 0.335866196508,
+        "harmonic": 4.076653028065,
+        "k_core": 9.0,
+        "katz": 0.333309335573,
+        "pagerank": 0.103733997244,
+        "weighted_degree": 4.07438024653
+      },
       "multilayer": {
         "activity": 9.0,
         "edu": 13.0,
@@ -2383,12 +2395,27 @@
         "semantic": 3.691186556789,
         "skill": 2.943722943723
       },
-      "roles": []
+      "roles": [
+        "hub",
+        "influencer"
+      ]
     },
     {
       "clusters": {},
       "id": "p02",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.0,
+        "closeness": 0.334430792388,
+        "constraint": 0.431231442915,
+        "degree": 1.0,
+        "effective_size": 5.157995961101,
+        "eigenvector": 0.330613900342,
+        "harmonic": 4.024436749202,
+        "k_core": 9.0,
+        "katz": 0.328490292943,
+        "pagerank": 0.101962244172,
+        "weighted_degree": 3.99520540174
+      },
       "multilayer": {
         "activity": 8.0,
         "edu": 15.0,
@@ -2396,12 +2423,26 @@
         "semantic": 3.961754103023,
         "skill": 3.11038961039
       },
-      "roles": []
+      "roles": [
+        "peripheral"
+      ]
     },
     {
       "clusters": {},
       "id": "p03",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.027777777778,
+        "closeness": 0.354739725305,
+        "constraint": 0.423149104306,
+        "degree": 1.0,
+        "effective_size": 5.199053342447,
+        "eigenvector": 0.340650842401,
+        "harmonic": 4.149541069199,
+        "k_core": 9.0,
+        "katz": 0.337721153671,
+        "pagerank": 0.105423494577,
+        "weighted_degree": 4.149541069199
+      },
       "multilayer": {
         "activity": 11.0,
         "edu": 11.0,
@@ -2409,12 +2450,28 @@
         "semantic": 3.467403317395,
         "skill": 3.11038961039
       },
-      "roles": []
+      "roles": [
+        "hub",
+        "bridge",
+        "influencer"
+      ]
     },
     {
       "clusters": {},
       "id": "p04",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.0,
+        "closeness": 0.336729401232,
+        "constraint": 0.425918666629,
+        "degree": 1.0,
+        "effective_size": 5.159107433939,
+        "eigenvector": 0.323354892041,
+        "harmonic": 3.980809589944,
+        "k_core": 9.0,
+        "katz": 0.322369510629,
+        "pagerank": 0.10109418976,
+        "weighted_degree": 3.949589034671
+      },
       "multilayer": {
         "activity": 11.0,
         "edu": 11.0,
@@ -2422,12 +2479,26 @@
         "semantic": 2.868718903877,
         "skill": 3.11038961039
       },
-      "roles": []
+      "roles": [
+        "peripheral"
+      ]
     },
     {
       "clusters": {},
       "id": "p05",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.0,
+        "closeness": 0.332284732218,
+        "constraint": 0.427342741721,
+        "degree": 1.0,
+        "effective_size": 5.182530130799,
+        "eigenvector": 0.321167303038,
+        "harmonic": 3.917182026081,
+        "k_core": 9.0,
+        "katz": 0.320358906174,
+        "pagerank": 0.100341935416,
+        "weighted_degree": 3.91604878007
+      },
       "multilayer": {
         "activity": 8.0,
         "edu": 10.0,
@@ -2435,12 +2506,26 @@
         "semantic": 4.040346837457,
         "skill": 3.11038961039
       },
-      "roles": []
+      "roles": [
+        "peripheral"
+      ]
     },
     {
       "clusters": {},
       "id": "p06",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.027777777778,
+        "closeness": 0.361689747195,
+        "constraint": 0.418519050307,
+        "degree": 1.0,
+        "effective_size": 5.232073194337,
+        "eigenvector": 0.332699819906,
+        "harmonic": 4.092122676618,
+        "k_core": 9.0,
+        "katz": 0.330953889416,
+        "pagerank": 0.104293325983,
+        "weighted_degree": 4.092122676618
+      },
       "multilayer": {
         "activity": 9.0,
         "edu": 9.0,
@@ -2448,12 +2533,28 @@
         "semantic": 4.015377018554,
         "skill": 2.943722943723
       },
-      "roles": []
+      "roles": [
+        "hub",
+        "bridge",
+        "influencer"
+      ]
     },
     {
       "clusters": {},
       "id": "p07",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.027777777778,
+        "closeness": 0.311388453835,
+        "constraint": 0.425523129291,
+        "degree": 1.0,
+        "effective_size": 5.352855274031,
+        "eigenvector": 0.287583042384,
+        "harmonic": 3.681046264922,
+        "k_core": 9.0,
+        "katz": 0.291836426961,
+        "pagerank": 0.095814617804,
+        "weighted_degree": 3.681046264922
+      },
       "multilayer": {
         "activity": 11.0,
         "edu": 7.0,
@@ -2461,12 +2562,26 @@
         "semantic": 2.913709455182,
         "skill": 2.739285714286
       },
-      "roles": []
+      "roles": [
+        "bridge"
+      ]
     },
     {
       "clusters": {},
       "id": "p08",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.0,
+        "closeness": 0.287954786584,
+        "constraint": 0.438402725771,
+        "degree": 1.0,
+        "effective_size": 5.391450319267,
+        "eigenvector": 0.27397997618,
+        "harmonic": 3.533999829291,
+        "k_core": 9.0,
+        "katz": 0.279442420211,
+        "pagerank": 0.091397981904,
+        "weighted_degree": 3.484358357057
+      },
       "multilayer": {
         "activity": 8.0,
         "edu": 8.0,
@@ -2474,12 +2589,26 @@
         "semantic": 3.319342101872,
         "skill": 2.739285714286
       },
-      "roles": []
+      "roles": [
+        "peripheral"
+      ]
     },
     {
       "clusters": {},
       "id": "p09",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.0,
+        "closeness": 0.309165010298,
+        "constraint": 0.426514859301,
+        "degree": 1.0,
+        "effective_size": 5.387132590314,
+        "eigenvector": 0.28741579763,
+        "harmonic": 3.681464329653,
+        "k_core": 9.0,
+        "katz": 0.291702624957,
+        "pagerank": 0.095797234402,
+        "weighted_degree": 3.680047509919
+      },
       "multilayer": {
         "activity": 9.0,
         "edu": 9.0,
@@ -2487,12 +2616,26 @@
         "semantic": 3.172451169003,
         "skill": 2.522727272727
       },
-      "roles": []
+      "roles": [
+        "peripheral"
+      ]
     },
     {
       "clusters": {},
       "id": "p10",
-      "metrics": {},
+      "metrics": {
+        "betweenness": 0.055555555556,
+        "closeness": 0.404957005375,
+        "constraint": 0.407704062588,
+        "degree": 1.0,
+        "effective_size": 5.318465419747,
+        "eigenvector": 0.321049035602,
+        "harmonic": 3.95725076849,
+        "k_core": 9.0,
+        "katz": 0.320178140786,
+        "pagerank": 0.100140978739,
+        "weighted_degree": 3.907609296256
+      },
       "multilayer": {
         "activity": 12.0,
         "edu": 9.0,
@@ -2500,7 +2643,9 @@
         "semantic": 2.227085285197,
         "skill": 3.248484848485
       },
-      "roles": []
+      "roles": [
+        "bridge"
+      ]
     }
   ],
   "person_projection": {
