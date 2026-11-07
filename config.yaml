@@ -24,6 +24,9 @@ thresholds:
 skill_metric: jaccard
 semantic_metric: lsa
 k_range: [2, 5]
+girvan_newman_max_nodes: 50
+girvan_newman_max_cuts: 20
+hdbscan_min_cluster_size: 2
 perturbation_iterations: 1000
 null_iterations: 100
 weight_iterations: 100

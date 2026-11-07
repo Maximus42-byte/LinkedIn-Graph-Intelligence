@@ -2373,7 +2373,18 @@
   ],
   "nodes": [
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 0,
+        "girvan_newman": 0,
+        "greedy_modularity": 0,
+        "hdbscan": 0,
+        "label_propagation": 0,
+        "louvain": 0,
+        "nmf_topics": 0,
+        "spectral": 0,
+        "tfidf_kmeans": 0,
+        "ward": 0
+      },
       "id": "p01",
       "metrics": {
         "betweenness": 0.0,
@@ -2401,7 +2412,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 0,
+        "girvan_newman": 1,
+        "greedy_modularity": 0,
+        "hdbscan": 0,
+        "label_propagation": 0,
+        "louvain": 0,
+        "nmf_topics": 0,
+        "spectral": 0,
+        "tfidf_kmeans": 0,
+        "ward": 0
+      },
       "id": "p02",
       "metrics": {
         "betweenness": 0.0,
@@ -2428,7 +2450,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 0,
+        "girvan_newman": 2,
+        "greedy_modularity": 0,
+        "hdbscan": 0,
+        "label_propagation": 0,
+        "louvain": 0,
+        "nmf_topics": 0,
+        "spectral": 0,
+        "tfidf_kmeans": 0,
+        "ward": 0
+      },
       "id": "p03",
       "metrics": {
         "betweenness": 0.027777777778,
@@ -2457,7 +2490,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 1,
+        "girvan_newman": 3,
+        "greedy_modularity": 1,
+        "hdbscan": 1,
+        "label_propagation": 0,
+        "louvain": 1,
+        "nmf_topics": 2,
+        "spectral": 1,
+        "tfidf_kmeans": 1,
+        "ward": 1
+      },
       "id": "p04",
       "metrics": {
         "betweenness": 0.0,
@@ -2484,7 +2528,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 1,
+        "girvan_newman": 3,
+        "greedy_modularity": 1,
+        "hdbscan": 1,
+        "label_propagation": 0,
+        "louvain": 1,
+        "nmf_topics": 2,
+        "spectral": 1,
+        "tfidf_kmeans": 1,
+        "ward": 1
+      },
       "id": "p05",
       "metrics": {
         "betweenness": 0.0,
@@ -2511,7 +2566,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 1,
+        "girvan_newman": 3,
+        "greedy_modularity": 1,
+        "hdbscan": 1,
+        "label_propagation": 0,
+        "louvain": 1,
+        "nmf_topics": 2,
+        "spectral": 1,
+        "tfidf_kmeans": 1,
+        "ward": 1
+      },
       "id": "p06",
       "metrics": {
         "betweenness": 0.027777777778,
@@ -2540,7 +2606,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 2,
+        "girvan_newman": 3,
+        "greedy_modularity": 2,
+        "hdbscan": 2,
+        "label_propagation": 0,
+        "louvain": 2,
+        "nmf_topics": 1,
+        "spectral": 2,
+        "tfidf_kmeans": 2,
+        "ward": 2
+      },
       "id": "p07",
       "metrics": {
         "betweenness": 0.027777777778,
@@ -2567,7 +2644,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 2,
+        "girvan_newman": 3,
+        "greedy_modularity": 2,
+        "hdbscan": 2,
+        "label_propagation": 0,
+        "louvain": 2,
+        "nmf_topics": 1,
+        "spectral": 2,
+        "tfidf_kmeans": 2,
+        "ward": 2
+      },
       "id": "p08",
       "metrics": {
         "betweenness": 0.0,
@@ -2594,7 +2682,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 2,
+        "girvan_newman": 3,
+        "greedy_modularity": 2,
+        "hdbscan": 2,
+        "label_propagation": 0,
+        "louvain": 2,
+        "nmf_topics": 1,
+        "spectral": 2,
+        "tfidf_kmeans": 2,
+        "ward": 2
+      },
       "id": "p09",
       "metrics": {
         "betweenness": 0.0,
@@ -2621,7 +2720,18 @@
       ]
     },
     {
-      "clusters": {},
+      "clusters": {
+        "embedding_kmeans": 0,
+        "girvan_newman": 3,
+        "greedy_modularity": 0,
+        "hdbscan": 0,
+        "label_propagation": 0,
+        "louvain": 0,
+        "nmf_topics": 0,
+        "spectral": 0,
+        "tfidf_kmeans": 0,
+        "ward": 0
+      },
       "id": "p10",
       "metrics": {
         "betweenness": 0.055555555556,

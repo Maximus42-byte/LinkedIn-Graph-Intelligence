@@ -5,6 +5,7 @@ from tempfile import TemporaryDirectory
 
 from lgi.analysis.graphs import build_graphs, write_graph_json
 from lgi.analysis.centrality import analyze_centrality
+from lgi.analysis.clustering import cluster_profiles
 from lgi.config import load_config
 from lgi.fixtures_gen.generator import generate_fixtures
 from lgi.sources.export import ExportAdapter
@@ -23,7 +24,8 @@ def _process(profiles: list[dict], config: dict) -> None:
     write_profiles(profiles, _path(config, "profiles"), _path(config, "flat"))
     bundle = build_graphs(profiles, config)
     centrality = analyze_centrality(bundle["graphs"]["combined_manual"], config)
-    write_graph_json(bundle, _path(config, "output") / "graph.json", metrics=centrality["metrics"], roles=centrality["roles"])
+    clustering = cluster_profiles(profiles, bundle, config)
+    write_graph_json(bundle, _path(config, "output") / "graph.json", metrics=centrality["metrics"], roles=centrality["roles"], clusters=clustering["labels"])
     print(f"Processed {len(profiles)} profiles; graph has {bundle['graphs']['combined_manual'].number_of_edges()} combined edges")
 
 
