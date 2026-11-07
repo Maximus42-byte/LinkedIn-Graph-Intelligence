@@ -58,7 +58,7 @@ def _make_layer(ids: list[str]) -> nx.Graph:
 
 def _add(graph: nx.Graph, a: str, b: str, weight: float, threshold: float, **attributes: float) -> None:
     if weight > 0 and weight >= threshold:
-        graph.add_edge(a, b, weight=float(weight), **{key: float(value) for key, value in attributes.items()})
+        graph.add_edge(a, b, weight=round(float(weight), 9), **{key: round(float(value), 9) for key, value in attributes.items()})
 
 
 def _combine(graphs: dict[str, nx.Graph], weights: dict[str, float], scheme: str) -> nx.Graph:

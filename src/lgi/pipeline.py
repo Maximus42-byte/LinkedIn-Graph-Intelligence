@@ -17,6 +17,8 @@ from lgi.sources.export import ExportAdapter
 from lgi.sources.fixture import FixtureAdapter
 from lgi.sources.manual import ManualAdapter
 from lgi.store import write_profiles
+from lgi.report import write_report
+from lgi.plots import write_plots
 
 
 def _path(config: dict, key: str) -> Path:
@@ -33,11 +35,14 @@ def _process(profiles: list[dict], config: dict, ground_truth_path: Path | None 
     validation = validate_analysis(bundle, centrality, clustering, config, ground_truth_path)
     analysis = {"career": analyze_career(profiles), "activity": analyze_activity(profiles, bundle["graphs"], config), "similarity": analyze_similarity(profiles, config)}
     analysis_path = _path(config, "output") / "analysis.json"
+    analysis_path.parent.mkdir(parents=True, exist_ok=True)
     analysis_path.write_text(json.dumps(analysis, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
     validation_path = _path(config, "output") / "validation.json"
     validation_path.parent.mkdir(parents=True, exist_ok=True)
     validation_path.write_text(json.dumps(validation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     write_graph_json(bundle, _path(config, "output") / "graph.json", metrics=centrality["metrics"], roles=centrality["roles"], clusters=clustering["labels"])
+    write_report(profiles, bundle, centrality, clustering, validation, analysis, config, _path(config, "output"))
+    write_plots(profiles, bundle, centrality, clustering, validation, analysis, config, _path(config, "output"))
     print(f"Processed {len(profiles)} profiles; graph has {bundle['graphs']['combined_manual'].number_of_edges()} combined edges")
 
 

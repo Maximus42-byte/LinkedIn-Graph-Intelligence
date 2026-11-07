@@ -16,6 +16,7 @@ from scipy.stats import kendalltau
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
 from lgi.analysis.graphs import LAYERS, combine_with_weights
+from lgi.analysis.util import stable_numbers
 
 
 def _ranking_metrics(graph: nx.Graph, seed: int) -> dict[str, dict[str, float]]:
@@ -388,11 +389,11 @@ def validate_analysis(
     baseline, _ = _ranking(graph, seed)
     baseline_labels = _communities(graph, seed)
     ids = sorted(graph.nodes)
-    return {
+    return stable_numbers({
         "ranking_definition": "Borda of weighted degree, weighted betweenness, and PageRank",
         "perturbation": _perturbation(graph, config, seed, baseline),
         "null_models": _null_models(graph, config, seed),
         "ablation": _ablation(graphs, config, seed, baseline, baseline_labels),
         "weight_sensitivity": _weight_sensitivity(graphs, config, seed, baseline, baseline_labels),
         "ground_truth": _ground_truth(clustering, ids, ground_truth_path),
-    }
+    })

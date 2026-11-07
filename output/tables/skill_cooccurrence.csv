@@ -1,0 +1,72 @@
+skill_a,skill_b,people_count
+python,technical writing,10
+data pipelines,python,4
+data pipelines,technical writing,4
+observability,python,4
+observability,technical writing,4
+cloud infrastructure,observability,3
+cloud infrastructure,python,3
+cloud infrastructure,technical writing,3
+data pipelines,mlops,3
+data pipelines,model evaluation,3
+distributed systems,observability,3
+distributed systems,python,3
+distributed systems,technical writing,3
+identity management,python,3
+identity management,technical writing,3
+identity management,threat modeling,3
+mlops,python,3
+mlops,technical writing,3
+model evaluation,python,3
+model evaluation,technical writing,3
+python,threat modeling,3
+technical writing,threat modeling,3
+application security,identity management,2
+application security,python,2
+application security,technical writing,2
+application security,threat modeling,2
+cloud infrastructure,container orchestration,2
+cloud infrastructure,distributed systems,2
+cloud infrastructure,service reliability,2
+container orchestration,observability,2
+container orchestration,python,2
+container orchestration,technical writing,2
+data pipelines,feature engineering,2
+data pipelines,machine learning,2
+feature engineering,mlops,2
+feature engineering,python,2
+feature engineering,technical writing,2
+identity management,incident response,2
+identity management,security monitoring,2
+incident response,python,2
+incident response,technical writing,2
+incident response,threat modeling,2
+machine learning,mlops,2
+machine learning,python,2
+machine learning,technical writing,2
+mlops,model evaluation,2
+observability,service reliability,2
+python,security monitoring,2
+python,service reliability,2
+security monitoring,technical writing,2
+security monitoring,threat modeling,2
+service reliability,technical writing,2
+application security,incident response,1
+application security,security monitoring,1
+application security,synthetic protocol archaeology,1
+container orchestration,distributed systems,1
+container orchestration,service reliability,1
+data pipelines,distributed systems,1
+data pipelines,observability,1
+distributed systems,model evaluation,1
+distributed systems,service reliability,1
+feature engineering,machine learning,1
+feature engineering,model evaluation,1
+identity management,synthetic protocol archaeology,1
+incident response,security monitoring,1
+incident response,synthetic protocol archaeology,1
+machine learning,model evaluation,1
+model evaluation,observability,1
+python,synthetic protocol archaeology,1
+synthetic protocol archaeology,technical writing,1
+synthetic protocol archaeology,threat modeling,1

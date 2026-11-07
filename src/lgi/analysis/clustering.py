@@ -15,6 +15,7 @@ import numpy as np
 from sklearn.cluster import AgglomerativeClustering, HDBSCAN, KMeans, SpectralClustering
 from sklearn.decomposition import NMF, TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
+from lgi.analysis.util import stable_numbers
 from sklearn.metrics import (
     adjusted_rand_score,
     davies_bouldin_score,
@@ -306,7 +307,7 @@ def cluster_profiles(profiles: list[dict], bundle: dict, config: dict) -> dict:
         messages.append("NMF topics skipped: no usable skill text supplied")
     quality = _quality(ids, graph, labels, matrices)
     comparisons = _comparisons(ids, labels)
-    return {
+    return stable_numbers({
         "labels": labels,
         "quality": quality,
         "comparisons": comparisons,
@@ -316,4 +317,4 @@ def cluster_profiles(profiles: list[dict], bundle: dict, config: dict) -> dict:
         "skill_families": _skill_families(bundle["skill_projection"], seed),
         "embedding_method": embedding_method,
         "warnings": messages,
-    }
+    })

@@ -1,0 +1,11 @@
+method,clusters,noise_count,modularity,silhouette,davies_bouldin
+louvain,3,0,0.16999061,,
+greedy_modularity,3,0,0.16999061,,
+label_propagation,1,0,0.0,,
+girvan_newman,4,0,0.014551028,,
+spectral,3,0,0.16999061,,
+tfidf_kmeans,3,0,,0.28261376,1.1040348
+ward,3,0,,0.28261376,1.1040348
+embedding_kmeans,3,0,,0.353078166,0.982734957
+hdbscan,3,0,,0.353078166,0.982734957
+nmf_topics,3,0,,0.27953844,1.101786596

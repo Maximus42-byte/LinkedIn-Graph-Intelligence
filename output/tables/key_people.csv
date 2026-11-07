@@ -1,0 +1,6 @@
+rank,id,name,roles,borda,weighted_degree,betweenness,pagerank
+1,p03,Synthetic Persona 03,"hub, bridge, influencer",85,4.149541070143,0.027777777778,0.105423494582
+2,p06,Synthetic Persona 06,"hub, bridge, influencer",74,4.092122677149,0.027777777778,0.104293325979
+3,p01,Synthetic Persona 01,"hub, influencer",70,4.074380246713,0.0,0.103733997232
+4,p02,Synthetic Persona 02,peripheral,55,3.99520540255,0.0,0.101962244175
+5,p04,Synthetic Persona 04,peripheral,51,3.94958903545,0.0,0.101094189762

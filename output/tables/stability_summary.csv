@@ -1,0 +1,3 @@
+check,draws,top3_retention,kendall_tau,cluster_ari
+Edge perturbation,1000,0.098,0.408844444,
+Weight sensitivity,100,0.39,0.733333333,1.0

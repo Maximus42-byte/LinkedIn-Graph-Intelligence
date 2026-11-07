@@ -1,0 +1,6 @@
+layer,remaining_edges,rank_kendall_tau,cluster_ari,top3_set_retained
+org,45,0.377777778,1.0,False
+edu,45,0.777777778,1.0,True
+skill,45,0.6,1.0,True
+semantic,45,0.6,1.0,False
+activity,45,0.866666667,1.0,True
