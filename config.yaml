@@ -1,0 +1,41 @@
+seed: 73
+paths:
+  fixtures: data/fixtures
+  ground_truth: data/ground_truth.json
+  manual: data/manual
+  export: data/export
+  profiles: data/profiles.json
+  flat: data/profiles.csv
+  output: output
+layer_weights:
+  org: 0.25
+  edu: 0.10
+  skill: 0.25
+  semantic: 0.25
+  activity: 0.15
+thresholds:
+  org: 1.0
+  edu: 1.0
+  skill: 0.05
+  semantic: 0.05
+  activity: 1.0
+skill_metric: jaccard
+semantic_metric: lsa
+k_range: [2, 5]
+perturbation_iterations: 1000
+null_iterations: 100
+weight_iterations: 100
+perturbation_fraction: 0.10
+knn_k: 3
+role_thresholds:
+  hub_degree_quantile: 0.75
+  bridge_betweenness_quantile: 0.75
+  bridge_constraint_quantile: 0.50
+  influencer_pagerank_quantile: 0.75
+live:
+  user_agent: "LinkedIn-Graph-Intelligence/1.0 (research demo; contact: project maintainer)"
+  timeout_seconds: 10
+  min_delay_seconds: 2.0
+  jitter_seconds: 0.5
+  max_attempts: 3
+  backoff_seconds: 1.0
