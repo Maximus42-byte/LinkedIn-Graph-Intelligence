@@ -1,0 +1,859 @@
+[
+  {
+    "activity": [
+      {
+        "date": "2025-03-02",
+        "engaged_ids": [
+          "p02",
+          "p03"
+        ],
+        "post_id": "p01-a1",
+        "reaction_count": 12,
+        "text": "Our synthetic model evaluation review compared feature engineering and data pipeline checks for the imaginary product.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-02",
+        "engaged_ids": [
+          "p03",
+          "p02"
+        ],
+        "post_id": "p01-a2",
+        "reaction_count": 6,
+        "text": "A fictional MLOps rehearsal helped the team document machine learning drift and model evaluation decisions.",
+        "type": "share"
+      }
+    ],
+    "basic": {
+      "headline": "Lead ML Engineer at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 01",
+      "profile_url": "https://example.invalid/synthetic/p01",
+      "summary": "This fictional profile represents ml practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2018,
+        "field": "Imaginary Computer Science",
+        "school": "University of Imaginary Isles (Fictional)",
+        "start_year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic ml projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2022-03",
+        "title": "Lead ML Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "description": "Completed fictional ml projects with overlapping team tenure.",
+        "end": "2022-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "ML Engineer"
+      }
+    ],
+    "id": "p01",
+    "interests": [
+      "Fictional model research",
+      "Responsible AI",
+      "Data quality"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Feature engineering",
+      "Machine learning",
+      "MLOps",
+      "Data pipelines"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-03",
+        "engaged_ids": [
+          "p03",
+          "p01"
+        ],
+        "post_id": "p02-a1",
+        "reaction_count": 5,
+        "text": "A fictional MLOps rehearsal helped the team document machine learning drift and model evaluation decisions.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-03",
+        "engaged_ids": [
+          "p01",
+          "p03"
+        ],
+        "post_id": "p02-a2",
+        "reaction_count": 11,
+        "text": "Feature engineering notes from our synthetic data quality workshop are ready for the model team.",
+        "type": "comment"
+      }
+    ],
+    "basic": {
+      "headline": "Senior ML Engineer at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 02",
+      "profile_url": "https://example.invalid/synthetic/p02",
+      "summary": "This fictional profile represents ml practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2019,
+        "field": "Imaginary Computer Science",
+        "school": "University of Imaginary Isles (Fictional)",
+        "start_year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic ml projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2023-03",
+        "title": "Senior ML Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "description": "Completed fictional ml projects with overlapping team tenure.",
+        "end": "2023-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "ML Engineer"
+      }
+    ],
+    "id": "p02",
+    "interests": [
+      "Fictional model research",
+      "Responsible AI",
+      "Data quality"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Machine learning",
+      "MLOps",
+      "Data pipelines",
+      "Model evaluation"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-04",
+        "engaged_ids": [
+          "p01",
+          "p02",
+          "p10"
+        ],
+        "post_id": "p03-a1",
+        "reaction_count": 6,
+        "text": "Feature engineering notes from our synthetic data quality workshop are ready for the model team.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-04",
+        "engaged_ids": [
+          "p02",
+          "p01",
+          "p10"
+        ],
+        "post_id": "p03-a2",
+        "reaction_count": 13,
+        "text": "Our synthetic model evaluation review compared feature engineering and data pipeline checks for the imaginary product.",
+        "type": "share"
+      }
+    ],
+    "basic": {
+      "headline": "Junior ML Engineer at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 03",
+      "profile_url": "https://example.invalid/synthetic/p03",
+      "summary": "This fictional profile represents ml practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "MSc",
+        "end_year": 2020,
+        "field": "Imaginary Computer Science",
+        "school": "Cloudcastle Polytechnic (Fictional)",
+        "start_year": 2016
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic ml projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2021-03",
+        "title": "Junior ML Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "description": "Completed fictional ml projects with overlapping team tenure.",
+        "end": "2021-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "ML Engineer"
+      }
+    ],
+    "id": "p03",
+    "interests": [
+      "Fictional model research",
+      "Responsible AI",
+      "Data quality"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "MLOps",
+      "Data pipelines",
+      "Model evaluation",
+      "Feature engineering"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-05",
+        "engaged_ids": [
+          "p06",
+          "p05",
+          "p10"
+        ],
+        "post_id": "p04-a1",
+        "reaction_count": 7,
+        "text": "The fictional platform team tested distributed systems observability and service reliability in a sandbox.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-05",
+        "engaged_ids": [
+          "p05",
+          "p06",
+          "p10"
+        ],
+        "post_id": "p04-a2",
+        "reaction_count": 5,
+        "text": "Our cloud infrastructure exercise combined container orchestration with clear incident notes.",
+        "type": "comment"
+      }
+    ],
+    "basic": {
+      "headline": "Platform Engineering Manager at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 04",
+      "profile_url": "https://example.invalid/synthetic/p04",
+      "summary": "This fictional profile represents platform practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2017,
+        "field": "Fictional Systems Engineering",
+        "school": "Cloudcastle Polytechnic (Fictional)",
+        "start_year": 2013
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic platform projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2022-03",
+        "title": "Platform Engineering Manager"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "description": "Completed fictional platform projects with overlapping team tenure.",
+        "end": "2022-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "Systems Engineer"
+      }
+    ],
+    "id": "p04",
+    "interests": [
+      "Open infrastructure",
+      "Reliability engineering",
+      "Developer tooling"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Service reliability",
+      "Distributed systems",
+      "Cloud infrastructure",
+      "Observability"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-06",
+        "engaged_ids": [
+          "p04",
+          "p06"
+        ],
+        "post_id": "p05-a1",
+        "reaction_count": 12,
+        "text": "Our cloud infrastructure exercise combined container orchestration with clear incident notes.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-06",
+        "engaged_ids": [
+          "p06",
+          "p04"
+        ],
+        "post_id": "p05-a2",
+        "reaction_count": 10,
+        "text": "We documented synthetic service reliability checks for the imaginary deployment pipeline.",
+        "type": "share"
+      }
+    ],
+    "basic": {
+      "headline": "Senior Platform Engineer at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 05",
+      "profile_url": "https://example.invalid/synthetic/p05",
+      "summary": "This fictional profile represents platform practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2018,
+        "field": "Fictional Systems Engineering",
+        "school": "Fable Coast Institute (Fictional)",
+        "start_year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic platform projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2023-03",
+        "title": "Senior Platform Engineer"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "description": "Completed fictional platform projects with overlapping team tenure.",
+        "end": "2023-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "Systems Engineer"
+      }
+    ],
+    "id": "p05",
+    "interests": [
+      "Open infrastructure",
+      "Reliability engineering",
+      "Developer tooling"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Distributed systems",
+      "Cloud infrastructure",
+      "Observability",
+      "Container orchestration"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-07",
+        "engaged_ids": [
+          "p05",
+          "p04"
+        ],
+        "post_id": "p06-a1",
+        "reaction_count": 9,
+        "text": "We documented synthetic service reliability checks for the imaginary deployment pipeline.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-07",
+        "engaged_ids": [
+          "p04",
+          "p05"
+        ],
+        "post_id": "p06-a2",
+        "reaction_count": 9,
+        "text": "The fictional platform team tested distributed systems observability and service reliability in a sandbox.",
+        "type": "comment"
+      }
+    ],
+    "basic": {
+      "headline": "Platform Engineer at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 06",
+      "profile_url": "https://example.invalid/synthetic/p06",
+      "summary": "This fictional profile represents platform practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "MSc",
+        "end_year": 2019,
+        "field": "Fictional Systems Engineering",
+        "school": "Fable Coast Institute (Fictional)",
+        "start_year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic platform projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2021-03",
+        "title": "Platform Engineer"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "description": "Completed fictional platform projects with overlapping team tenure.",
+        "end": "2021-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "Systems Engineer"
+      }
+    ],
+    "id": "p06",
+    "interests": [
+      "Open infrastructure",
+      "Reliability engineering",
+      "Developer tooling"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Cloud infrastructure",
+      "Observability",
+      "Container orchestration",
+      "Service reliability"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-08",
+        "engaged_ids": [
+          "p08",
+          "p09",
+          "p10"
+        ],
+        "post_id": "p07-a1",
+        "reaction_count": 7,
+        "text": "Our synthetic threat modeling workshop covered identity management and application security.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-08",
+        "engaged_ids": [
+          "p09",
+          "p08",
+          "p10"
+        ],
+        "post_id": "p07-a2",
+        "reaction_count": 6,
+        "text": "The fictional security team rehearsed incident response and security monitoring in a sandbox.",
+        "type": "share"
+      }
+    ],
+    "basic": {
+      "headline": "Security Director at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 07",
+      "profile_url": "https://example.invalid/synthetic/p07",
+      "summary": "This fictional profile represents security practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2020,
+        "field": "Imaginary Information Security",
+        "school": "Cipher Bay Academy (Fictional)",
+        "start_year": 2016
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic security projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2022-03",
+        "title": "Security Director"
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "description": "Completed fictional security projects with overlapping team tenure.",
+        "end": "2022-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "Security Associate"
+      }
+    ],
+    "id": "p07",
+    "interests": [
+      "Defensive security",
+      "Privacy engineering",
+      "Secure systems"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Application security",
+      "Security monitoring",
+      "Identity management",
+      "Threat modeling"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-09",
+        "engaged_ids": [
+          "p09",
+          "p07"
+        ],
+        "post_id": "p08-a1",
+        "reaction_count": 7,
+        "text": "The fictional security team rehearsed incident response and security monitoring in a sandbox.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-09",
+        "engaged_ids": [
+          "p07",
+          "p09"
+        ],
+        "post_id": "p08-a2",
+        "reaction_count": 5,
+        "text": "We wrote a synthetic application security review for the imaginary service.",
+        "type": "comment"
+      }
+    ],
+    "basic": {
+      "headline": "Senior Security Analyst at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 08",
+      "profile_url": "https://example.invalid/synthetic/p08",
+      "summary": "This fictional profile represents security practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2017,
+        "field": "Imaginary Information Security",
+        "school": "Cipher Bay Academy (Fictional)",
+        "start_year": 2013
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic security projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2023-03",
+        "title": "Senior Security Analyst"
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "description": "Completed fictional security projects with overlapping team tenure.",
+        "end": "2023-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "Security Associate"
+      }
+    ],
+    "id": "p08",
+    "interests": [
+      "Defensive security",
+      "Privacy engineering",
+      "Secure systems"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Security monitoring",
+      "Identity management",
+      "Threat modeling",
+      "Incident response"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-10",
+        "engaged_ids": [
+          "p07",
+          "p08"
+        ],
+        "post_id": "p09-a1",
+        "reaction_count": 5,
+        "text": "I spent this week sketching paper lanterns and collecting stories about imaginary gardens.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-10",
+        "engaged_ids": [
+          "p08",
+          "p07"
+        ],
+        "post_id": "p09-a2",
+        "reaction_count": 6,
+        "text": "A fictional mural workshop explored watercolor birds and handmade ceramics.",
+        "type": "share"
+      }
+    ],
+    "basic": {
+      "headline": "Security Analyst at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 09",
+      "profile_url": "https://example.invalid/synthetic/p09",
+      "summary": "This fictional profile represents security practice at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "MSc",
+        "end_year": 2018,
+        "field": "Imaginary Information Security",
+        "school": "Cipher Bay Academy (Fictional)",
+        "start_year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Works on synthetic security projects in the fictional organisation.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2021-03",
+        "title": "Security Analyst"
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "description": "Completed fictional security projects with overlapping team tenure.",
+        "end": "2021-02",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "Security Associate"
+      }
+    ],
+    "id": "p09",
+    "interests": [
+      "Defensive security",
+      "Privacy engineering",
+      "Secure systems"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Identity management",
+      "Threat modeling",
+      "Incident response",
+      "Application security",
+      "Synthetic protocol archaeology"
+    ],
+    "source": "fixture",
+    "warnings": []
+  },
+  {
+    "activity": [
+      {
+        "date": "2025-03-11",
+        "engaged_ids": [
+          "p01",
+          "p04",
+          "p07"
+        ],
+        "post_id": "p10-a1",
+        "reaction_count": 9,
+        "text": "Our synthetic architecture review connected model evaluation, observability, and knowledge sharing.",
+        "type": "post"
+      },
+      {
+        "date": "2025-04-11",
+        "engaged_ids": [
+          "p03",
+          "p06",
+          "p09"
+        ],
+        "post_id": "p10-a2",
+        "reaction_count": 5,
+        "text": "The fictional model and platform teams mapped data pipelines to cloud infrastructure together.",
+        "type": "comment"
+      }
+    ],
+    "basic": {
+      "headline": "Cross-team Integration Lead at FableForge Analytics (Fictional)",
+      "location": "Imaginary Bay, Fictionland",
+      "name": "Synthetic Persona 10",
+      "profile_url": "https://example.invalid/synthetic/p10",
+      "summary": "This fictional profile represents cross-team model and platform integration at FableForge Analytics (Fictional). All work and activity here are synthetic."
+    },
+    "coverage": {
+      "activity": true,
+      "basic": true,
+      "education": true,
+      "experience": true,
+      "interests": true,
+      "skills": true
+    },
+    "education": [
+      {
+        "degree": "BSc",
+        "end_year": 2019,
+        "field": "Fictional Computing",
+        "school": "University of Imaginary Isles (Fictional)",
+        "start_year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "description": "Connects the fictional model and platform teams through shared architecture reviews.",
+        "end": null,
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2022-01",
+        "title": "Cross-team Integration Lead"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "description": "Built synthetic service reliability and observability exercises.",
+        "end": "2021-12",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2020-01",
+        "title": "Platform Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "description": "Documented fictional model evaluation and data pipeline work.",
+        "end": "2019-12",
+        "location": "Imaginary Bay, Fictionland",
+        "start": "2018-01",
+        "title": "ML Engineer"
+      }
+    ],
+    "id": "p10",
+    "interests": [
+      "Cross-team systems",
+      "Knowledge sharing",
+      "Architecture practice"
+    ],
+    "skills": [
+      "Python",
+      "Technical writing",
+      "Model evaluation",
+      "Data pipelines",
+      "Distributed systems",
+      "Observability"
+    ],
+    "source": "fixture",
+    "warnings": []
+  }
+]

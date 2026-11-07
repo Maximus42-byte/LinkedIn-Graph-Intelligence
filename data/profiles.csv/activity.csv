@@ -1,0 +1,21 @@
+id,post_id,date,type,text,reaction_count,engaged_ids
+p01,p01-a1,2025-03-02,post,Our synthetic model evaluation review compared feature engineering and data pipeline checks for the imaginary product.,12,p02;p03
+p01,p01-a2,2025-04-02,share,A fictional MLOps rehearsal helped the team document machine learning drift and model evaluation decisions.,6,p03;p02
+p02,p02-a1,2025-03-03,post,A fictional MLOps rehearsal helped the team document machine learning drift and model evaluation decisions.,5,p03;p01
+p02,p02-a2,2025-04-03,comment,Feature engineering notes from our synthetic data quality workshop are ready for the model team.,11,p01;p03
+p03,p03-a1,2025-03-04,post,Feature engineering notes from our synthetic data quality workshop are ready for the model team.,6,p01;p02;p10
+p03,p03-a2,2025-04-04,share,Our synthetic model evaluation review compared feature engineering and data pipeline checks for the imaginary product.,13,p02;p01;p10
+p04,p04-a1,2025-03-05,post,The fictional platform team tested distributed systems observability and service reliability in a sandbox.,7,p06;p05;p10
+p04,p04-a2,2025-04-05,comment,Our cloud infrastructure exercise combined container orchestration with clear incident notes.,5,p05;p06;p10
+p05,p05-a1,2025-03-06,post,Our cloud infrastructure exercise combined container orchestration with clear incident notes.,12,p04;p06
+p05,p05-a2,2025-04-06,share,We documented synthetic service reliability checks for the imaginary deployment pipeline.,10,p06;p04
+p06,p06-a1,2025-03-07,post,We documented synthetic service reliability checks for the imaginary deployment pipeline.,9,p05;p04
+p06,p06-a2,2025-04-07,comment,The fictional platform team tested distributed systems observability and service reliability in a sandbox.,9,p04;p05
+p07,p07-a1,2025-03-08,post,Our synthetic threat modeling workshop covered identity management and application security.,7,p08;p09;p10
+p07,p07-a2,2025-04-08,share,The fictional security team rehearsed incident response and security monitoring in a sandbox.,6,p09;p08;p10
+p08,p08-a1,2025-03-09,post,The fictional security team rehearsed incident response and security monitoring in a sandbox.,7,p09;p07
+p08,p08-a2,2025-04-09,comment,We wrote a synthetic application security review for the imaginary service.,5,p07;p09
+p09,p09-a1,2025-03-10,post,I spent this week sketching paper lanterns and collecting stories about imaginary gardens.,5,p07;p08
+p09,p09-a2,2025-04-10,share,A fictional mural workshop explored watercolor birds and handmade ceramics.,6,p08;p07
+p10,p10-a1,2025-03-11,post,"Our synthetic architecture review connected model evaluation, observability, and knowledge sharing.",9,p01;p04;p07
+p10,p10-a2,2025-04-11,comment,The fictional model and platform teams mapped data pipelines to cloud infrastructure together.,5,p03;p06;p09

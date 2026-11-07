@@ -1,0 +1,22 @@
+id,company,title,start,end,location,description
+p01,FableForge Analytics (Fictional),Lead ML Engineer,2022-03,,"Imaginary Bay, Fictionland",Works on synthetic ml projects in the fictional organisation.
+p01,Moonbeam Modelworks (Fictional),ML Engineer,2018-01,2022-02,"Imaginary Bay, Fictionland",Completed fictional ml projects with overlapping team tenure.
+p02,FableForge Analytics (Fictional),Senior ML Engineer,2023-03,,"Imaginary Bay, Fictionland",Works on synthetic ml projects in the fictional organisation.
+p02,Moonbeam Modelworks (Fictional),ML Engineer,2018-01,2023-02,"Imaginary Bay, Fictionland",Completed fictional ml projects with overlapping team tenure.
+p03,FableForge Analytics (Fictional),Junior ML Engineer,2021-03,,"Imaginary Bay, Fictionland",Works on synthetic ml projects in the fictional organisation.
+p03,Moonbeam Modelworks (Fictional),ML Engineer,2018-01,2021-02,"Imaginary Bay, Fictionland",Completed fictional ml projects with overlapping team tenure.
+p04,FableForge Analytics (Fictional),Platform Engineering Manager,2022-03,,"Imaginary Bay, Fictionland",Works on synthetic platform projects in the fictional organisation.
+p04,Cloudcastle Systems (Fictional),Systems Engineer,2018-01,2022-02,"Imaginary Bay, Fictionland",Completed fictional platform projects with overlapping team tenure.
+p05,FableForge Analytics (Fictional),Senior Platform Engineer,2023-03,,"Imaginary Bay, Fictionland",Works on synthetic platform projects in the fictional organisation.
+p05,Cloudcastle Systems (Fictional),Systems Engineer,2018-01,2023-02,"Imaginary Bay, Fictionland",Completed fictional platform projects with overlapping team tenure.
+p06,FableForge Analytics (Fictional),Platform Engineer,2021-03,,"Imaginary Bay, Fictionland",Works on synthetic platform projects in the fictional organisation.
+p06,Cloudcastle Systems (Fictional),Systems Engineer,2018-01,2021-02,"Imaginary Bay, Fictionland",Completed fictional platform projects with overlapping team tenure.
+p07,FableForge Analytics (Fictional),Security Director,2022-03,,"Imaginary Bay, Fictionland",Works on synthetic security projects in the fictional organisation.
+p07,Cipherkeep Works (Fictional),Security Associate,2018-01,2022-02,"Imaginary Bay, Fictionland",Completed fictional security projects with overlapping team tenure.
+p08,FableForge Analytics (Fictional),Senior Security Analyst,2023-03,,"Imaginary Bay, Fictionland",Works on synthetic security projects in the fictional organisation.
+p08,Cipherkeep Works (Fictional),Security Associate,2018-01,2023-02,"Imaginary Bay, Fictionland",Completed fictional security projects with overlapping team tenure.
+p09,FableForge Analytics (Fictional),Security Analyst,2021-03,,"Imaginary Bay, Fictionland",Works on synthetic security projects in the fictional organisation.
+p09,Cipherkeep Works (Fictional),Security Associate,2018-01,2021-02,"Imaginary Bay, Fictionland",Completed fictional security projects with overlapping team tenure.
+p10,FableForge Analytics (Fictional),Cross-team Integration Lead,2022-01,,"Imaginary Bay, Fictionland",Connects the fictional model and platform teams through shared architecture reviews.
+p10,Cloudcastle Systems (Fictional),Platform Engineer,2020-01,2021-12,"Imaginary Bay, Fictionland",Built synthetic service reliability and observability exercises.
+p10,Moonbeam Modelworks (Fictional),ML Engineer,2018-01,2019-12,"Imaginary Bay, Fictionland",Documented fictional model evaluation and data pipeline work.

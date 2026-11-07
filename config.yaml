@@ -1,4 +1,6 @@
 seed: 73
+reference_month: "2026-01"
+embedding_model: null
 paths:
   fixtures: data/fixtures
   ground_truth: data/ground_truth.json

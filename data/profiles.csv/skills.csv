@@ -1,0 +1,62 @@
+id,skill
+p01,Python
+p01,Technical writing
+p01,Feature engineering
+p01,Machine learning
+p01,MLOps
+p01,Data pipelines
+p02,Python
+p02,Technical writing
+p02,Machine learning
+p02,MLOps
+p02,Data pipelines
+p02,Model evaluation
+p03,Python
+p03,Technical writing
+p03,MLOps
+p03,Data pipelines
+p03,Model evaluation
+p03,Feature engineering
+p04,Python
+p04,Technical writing
+p04,Service reliability
+p04,Distributed systems
+p04,Cloud infrastructure
+p04,Observability
+p05,Python
+p05,Technical writing
+p05,Distributed systems
+p05,Cloud infrastructure
+p05,Observability
+p05,Container orchestration
+p06,Python
+p06,Technical writing
+p06,Cloud infrastructure
+p06,Observability
+p06,Container orchestration
+p06,Service reliability
+p07,Python
+p07,Technical writing
+p07,Application security
+p07,Security monitoring
+p07,Identity management
+p07,Threat modeling
+p08,Python
+p08,Technical writing
+p08,Security monitoring
+p08,Identity management
+p08,Threat modeling
+p08,Incident response
+p09,Python
+p09,Technical writing
+p09,Identity management
+p09,Threat modeling
+p09,Incident response
+p09,Application security
+p09,Synthetic protocol archaeology
+p10,Python
+p10,Technical writing
+p10,Model evaluation
+p10,Data pipelines
+p10,Distributed systems
+p10,Observability

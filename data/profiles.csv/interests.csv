@@ -1,0 +1,31 @@
+id,interest
+p01,Fictional model research
+p01,Responsible AI
+p01,Data quality
+p02,Fictional model research
+p02,Responsible AI
+p02,Data quality
+p03,Fictional model research
+p03,Responsible AI
+p03,Data quality
+p04,Open infrastructure
+p04,Reliability engineering
+p04,Developer tooling
+p05,Open infrastructure
+p05,Reliability engineering
+p05,Developer tooling
+p06,Open infrastructure
+p06,Reliability engineering
+p06,Developer tooling
+p07,Defensive security
+p07,Privacy engineering
+p07,Secure systems
+p08,Defensive security
+p08,Privacy engineering
+p08,Secure systems
+p09,Defensive security
+p09,Privacy engineering
+p09,Secure systems
+p10,Cross-team systems
+p10,Knowledge sharing
+p10,Architecture practice

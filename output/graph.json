@@ -1,0 +1,3231 @@
+{
+  "bipartite": {
+    "directed": false,
+    "links": [
+      {
+        "source": "person:p01",
+        "target": "skill:data pipelines",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p01",
+        "target": "skill:feature engineering",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p01",
+        "target": "skill:machine learning",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p01",
+        "target": "skill:mlops",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p01",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p01",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p02",
+        "target": "skill:data pipelines",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p02",
+        "target": "skill:machine learning",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p02",
+        "target": "skill:mlops",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p02",
+        "target": "skill:model evaluation",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p02",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p02",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p03",
+        "target": "skill:data pipelines",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p03",
+        "target": "skill:feature engineering",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p03",
+        "target": "skill:mlops",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p03",
+        "target": "skill:model evaluation",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p03",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p03",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p04",
+        "target": "skill:cloud infrastructure",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p04",
+        "target": "skill:distributed systems",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p04",
+        "target": "skill:observability",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p04",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p04",
+        "target": "skill:service reliability",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p04",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p05",
+        "target": "skill:cloud infrastructure",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p05",
+        "target": "skill:container orchestration",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p05",
+        "target": "skill:distributed systems",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p05",
+        "target": "skill:observability",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p05",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p05",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p06",
+        "target": "skill:cloud infrastructure",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p06",
+        "target": "skill:container orchestration",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p06",
+        "target": "skill:observability",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p06",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p06",
+        "target": "skill:service reliability",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p06",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p07",
+        "target": "skill:application security",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p07",
+        "target": "skill:identity management",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p07",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p07",
+        "target": "skill:security monitoring",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p07",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p07",
+        "target": "skill:threat modeling",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p08",
+        "target": "skill:identity management",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p08",
+        "target": "skill:incident response",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p08",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p08",
+        "target": "skill:security monitoring",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p08",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p08",
+        "target": "skill:threat modeling",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:application security",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:identity management",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:incident response",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:synthetic protocol archaeology",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p09",
+        "target": "skill:threat modeling",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p10",
+        "target": "skill:data pipelines",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p10",
+        "target": "skill:distributed systems",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p10",
+        "target": "skill:model evaluation",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p10",
+        "target": "skill:observability",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p10",
+        "target": "skill:python",
+        "weight": 1.0
+      },
+      {
+        "source": "person:p10",
+        "target": "skill:technical writing",
+        "weight": 1.0
+      }
+    ],
+    "nodes": [
+      {
+        "id": "person:p01",
+        "kind": "person"
+      },
+      {
+        "id": "person:p02",
+        "kind": "person"
+      },
+      {
+        "id": "person:p03",
+        "kind": "person"
+      },
+      {
+        "id": "person:p04",
+        "kind": "person"
+      },
+      {
+        "id": "person:p05",
+        "kind": "person"
+      },
+      {
+        "id": "person:p06",
+        "kind": "person"
+      },
+      {
+        "id": "person:p07",
+        "kind": "person"
+      },
+      {
+        "id": "person:p08",
+        "kind": "person"
+      },
+      {
+        "id": "person:p09",
+        "kind": "person"
+      },
+      {
+        "id": "person:p10",
+        "kind": "person"
+      },
+      {
+        "id": "skill:application security",
+        "kind": "skill",
+        "label": "Application security"
+      },
+      {
+        "id": "skill:cloud infrastructure",
+        "kind": "skill",
+        "label": "Cloud infrastructure"
+      },
+      {
+        "id": "skill:container orchestration",
+        "kind": "skill",
+        "label": "Container orchestration"
+      },
+      {
+        "id": "skill:data pipelines",
+        "kind": "skill",
+        "label": "Data pipelines"
+      },
+      {
+        "id": "skill:distributed systems",
+        "kind": "skill",
+        "label": "Distributed systems"
+      },
+      {
+        "id": "skill:feature engineering",
+        "kind": "skill",
+        "label": "Feature engineering"
+      },
+      {
+        "id": "skill:identity management",
+        "kind": "skill",
+        "label": "Identity management"
+      },
+      {
+        "id": "skill:incident response",
+        "kind": "skill",
+        "label": "Incident response"
+      },
+      {
+        "id": "skill:machine learning",
+        "kind": "skill",
+        "label": "Machine learning"
+      },
+      {
+        "id": "skill:mlops",
+        "kind": "skill",
+        "label": "MLOps"
+      },
+      {
+        "id": "skill:model evaluation",
+        "kind": "skill",
+        "label": "Model evaluation"
+      },
+      {
+        "id": "skill:observability",
+        "kind": "skill",
+        "label": "Observability"
+      },
+      {
+        "id": "skill:python",
+        "kind": "skill",
+        "label": "Python"
+      },
+      {
+        "id": "skill:security monitoring",
+        "kind": "skill",
+        "label": "Security monitoring"
+      },
+      {
+        "id": "skill:service reliability",
+        "kind": "skill",
+        "label": "Service reliability"
+      },
+      {
+        "id": "skill:synthetic protocol archaeology",
+        "kind": "skill",
+        "label": "Synthetic protocol archaeology"
+      },
+      {
+        "id": "skill:technical writing",
+        "kind": "skill",
+        "label": "Technical writing"
+      },
+      {
+        "id": "skill:threat modeling",
+        "kind": "skill",
+        "label": "Threat modeling"
+      }
+    ]
+  },
+  "directed": false,
+  "embedding_method": "TF-IDF + TruncatedSVD (LSA)",
+  "layers": {
+    "activity": {
+      "directed": false,
+      "links": [
+        {
+          "source": "p01",
+          "target": "p02",
+          "weight": 4.0
+        },
+        {
+          "source": "p01",
+          "target": "p03",
+          "weight": 4.0
+        },
+        {
+          "source": "p01",
+          "target": "p10",
+          "weight": 1.0
+        },
+        {
+          "source": "p02",
+          "target": "p03",
+          "weight": 4.0
+        },
+        {
+          "source": "p03",
+          "target": "p10",
+          "weight": 3.0
+        },
+        {
+          "source": "p04",
+          "target": "p05",
+          "weight": 4.0
+        },
+        {
+          "source": "p04",
+          "target": "p06",
+          "weight": 4.0
+        },
+        {
+          "source": "p04",
+          "target": "p10",
+          "weight": 3.0
+        },
+        {
+          "source": "p05",
+          "target": "p06",
+          "weight": 4.0
+        },
+        {
+          "source": "p06",
+          "target": "p10",
+          "weight": 1.0
+        },
+        {
+          "source": "p07",
+          "target": "p08",
+          "weight": 4.0
+        },
+        {
+          "source": "p07",
+          "target": "p09",
+          "weight": 4.0
+        },
+        {
+          "source": "p07",
+          "target": "p10",
+          "weight": 3.0
+        },
+        {
+          "source": "p08",
+          "target": "p09",
+          "weight": 4.0
+        },
+        {
+          "source": "p09",
+          "target": "p10",
+          "weight": 1.0
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    },
+    "combined_equal": {
+      "directed": false,
+      "links": [
+        {
+          "source": "p01",
+          "target": "p02",
+          "weight": 0.97571379189
+        },
+        {
+          "source": "p01",
+          "target": "p03",
+          "weight": 0.894208609067
+        },
+        {
+          "source": "p01",
+          "target": "p04",
+          "weight": 0.086867919553
+        },
+        {
+          "source": "p01",
+          "target": "p05",
+          "weight": 0.072760333469
+        },
+        {
+          "source": "p01",
+          "target": "p06",
+          "weight": 0.133278818683
+        },
+        {
+          "source": "p01",
+          "target": "p07",
+          "weight": 0.074638318641
+        },
+        {
+          "source": "p01",
+          "target": "p08",
+          "weight": 0.02434310432
+        },
+        {
+          "source": "p01",
+          "target": "p09",
+          "weight": 0.070673495721
+        },
+        {
+          "source": "p01",
+          "target": "p10",
+          "weight": 0.398643287095
+        },
+        {
+          "source": "p02",
+          "target": "p03",
+          "weight": 0.919858747723
+        },
+        {
+          "source": "p02",
+          "target": "p04",
+          "weight": 0.040643341866
+        },
+        {
+          "source": "p02",
+          "target": "p05",
+          "weight": 0.119895813154
+        },
+        {
+          "source": "p02",
+          "target": "p06",
+          "weight": 0.085191124988
+        },
+        {
+          "source": "p02",
+          "target": "p07",
+          "weight": 0.02824062926
+        },
+        {
+          "source": "p02",
+          "target": "p08",
+          "weight": 0.062012671484
+        },
+        {
+          "source": "p02",
+          "target": "p09",
+          "weight": 0.021398765264
+        },
+        {
+          "source": "p02",
+          "target": "p10",
+          "weight": 0.451740530223
+        },
+        {
+          "source": "p03",
+          "target": "p04",
+          "weight": 0.084710190463
+        },
+        {
+          "source": "p03",
+          "target": "p05",
+          "weight": 0.069774926447
+        },
+        {
+          "source": "p03",
+          "target": "p06",
+          "weight": 0.17710708676
+        },
+        {
+          "source": "p03",
+          "target": "p07",
+          "weight": 0.072936174642
+        },
+        {
+          "source": "p03",
+          "target": "p08",
+          "weight": 0.022989340619
+        },
+        {
+          "source": "p03",
+          "target": "p09",
+          "weight": 0.116534601963
+        },
+        {
+          "source": "p03",
+          "target": "p10",
+          "weight": 0.437325526958
+        },
+        {
+          "source": "p04",
+          "target": "p05",
+          "weight": 0.918746406211
+        },
+        {
+          "source": "p04",
+          "target": "p06",
+          "weight": 0.867840228188
+        },
+        {
+          "source": "p04",
+          "target": "p07",
+          "weight": 0.073552730153
+        },
+        {
+          "source": "p04",
+          "target": "p08",
+          "weight": 0.024101107142
+        },
+        {
+          "source": "p04",
+          "target": "p09",
+          "weight": 0.068529275479
+        },
+        {
+          "source": "p04",
+          "target": "p10",
+          "weight": 0.42922845363
+        },
+        {
+          "source": "p05",
+          "target": "p06",
+          "weight": 0.945074438946
+        },
+        {
+          "source": "p05",
+          "target": "p07",
+          "weight": 0.032743519626
+        },
+        {
+          "source": "p05",
+          "target": "p08",
+          "weight": 0.067054838749
+        },
+        {
+          "source": "p05",
+          "target": "p09",
+          "weight": 0.029299231366
+        },
+        {
+          "source": "p05",
+          "target": "p10",
+          "weight": 0.268410498477
+        },
+        {
+          "source": "p06",
+          "target": "p07",
+          "weight": 0.086786377529
+        },
+        {
+          "source": "p06",
+          "target": "p08",
+          "weight": 0.037904823082
+        },
+        {
+          "source": "p06",
+          "target": "p09",
+          "weight": 0.129042676329
+        },
+        {
+          "source": "p06",
+          "target": "p10",
+          "weight": 0.230209098768
+        },
+        {
+          "source": "p07",
+          "target": "p08",
+          "weight": 0.816440522115
+        },
+        {
+          "source": "p07",
+          "target": "p09",
+          "weight": 0.862118281812
+        },
+        {
+          "source": "p07",
+          "target": "p10",
+          "weight": 0.188953080633
+        },
+        {
+          "source": "p08",
+          "target": "p09",
+          "weight": 0.918463414634
+        },
+        {
+          "source": "p08",
+          "target": "p10",
+          "weight": 0.006829268293
+        },
+        {
+          "source": "p09",
+          "target": "p10",
+          "weight": 0.057772561509
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    },
+    "combined_manual": {
+      "directed": false,
+      "links": [
+        {
+          "source": "p01",
+          "target": "p02",
+          "weight": 0.973447810411
+        },
+        {
+          "source": "p01",
+          "target": "p03",
+          "weight": 0.937224812881
+        },
+        {
+          "source": "p01",
+          "target": "p04",
+          "weight": 0.274602610289
+        },
+        {
+          "source": "p01",
+          "target": "p05",
+          "weight": 0.276363177993
+        },
+        {
+          "source": "p01",
+          "target": "p06",
+          "weight": 0.325343795866
+        },
+        {
+          "source": "p01",
+          "target": "p07",
+          "weight": 0.261231948202
+        },
+        {
+          "source": "p01",
+          "target": "p08",
+          "weight": 0.223428465341
+        },
+        {
+          "source": "p01",
+          "target": "p09",
+          "weight": 0.258000019195
+        },
+        {
+          "source": "p01",
+          "target": "p10",
+          "weight": 0.544737606352
+        },
+        {
+          "source": "p02",
+          "target": "p03",
+          "weight": 0.929565747664
+        },
+        {
+          "source": "p02",
+          "target": "p04",
+          "weight": 0.241249567578
+        },
+        {
+          "source": "p02",
+          "target": "p05",
+          "weight": 0.327896549826
+        },
+        {
+          "source": "p02",
+          "target": "p06",
+          "weight": 0.28995380242
+        },
+        {
+          "source": "p02",
+          "target": "p07",
+          "weight": 0.227689641918
+        },
+        {
+          "source": "p02",
+          "target": "p08",
+          "weight": 0.264612724511
+        },
+        {
+          "source": "p02",
+          "target": "p09",
+          "weight": 0.221312234632
+        },
+        {
+          "source": "p02",
+          "target": "p10",
+          "weight": 0.51947732278
+        },
+        {
+          "source": "p03",
+          "target": "p04",
+          "weight": 0.312243558122
+        },
+        {
+          "source": "p03",
+          "target": "p05",
+          "weight": 0.273099222876
+        },
+        {
+          "source": "p03",
+          "target": "p06",
+          "weight": 0.356076945558
+        },
+        {
+          "source": "p03",
+          "target": "p07",
+          "weight": 0.259370988683
+        },
+        {
+          "source": "p03",
+          "target": "p08",
+          "weight": 0.221948391125
+        },
+        {
+          "source": "p03",
+          "target": "p09",
+          "weight": 0.290955677404
+        },
+        {
+          "source": "p03",
+          "target": "p10",
+          "weight": 0.569055724886
+        },
+        {
+          "source": "p04",
+          "target": "p05",
+          "weight": 0.911165184073
+        },
+        {
+          "source": "p04",
+          "target": "p06",
+          "weight": 0.908396177094
+        },
+        {
+          "source": "p04",
+          "target": "p07",
+          "weight": 0.26004507081
+        },
+        {
+          "source": "p04",
+          "target": "p08",
+          "weight": 0.223163889047
+        },
+        {
+          "source": "p04",
+          "target": "p09",
+          "weight": 0.255655736295
+        },
+        {
+          "source": "p04",
+          "target": "p10",
+          "weight": 0.563067241363
+        },
+        {
+          "source": "p05",
+          "target": "p06",
+          "weight": 0.957134144135
+        },
+        {
+          "source": "p05",
+          "target": "p07",
+          "weight": 0.232612666466
+        },
+        {
+          "source": "p05",
+          "target": "p08",
+          "weight": 0.27012534223
+        },
+        {
+          "source": "p05",
+          "target": "p09",
+          "weight": 0.22994983968
+        },
+        {
+          "source": "p05",
+          "target": "p10",
+          "weight": 0.437702652791
+        },
+        {
+          "source": "p06",
+          "target": "p07",
+          "weight": 0.274513460132
+        },
+        {
+          "source": "p06",
+          "target": "p08",
+          "weight": 0.238255536166
+        },
+        {
+          "source": "p06",
+          "target": "p09",
+          "weight": 0.304630795416
+        },
+        {
+          "source": "p06",
+          "target": "p10",
+          "weight": 0.437818019831
+        },
+        {
+          "source": "p07",
+          "target": "p08",
+          "weight": 0.905087594309
+        },
+        {
+          "source": "p07",
+          "target": "p09",
+          "weight": 0.907556011534
+        },
+        {
+          "source": "p07",
+          "target": "p10",
+          "weight": 0.352938882868
+        },
+        {
+          "source": "p08",
+          "target": "p09",
+          "weight": 0.933455882353
+        },
+        {
+          "source": "p08",
+          "target": "p10",
+          "weight": 0.204280531975
+        },
+        {
+          "source": "p09",
+          "target": "p10",
+          "weight": 0.27853131341
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    },
+    "edu": {
+      "directed": false,
+      "links": [
+        {
+          "source": "p01",
+          "target": "p02",
+          "weight": 5.0
+        },
+        {
+          "source": "p01",
+          "target": "p03",
+          "weight": 4.0
+        },
+        {
+          "source": "p01",
+          "target": "p10",
+          "weight": 4.0
+        },
+        {
+          "source": "p02",
+          "target": "p03",
+          "weight": 5.0
+        },
+        {
+          "source": "p02",
+          "target": "p10",
+          "weight": 5.0
+        },
+        {
+          "source": "p03",
+          "target": "p04",
+          "weight": 2.0
+        },
+        {
+          "source": "p04",
+          "target": "p05",
+          "weight": 5.0
+        },
+        {
+          "source": "p04",
+          "target": "p06",
+          "weight": 4.0
+        },
+        {
+          "source": "p05",
+          "target": "p06",
+          "weight": 5.0
+        },
+        {
+          "source": "p07",
+          "target": "p08",
+          "weight": 3.0
+        },
+        {
+          "source": "p07",
+          "target": "p09",
+          "weight": 4.0
+        },
+        {
+          "source": "p08",
+          "target": "p09",
+          "weight": 5.0
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    },
+    "org": {
+      "directed": false,
+      "links": [
+        {
+          "source": "p01",
+          "target": "p02",
+          "weight": 85.0
+        },
+        {
+          "source": "p01",
+          "target": "p03",
+          "weight": 85.0
+        },
+        {
+          "source": "p01",
+          "target": "p04",
+          "weight": 47.0
+        },
+        {
+          "source": "p01",
+          "target": "p05",
+          "weight": 35.0
+        },
+        {
+          "source": "p01",
+          "target": "p06",
+          "weight": 47.0
+        },
+        {
+          "source": "p01",
+          "target": "p07",
+          "weight": 47.0
+        },
+        {
+          "source": "p01",
+          "target": "p08",
+          "weight": 35.0
+        },
+        {
+          "source": "p01",
+          "target": "p09",
+          "weight": 47.0
+        },
+        {
+          "source": "p01",
+          "target": "p10",
+          "weight": 71.0
+        },
+        {
+          "source": "p02",
+          "target": "p03",
+          "weight": 73.0
+        },
+        {
+          "source": "p02",
+          "target": "p04",
+          "weight": 35.0
+        },
+        {
+          "source": "p02",
+          "target": "p05",
+          "weight": 35.0
+        },
+        {
+          "source": "p02",
+          "target": "p06",
+          "weight": 35.0
+        },
+        {
+          "source": "p02",
+          "target": "p07",
+          "weight": 35.0
+        },
+        {
+          "source": "p02",
+          "target": "p08",
+          "weight": 35.0
+        },
+        {
+          "source": "p02",
+          "target": "p09",
+          "weight": 35.0
+        },
+        {
+          "source": "p02",
+          "target": "p10",
+          "weight": 59.0
+        },
+        {
+          "source": "p03",
+          "target": "p04",
+          "weight": 47.0
+        },
+        {
+          "source": "p03",
+          "target": "p05",
+          "weight": 35.0
+        },
+        {
+          "source": "p03",
+          "target": "p06",
+          "weight": 59.0
+        },
+        {
+          "source": "p03",
+          "target": "p07",
+          "weight": 47.0
+        },
+        {
+          "source": "p03",
+          "target": "p08",
+          "weight": 35.0
+        },
+        {
+          "source": "p03",
+          "target": "p09",
+          "weight": 59.0
+        },
+        {
+          "source": "p03",
+          "target": "p10",
+          "weight": 73.0
+        },
+        {
+          "source": "p04",
+          "target": "p05",
+          "weight": 85.0
+        },
+        {
+          "source": "p04",
+          "target": "p06",
+          "weight": 85.0
+        },
+        {
+          "source": "p04",
+          "target": "p07",
+          "weight": 47.0
+        },
+        {
+          "source": "p04",
+          "target": "p08",
+          "weight": 35.0
+        },
+        {
+          "source": "p04",
+          "target": "p09",
+          "weight": 47.0
+        },
+        {
+          "source": "p04",
+          "target": "p10",
+          "weight": 71.0
+        },
+        {
+          "source": "p05",
+          "target": "p06",
+          "weight": 73.0
+        },
+        {
+          "source": "p05",
+          "target": "p07",
+          "weight": 35.0
+        },
+        {
+          "source": "p05",
+          "target": "p08",
+          "weight": 35.0
+        },
+        {
+          "source": "p05",
+          "target": "p09",
+          "weight": 35.0
+        },
+        {
+          "source": "p05",
+          "target": "p10",
+          "weight": 59.0
+        },
+        {
+          "source": "p06",
+          "target": "p07",
+          "weight": 47.0
+        },
+        {
+          "source": "p06",
+          "target": "p08",
+          "weight": 35.0
+        },
+        {
+          "source": "p06",
+          "target": "p09",
+          "weight": 59.0
+        },
+        {
+          "source": "p06",
+          "target": "p10",
+          "weight": 63.0
+        },
+        {
+          "source": "p07",
+          "target": "p08",
+          "weight": 85.0
+        },
+        {
+          "source": "p07",
+          "target": "p09",
+          "weight": 85.0
+        },
+        {
+          "source": "p07",
+          "target": "p10",
+          "weight": 47.0
+        },
+        {
+          "source": "p08",
+          "target": "p09",
+          "weight": 73.0
+        },
+        {
+          "source": "p08",
+          "target": "p10",
+          "weight": 35.0
+        },
+        {
+          "source": "p09",
+          "target": "p10",
+          "weight": 49.0
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    },
+    "semantic": {
+      "directed": false,
+      "links": [
+        {
+          "embedding_cosine": 0.842539733499302,
+          "source": "p01",
+          "target": "p02",
+          "tfidf_cosine": 0.8284725799597787,
+          "weight": 0.842539733499302
+        },
+        {
+          "embedding_cosine": 0.7813687603287057,
+          "source": "p01",
+          "target": "p03",
+          "tfidf_cosine": 0.7817443620651536,
+          "weight": 0.7813687603287057
+        },
+        {
+          "embedding_cosine": 0.25024680607585437,
+          "source": "p01",
+          "target": "p04",
+          "tfidf_cosine": 0.2499003891577239,
+          "weight": 0.25024680607585437
+        },
+        {
+          "embedding_cosine": 0.3899664330585093,
+          "source": "p01",
+          "target": "p05",
+          "tfidf_cosine": 0.3930362313004449,
+          "weight": 0.3899664330585093
+        },
+        {
+          "embedding_cosine": 0.4415732052695184,
+          "source": "p01",
+          "target": "p06",
+          "tfidf_cosine": 0.43515634418766475,
+          "weight": 0.4415732052695184
+        },
+        {
+          "embedding_cosine": 0.1998309436386993,
+          "source": "p01",
+          "target": "p07",
+          "tfidf_cosine": 0.19982236573705064,
+          "weight": 0.1998309436386993
+        },
+        {
+          "embedding_cosine": 0.19036904784167674,
+          "source": "p01",
+          "target": "p08",
+          "tfidf_cosine": 0.19348708784313776,
+          "weight": 0.19036904784167674
+        },
+        {
+          "embedding_cosine": 0.21163946338505163,
+          "source": "p01",
+          "target": "p09",
+          "tfidf_cosine": 0.2068652972772923,
+          "weight": 0.21163946338505163
+        },
+        {
+          "embedding_cosine": 0.3836521636917657,
+          "source": "p01",
+          "target": "p10",
+          "tfidf_cosine": 0.3824350609566476,
+          "weight": 0.3836521636917657
+        },
+        {
+          "embedding_cosine": 0.8101577425429126,
+          "source": "p02",
+          "target": "p03",
+          "tfidf_cosine": 0.799792484343016,
+          "weight": 0.8101577425429126
+        },
+        {
+          "embedding_cosine": 0.257565887681415,
+          "source": "p02",
+          "target": "p04",
+          "tfidf_cosine": 0.25566983630651974,
+          "weight": 0.257565887681415
+        },
+        {
+          "embedding_cosine": 0.5842798760530371,
+          "source": "p02",
+          "target": "p05",
+          "tfidf_cosine": 0.5696655976439221,
+          "weight": 0.5842798760530371
+        },
+        {
+          "embedding_cosine": 0.44121169279661965,
+          "source": "p02",
+          "target": "p06",
+          "tfidf_cosine": 0.4452027932456908,
+          "weight": 0.44121169279661965
+        },
+        {
+          "embedding_cosine": 0.20643638173317272,
+          "source": "p02",
+          "target": "p07",
+          "tfidf_cosine": 0.20443566218750006,
+          "weight": 0.20643638173317272
+        },
+        {
+          "embedding_cosine": 0.34565978298732847,
+          "source": "p02",
+          "target": "p08",
+          "tfidf_cosine": 0.3360643162893209,
+          "weight": 0.34565978298732847
+        },
+        {
+          "embedding_cosine": 0.206384456635457,
+          "source": "p02",
+          "target": "p09",
+          "tfidf_cosine": 0.21164119379983845,
+          "weight": 0.206384456635457
+        },
+        {
+          "embedding_cosine": 0.2675185490933606,
+          "source": "p02",
+          "target": "p10",
+          "tfidf_cosine": 0.26660166570384125,
+          "weight": 0.2675185490933606
+        },
+        {
+          "embedding_cosine": 0.24135168564139006,
+          "source": "p03",
+          "target": "p04",
+          "tfidf_cosine": 0.2412493278805266,
+          "weight": 0.24135168564139006
+        },
+        {
+          "embedding_cosine": 0.37765925551637286,
+          "source": "p03",
+          "target": "p05",
+          "tfidf_cosine": 0.3794300879382879,
+          "weight": 0.37765925551637286
+        },
+        {
+          "embedding_cosine": 0.42437546805027704,
+          "source": "p03",
+          "target": "p06",
+          "tfidf_cosine": 0.42009208513862145,
+          "weight": 0.42437546805027704
+        },
+        {
+          "embedding_cosine": 0.19281394788268638,
+          "source": "p03",
+          "target": "p07",
+          "tfidf_cosine": 0.1929049073994618,
+          "weight": 0.19281394788268638
+        },
+        {
+          "embedding_cosine": 0.18478823085545396,
+          "source": "p03",
+          "target": "p08",
+          "tfidf_cosine": 0.1867889443991874,
+          "weight": 0.18478823085545396
+        },
+        {
+          "embedding_cosine": 0.20282199057988518,
+          "source": "p03",
+          "target": "p09",
+          "tfidf_cosine": 0.19970402646493682,
+          "weight": 0.20282199057988518
+        },
+        {
+          "embedding_cosine": 0.25206623599762734,
+          "source": "p03",
+          "target": "p10",
+          "tfidf_cosine": 0.25156457090139894,
+          "weight": 0.25206623599762734
+        },
+        {
+          "embedding_cosine": 0.6076947945389806,
+          "source": "p04",
+          "target": "p05",
+          "tfidf_cosine": 0.605903951450904,
+          "weight": 0.6076947945389806
+        },
+        {
+          "embedding_cosine": 0.6726665489789089,
+          "source": "p04",
+          "target": "p06",
+          "tfidf_cosine": 0.670836242169965,
+          "weight": 0.6726665489789089
+        },
+        {
+          "embedding_cosine": 0.19535566433521925,
+          "source": "p04",
+          "target": "p07",
+          "tfidf_cosine": 0.19536686224424907,
+          "weight": 0.19535566433521925
+        },
+        {
+          "embedding_cosine": 0.1893714276821684,
+          "source": "p04",
+          "target": "p08",
+          "tfidf_cosine": 0.1891728440770944,
+          "weight": 0.1893714276821684
+        },
+        {
+          "embedding_cosine": 0.2028000324413813,
+          "source": "p04",
+          "target": "p09",
+          "tfidf_cosine": 0.20225275527700776,
+          "weight": 0.2028000324413813
+        },
+        {
+          "embedding_cosine": 0.251666056501493,
+          "source": "p04",
+          "target": "p10",
+          "tfidf_cosine": 0.25164220674674187,
+          "weight": 0.251666056501493
+        },
+        {
+          "embedding_cosine": 0.9141080536826734,
+          "source": "p05",
+          "target": "p06",
+          "tfidf_cosine": 0.9032069428613108,
+          "weight": 0.9141080536826734
+        },
+        {
+          "embedding_cosine": 0.22499930156260262,
+          "source": "p05",
+          "target": "p07",
+          "tfidf_cosine": 0.22476495328889032,
+          "weight": 0.22499930156260262
+        },
+        {
+          "embedding_cosine": 0.36644584240379047,
+          "source": "p05",
+          "target": "p08",
+          "tfidf_cosine": 0.36948289522771227,
+          "weight": 0.36644584240379047
+        },
+        {
+          "embedding_cosine": 0.2389536970401052,
+          "source": "p05",
+          "target": "p09",
+          "tfidf_cosine": 0.232687010326001,
+          "weight": 0.2389536970401052
+        },
+        {
+          "embedding_cosine": 0.33623958360124995,
+          "source": "p05",
+          "target": "p10",
+          "tfidf_cosine": 0.33457485008213617,
+          "weight": 0.33623958360124995
+        },
+        {
+          "embedding_cosine": 0.24991065353217332,
+          "source": "p06",
+          "target": "p07",
+          "tfidf_cosine": 0.2488521097688278,
+          "weight": 0.24991065353217332
+        },
+        {
+          "embedding_cosine": 0.246276493425272,
+          "source": "p06",
+          "target": "p08",
+          "tfidf_cosine": 0.24096236597534954,
+          "weight": 0.246276493425272
+        },
+        {
+          "embedding_cosine": 0.25438584463598823,
+          "source": "p06",
+          "target": "p09",
+          "tfidf_cosine": 0.2576231418116219,
+          "weight": 0.25438584463598823
+        },
+        {
+          "embedding_cosine": 0.37086905818303767,
+          "source": "p06",
+          "target": "p10",
+          "tfidf_cosine": 0.3704298917612625,
+          "weight": 0.37086905818303767
+        },
+        {
+          "embedding_cosine": 0.7356037609653564,
+          "source": "p07",
+          "target": "p08",
+          "tfidf_cosine": 0.7346123896137318,
+          "weight": 0.7356037609653564
+        },
+        {
+          "embedding_cosine": 0.7873308804742659,
+          "source": "p07",
+          "target": "p09",
+          "tfidf_cosine": 0.7854054348279159,
+          "weight": 0.7873308804742659
+        },
+        {
+          "embedding_cosine": 0.12142792105790325,
+          "source": "p07",
+          "target": "p10",
+          "tfidf_cosine": 0.12137961550768339,
+          "weight": 0.12142792105790325
+        },
+        {
+          "embedding_cosine": 0.942658301226037,
+          "source": "p08",
+          "target": "p09",
+          "tfidf_cosine": 0.9353288849786062,
+          "weight": 0.942658301226037
+        },
+        {
+          "embedding_cosine": 0.11816921448494595,
+          "source": "p08",
+          "target": "p10",
+          "tfidf_cosine": 0.11753132959603842,
+          "weight": 0.11816921448494595
+        },
+        {
+          "embedding_cosine": 0.12547650258532217,
+          "source": "p09",
+          "target": "p10",
+          "tfidf_cosine": 0.1256577568421045,
+          "weight": 0.12547650258532217
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    },
+    "skill": {
+      "directed": false,
+      "links": [
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p01",
+          "target": "p02",
+          "tfidf_cosine": 0.5574064005171835,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p01",
+          "target": "p03",
+          "tfidf_cosine": 0.5574064005171835,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p01",
+          "target": "p04",
+          "tfidf_cosine": 0.05304334423124177,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p01",
+          "target": "p05",
+          "tfidf_cosine": 0.08889961056088119,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p01",
+          "target": "p06",
+          "tfidf_cosine": 0.05175334367642546,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p01",
+          "target": "p07",
+          "tfidf_cosine": 0.0472656980583164,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p01",
+          "target": "p08",
+          "tfidf_cosine": 0.04970311770493762,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p01",
+          "target": "p09",
+          "tfidf_cosine": 0.039961065390567846,
+          "weight": 0.18181818181818182
+        },
+        {
+          "jaccard": 0.3333333333333333,
+          "source": "p01",
+          "target": "p10",
+          "tfidf_cosine": 0.2220269676620452,
+          "weight": 0.3333333333333333
+        },
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p02",
+          "target": "p03",
+          "tfidf_cosine": 0.6013516562628529,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p02",
+          "target": "p04",
+          "tfidf_cosine": 0.05513771884536698,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p02",
+          "target": "p05",
+          "tfidf_cosine": 0.09240974157284451,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p02",
+          "target": "p06",
+          "tfidf_cosine": 0.05379678363600783,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p02",
+          "target": "p07",
+          "tfidf_cosine": 0.04913194686986739,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p02",
+          "target": "p08",
+          "tfidf_cosine": 0.0516656061089547,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p02",
+          "target": "p09",
+          "tfidf_cosine": 0.04153889654206052,
+          "weight": 0.18181818181818182
+        },
+        {
+          "jaccard": 0.5,
+          "source": "p02",
+          "target": "p10",
+          "tfidf_cosine": 0.4040036191018255,
+          "weight": 0.5
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p03",
+          "target": "p04",
+          "tfidf_cosine": 0.05513771884536698,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p03",
+          "target": "p05",
+          "tfidf_cosine": 0.09240974157284451,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p03",
+          "target": "p06",
+          "tfidf_cosine": 0.05379678363600783,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p03",
+          "target": "p07",
+          "tfidf_cosine": 0.04913194686986739,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p03",
+          "target": "p08",
+          "tfidf_cosine": 0.0516656061089547,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p03",
+          "target": "p09",
+          "tfidf_cosine": 0.04153889654206052,
+          "weight": 0.18181818181818182
+        },
+        {
+          "jaccard": 0.5,
+          "source": "p03",
+          "target": "p10",
+          "tfidf_cosine": 0.4040036191018255,
+          "weight": 0.5
+        },
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p04",
+          "target": "p05",
+          "tfidf_cosine": 0.5523877170496684,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p04",
+          "target": "p06",
+          "tfidf_cosine": 0.6481871213321264,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p04",
+          "target": "p07",
+          "tfidf_cosine": 0.048354335221626375,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p04",
+          "target": "p08",
+          "tfidf_cosine": 0.05084789421917012,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p04",
+          "target": "p09",
+          "tfidf_cosine": 0.04088146015160487,
+          "weight": 0.18181818181818182
+        },
+        {
+          "jaccard": 0.5,
+          "source": "p04",
+          "target": "p10",
+          "tfidf_cosine": 0.3164692262143395,
+          "weight": 0.5
+        },
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p05",
+          "target": "p06",
+          "tfidf_cosine": 0.5891294194412579,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p05",
+          "target": "p07",
+          "tfidf_cosine": 0.049267452964228284,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p05",
+          "target": "p08",
+          "tfidf_cosine": 0.05180810004503169,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p05",
+          "target": "p09",
+          "tfidf_cosine": 0.041653460975043084,
+          "weight": 0.18181818181818182
+        },
+        {
+          "jaccard": 0.5,
+          "source": "p05",
+          "target": "p10",
+          "tfidf_cosine": 0.3593541123149782,
+          "weight": 0.5
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p06",
+          "target": "p07",
+          "tfidf_cosine": 0.04717837016573285,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p06",
+          "target": "p08",
+          "tfidf_cosine": 0.049611286446703595,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p06",
+          "target": "p09",
+          "tfidf_cosine": 0.0398872335046694,
+          "weight": 0.18181818181818182
+        },
+        {
+          "jaccard": 0.3333333333333333,
+          "source": "p06",
+          "target": "p10",
+          "tfidf_cosine": 0.1424498361958763,
+          "weight": 0.3333333333333333
+        },
+        {
+          "jaccard": 0.7142857142857143,
+          "source": "p07",
+          "target": "p08",
+          "tfidf_cosine": 0.6973754425809097,
+          "weight": 0.7142857142857143
+        },
+        {
+          "jaccard": 0.625,
+          "source": "p07",
+          "target": "p09",
+          "tfidf_cosine": 0.5125397807811436,
+          "weight": 0.625
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p07",
+          "target": "p10",
+          "tfidf_cosine": 0.05005124711485676,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.625,
+          "source": "p08",
+          "target": "p09",
+          "tfidf_cosine": 0.6014769812481283,
+          "weight": 0.625
+        },
+        {
+          "jaccard": 0.2,
+          "source": "p08",
+          "target": "p10",
+          "tfidf_cosine": 0.05263231325938142,
+          "weight": 0.2
+        },
+        {
+          "jaccard": 0.18181818181818182,
+          "source": "p09",
+          "target": "p10",
+          "tfidf_cosine": 0.042316124398893616,
+          "weight": 0.18181818181818182
+        }
+      ],
+      "nodes": [
+        {
+          "id": "p01"
+        },
+        {
+          "id": "p02"
+        },
+        {
+          "id": "p03"
+        },
+        {
+          "id": "p04"
+        },
+        {
+          "id": "p05"
+        },
+        {
+          "id": "p06"
+        },
+        {
+          "id": "p07"
+        },
+        {
+          "id": "p08"
+        },
+        {
+          "id": "p09"
+        },
+        {
+          "id": "p10"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "source": "p01",
+      "target": "p02",
+      "weight": 0.973447810411
+    },
+    {
+      "source": "p01",
+      "target": "p03",
+      "weight": 0.937224812881
+    },
+    {
+      "source": "p01",
+      "target": "p04",
+      "weight": 0.274602610289
+    },
+    {
+      "source": "p01",
+      "target": "p05",
+      "weight": 0.276363177993
+    },
+    {
+      "source": "p01",
+      "target": "p06",
+      "weight": 0.325343795866
+    },
+    {
+      "source": "p01",
+      "target": "p07",
+      "weight": 0.261231948202
+    },
+    {
+      "source": "p01",
+      "target": "p08",
+      "weight": 0.223428465341
+    },
+    {
+      "source": "p01",
+      "target": "p09",
+      "weight": 0.258000019195
+    },
+    {
+      "source": "p01",
+      "target": "p10",
+      "weight": 0.544737606352
+    },
+    {
+      "source": "p02",
+      "target": "p03",
+      "weight": 0.929565747664
+    },
+    {
+      "source": "p02",
+      "target": "p04",
+      "weight": 0.241249567578
+    },
+    {
+      "source": "p02",
+      "target": "p05",
+      "weight": 0.327896549826
+    },
+    {
+      "source": "p02",
+      "target": "p06",
+      "weight": 0.28995380242
+    },
+    {
+      "source": "p02",
+      "target": "p07",
+      "weight": 0.227689641918
+    },
+    {
+      "source": "p02",
+      "target": "p08",
+      "weight": 0.264612724511
+    },
+    {
+      "source": "p02",
+      "target": "p09",
+      "weight": 0.221312234632
+    },
+    {
+      "source": "p02",
+      "target": "p10",
+      "weight": 0.51947732278
+    },
+    {
+      "source": "p03",
+      "target": "p04",
+      "weight": 0.312243558122
+    },
+    {
+      "source": "p03",
+      "target": "p05",
+      "weight": 0.273099222876
+    },
+    {
+      "source": "p03",
+      "target": "p06",
+      "weight": 0.356076945558
+    },
+    {
+      "source": "p03",
+      "target": "p07",
+      "weight": 0.259370988683
+    },
+    {
+      "source": "p03",
+      "target": "p08",
+      "weight": 0.221948391125
+    },
+    {
+      "source": "p03",
+      "target": "p09",
+      "weight": 0.290955677404
+    },
+    {
+      "source": "p03",
+      "target": "p10",
+      "weight": 0.569055724886
+    },
+    {
+      "source": "p04",
+      "target": "p05",
+      "weight": 0.911165184073
+    },
+    {
+      "source": "p04",
+      "target": "p06",
+      "weight": 0.908396177094
+    },
+    {
+      "source": "p04",
+      "target": "p07",
+      "weight": 0.26004507081
+    },
+    {
+      "source": "p04",
+      "target": "p08",
+      "weight": 0.223163889047
+    },
+    {
+      "source": "p04",
+      "target": "p09",
+      "weight": 0.255655736295
+    },
+    {
+      "source": "p04",
+      "target": "p10",
+      "weight": 0.563067241363
+    },
+    {
+      "source": "p05",
+      "target": "p06",
+      "weight": 0.957134144135
+    },
+    {
+      "source": "p05",
+      "target": "p07",
+      "weight": 0.232612666466
+    },
+    {
+      "source": "p05",
+      "target": "p08",
+      "weight": 0.27012534223
+    },
+    {
+      "source": "p05",
+      "target": "p09",
+      "weight": 0.22994983968
+    },
+    {
+      "source": "p05",
+      "target": "p10",
+      "weight": 0.437702652791
+    },
+    {
+      "source": "p06",
+      "target": "p07",
+      "weight": 0.274513460132
+    },
+    {
+      "source": "p06",
+      "target": "p08",
+      "weight": 0.238255536166
+    },
+    {
+      "source": "p06",
+      "target": "p09",
+      "weight": 0.304630795416
+    },
+    {
+      "source": "p06",
+      "target": "p10",
+      "weight": 0.437818019831
+    },
+    {
+      "source": "p07",
+      "target": "p08",
+      "weight": 0.905087594309
+    },
+    {
+      "source": "p07",
+      "target": "p09",
+      "weight": 0.907556011534
+    },
+    {
+      "source": "p07",
+      "target": "p10",
+      "weight": 0.352938882868
+    },
+    {
+      "source": "p08",
+      "target": "p09",
+      "weight": 0.933455882353
+    },
+    {
+      "source": "p08",
+      "target": "p10",
+      "weight": 0.204280531975
+    },
+    {
+      "source": "p09",
+      "target": "p10",
+      "weight": 0.27853131341
+    }
+  ],
+  "nodes": [
+    {
+      "clusters": {},
+      "id": "p01",
+      "metrics": {},
+      "multilayer": {
+        "activity": 9.0,
+        "edu": 13.0,
+        "org": 499.0,
+        "semantic": 3.691186556789,
+        "skill": 2.943722943723
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p02",
+      "metrics": {},
+      "multilayer": {
+        "activity": 8.0,
+        "edu": 15.0,
+        "org": 427.0,
+        "semantic": 3.961754103023,
+        "skill": 3.11038961039
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p03",
+      "metrics": {},
+      "multilayer": {
+        "activity": 11.0,
+        "edu": 11.0,
+        "org": 513.0,
+        "semantic": 3.467403317395,
+        "skill": 3.11038961039
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p04",
+      "metrics": {},
+      "multilayer": {
+        "activity": 11.0,
+        "edu": 11.0,
+        "org": 499.0,
+        "semantic": 2.868718903877,
+        "skill": 3.11038961039
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p05",
+      "metrics": {},
+      "multilayer": {
+        "activity": 8.0,
+        "edu": 10.0,
+        "org": 427.0,
+        "semantic": 4.040346837457,
+        "skill": 3.11038961039
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p06",
+      "metrics": {},
+      "multilayer": {
+        "activity": 9.0,
+        "edu": 9.0,
+        "org": 503.0,
+        "semantic": 4.015377018554,
+        "skill": 2.943722943723
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p07",
+      "metrics": {},
+      "multilayer": {
+        "activity": 11.0,
+        "edu": 7.0,
+        "org": 475.0,
+        "semantic": 2.913709455182,
+        "skill": 2.739285714286
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p08",
+      "metrics": {},
+      "multilayer": {
+        "activity": 8.0,
+        "edu": 8.0,
+        "org": 403.0,
+        "semantic": 3.319342101872,
+        "skill": 2.739285714286
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p09",
+      "metrics": {},
+      "multilayer": {
+        "activity": 9.0,
+        "edu": 9.0,
+        "org": 489.0,
+        "semantic": 3.172451169003,
+        "skill": 2.522727272727
+      },
+      "roles": []
+    },
+    {
+      "clusters": {},
+      "id": "p10",
+      "metrics": {},
+      "multilayer": {
+        "activity": 12.0,
+        "edu": 9.0,
+        "org": 527.0,
+        "semantic": 2.227085285197,
+        "skill": 3.248484848485
+      },
+      "roles": []
+    }
+  ],
+  "person_projection": {
+    "directed": false,
+    "links": [
+      {
+        "source": "person:p01",
+        "target": "person:p02",
+        "weight": 5
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p03",
+        "weight": 5
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p04",
+        "weight": 2
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p05",
+        "weight": 2
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p06",
+        "weight": 2
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p07",
+        "weight": 2
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p08",
+        "weight": 2
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p09",
+        "weight": 2
+      },
+      {
+        "source": "person:p01",
+        "target": "person:p10",
+        "weight": 3
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p03",
+        "weight": 5
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p04",
+        "weight": 2
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p05",
+        "weight": 2
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p06",
+        "weight": 2
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p07",
+        "weight": 2
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p08",
+        "weight": 2
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p09",
+        "weight": 2
+      },
+      {
+        "source": "person:p02",
+        "target": "person:p10",
+        "weight": 4
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p04",
+        "weight": 2
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p05",
+        "weight": 2
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p06",
+        "weight": 2
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p07",
+        "weight": 2
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p08",
+        "weight": 2
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p09",
+        "weight": 2
+      },
+      {
+        "source": "person:p03",
+        "target": "person:p10",
+        "weight": 4
+      },
+      {
+        "source": "person:p04",
+        "target": "person:p05",
+        "weight": 5
+      },
+      {
+        "source": "person:p04",
+        "target": "person:p06",
+        "weight": 5
+      },
+      {
+        "source": "person:p04",
+        "target": "person:p07",
+        "weight": 2
+      },
+      {
+        "source": "person:p04",
+        "target": "person:p08",
+        "weight": 2
+      },
+      {
+        "source": "person:p04",
+        "target": "person:p09",
+        "weight": 2
+      },
+      {
+        "source": "person:p04",
+        "target": "person:p10",
+        "weight": 4
+      },
+      {
+        "source": "person:p05",
+        "target": "person:p06",
+        "weight": 5
+      },
+      {
+        "source": "person:p05",
+        "target": "person:p07",
+        "weight": 2
+      },
+      {
+        "source": "person:p05",
+        "target": "person:p08",
+        "weight": 2
+      },
+      {
+        "source": "person:p05",
+        "target": "person:p09",
+        "weight": 2
+      },
+      {
+        "source": "person:p05",
+        "target": "person:p10",
+        "weight": 4
+      },
+      {
+        "source": "person:p06",
+        "target": "person:p07",
+        "weight": 2
+      },
+      {
+        "source": "person:p06",
+        "target": "person:p08",
+        "weight": 2
+      },
+      {
+        "source": "person:p06",
+        "target": "person:p09",
+        "weight": 2
+      },
+      {
+        "source": "person:p06",
+        "target": "person:p10",
+        "weight": 3
+      },
+      {
+        "source": "person:p07",
+        "target": "person:p08",
+        "weight": 5
+      },
+      {
+        "source": "person:p07",
+        "target": "person:p09",
+        "weight": 5
+      },
+      {
+        "source": "person:p07",
+        "target": "person:p10",
+        "weight": 2
+      },
+      {
+        "source": "person:p08",
+        "target": "person:p09",
+        "weight": 5
+      },
+      {
+        "source": "person:p08",
+        "target": "person:p10",
+        "weight": 2
+      },
+      {
+        "source": "person:p09",
+        "target": "person:p10",
+        "weight": 2
+      }
+    ],
+    "nodes": [
+      {
+        "id": "person:p01",
+        "kind": "person"
+      },
+      {
+        "id": "person:p02",
+        "kind": "person"
+      },
+      {
+        "id": "person:p03",
+        "kind": "person"
+      },
+      {
+        "id": "person:p04",
+        "kind": "person"
+      },
+      {
+        "id": "person:p05",
+        "kind": "person"
+      },
+      {
+        "id": "person:p06",
+        "kind": "person"
+      },
+      {
+        "id": "person:p07",
+        "kind": "person"
+      },
+      {
+        "id": "person:p08",
+        "kind": "person"
+      },
+      {
+        "id": "person:p09",
+        "kind": "person"
+      },
+      {
+        "id": "person:p10",
+        "kind": "person"
+      }
+    ]
+  },
+  "skill_projection": {
+    "directed": false,
+    "links": [
+      {
+        "source": "skill:application security",
+        "target": "skill:identity management",
+        "weight": 2
+      },
+      {
+        "source": "skill:application security",
+        "target": "skill:incident response",
+        "weight": 1
+      },
+      {
+        "source": "skill:application security",
+        "target": "skill:python",
+        "weight": 2
+      },
+      {
+        "source": "skill:application security",
+        "target": "skill:security monitoring",
+        "weight": 1
+      },
+      {
+        "source": "skill:application security",
+        "target": "skill:synthetic protocol archaeology",
+        "weight": 1
+      },
+      {
+        "source": "skill:application security",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:application security",
+        "target": "skill:threat modeling",
+        "weight": 2
+      },
+      {
+        "source": "skill:cloud infrastructure",
+        "target": "skill:container orchestration",
+        "weight": 2
+      },
+      {
+        "source": "skill:cloud infrastructure",
+        "target": "skill:distributed systems",
+        "weight": 2
+      },
+      {
+        "source": "skill:cloud infrastructure",
+        "target": "skill:observability",
+        "weight": 3
+      },
+      {
+        "source": "skill:cloud infrastructure",
+        "target": "skill:python",
+        "weight": 3
+      },
+      {
+        "source": "skill:cloud infrastructure",
+        "target": "skill:service reliability",
+        "weight": 2
+      },
+      {
+        "source": "skill:cloud infrastructure",
+        "target": "skill:technical writing",
+        "weight": 3
+      },
+      {
+        "source": "skill:container orchestration",
+        "target": "skill:distributed systems",
+        "weight": 1
+      },
+      {
+        "source": "skill:container orchestration",
+        "target": "skill:observability",
+        "weight": 2
+      },
+      {
+        "source": "skill:container orchestration",
+        "target": "skill:python",
+        "weight": 2
+      },
+      {
+        "source": "skill:container orchestration",
+        "target": "skill:service reliability",
+        "weight": 1
+      },
+      {
+        "source": "skill:container orchestration",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:distributed systems",
+        "weight": 1
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:feature engineering",
+        "weight": 2
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:machine learning",
+        "weight": 2
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:mlops",
+        "weight": 3
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:model evaluation",
+        "weight": 3
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:observability",
+        "weight": 1
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:python",
+        "weight": 4
+      },
+      {
+        "source": "skill:data pipelines",
+        "target": "skill:technical writing",
+        "weight": 4
+      },
+      {
+        "source": "skill:distributed systems",
+        "target": "skill:model evaluation",
+        "weight": 1
+      },
+      {
+        "source": "skill:distributed systems",
+        "target": "skill:observability",
+        "weight": 3
+      },
+      {
+        "source": "skill:distributed systems",
+        "target": "skill:python",
+        "weight": 3
+      },
+      {
+        "source": "skill:distributed systems",
+        "target": "skill:service reliability",
+        "weight": 1
+      },
+      {
+        "source": "skill:distributed systems",
+        "target": "skill:technical writing",
+        "weight": 3
+      },
+      {
+        "source": "skill:feature engineering",
+        "target": "skill:machine learning",
+        "weight": 1
+      },
+      {
+        "source": "skill:feature engineering",
+        "target": "skill:mlops",
+        "weight": 2
+      },
+      {
+        "source": "skill:feature engineering",
+        "target": "skill:model evaluation",
+        "weight": 1
+      },
+      {
+        "source": "skill:feature engineering",
+        "target": "skill:python",
+        "weight": 2
+      },
+      {
+        "source": "skill:feature engineering",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:identity management",
+        "target": "skill:incident response",
+        "weight": 2
+      },
+      {
+        "source": "skill:identity management",
+        "target": "skill:python",
+        "weight": 3
+      },
+      {
+        "source": "skill:identity management",
+        "target": "skill:security monitoring",
+        "weight": 2
+      },
+      {
+        "source": "skill:identity management",
+        "target": "skill:synthetic protocol archaeology",
+        "weight": 1
+      },
+      {
+        "source": "skill:identity management",
+        "target": "skill:technical writing",
+        "weight": 3
+      },
+      {
+        "source": "skill:identity management",
+        "target": "skill:threat modeling",
+        "weight": 3
+      },
+      {
+        "source": "skill:incident response",
+        "target": "skill:python",
+        "weight": 2
+      },
+      {
+        "source": "skill:incident response",
+        "target": "skill:security monitoring",
+        "weight": 1
+      },
+      {
+        "source": "skill:incident response",
+        "target": "skill:synthetic protocol archaeology",
+        "weight": 1
+      },
+      {
+        "source": "skill:incident response",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:incident response",
+        "target": "skill:threat modeling",
+        "weight": 2
+      },
+      {
+        "source": "skill:machine learning",
+        "target": "skill:mlops",
+        "weight": 2
+      },
+      {
+        "source": "skill:machine learning",
+        "target": "skill:model evaluation",
+        "weight": 1
+      },
+      {
+        "source": "skill:machine learning",
+        "target": "skill:python",
+        "weight": 2
+      },
+      {
+        "source": "skill:machine learning",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:mlops",
+        "target": "skill:model evaluation",
+        "weight": 2
+      },
+      {
+        "source": "skill:mlops",
+        "target": "skill:python",
+        "weight": 3
+      },
+      {
+        "source": "skill:mlops",
+        "target": "skill:technical writing",
+        "weight": 3
+      },
+      {
+        "source": "skill:model evaluation",
+        "target": "skill:observability",
+        "weight": 1
+      },
+      {
+        "source": "skill:model evaluation",
+        "target": "skill:python",
+        "weight": 3
+      },
+      {
+        "source": "skill:model evaluation",
+        "target": "skill:technical writing",
+        "weight": 3
+      },
+      {
+        "source": "skill:observability",
+        "target": "skill:python",
+        "weight": 4
+      },
+      {
+        "source": "skill:observability",
+        "target": "skill:service reliability",
+        "weight": 2
+      },
+      {
+        "source": "skill:observability",
+        "target": "skill:technical writing",
+        "weight": 4
+      },
+      {
+        "source": "skill:python",
+        "target": "skill:security monitoring",
+        "weight": 2
+      },
+      {
+        "source": "skill:python",
+        "target": "skill:service reliability",
+        "weight": 2
+      },
+      {
+        "source": "skill:python",
+        "target": "skill:synthetic protocol archaeology",
+        "weight": 1
+      },
+      {
+        "source": "skill:python",
+        "target": "skill:technical writing",
+        "weight": 10
+      },
+      {
+        "source": "skill:python",
+        "target": "skill:threat modeling",
+        "weight": 3
+      },
+      {
+        "source": "skill:security monitoring",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:security monitoring",
+        "target": "skill:threat modeling",
+        "weight": 2
+      },
+      {
+        "source": "skill:service reliability",
+        "target": "skill:technical writing",
+        "weight": 2
+      },
+      {
+        "source": "skill:synthetic protocol archaeology",
+        "target": "skill:technical writing",
+        "weight": 1
+      },
+      {
+        "source": "skill:synthetic protocol archaeology",
+        "target": "skill:threat modeling",
+        "weight": 1
+      },
+      {
+        "source": "skill:technical writing",
+        "target": "skill:threat modeling",
+        "weight": 3
+      }
+    ],
+    "nodes": [
+      {
+        "id": "skill:application security",
+        "kind": "skill",
+        "label": "Application security"
+      },
+      {
+        "id": "skill:cloud infrastructure",
+        "kind": "skill",
+        "label": "Cloud infrastructure"
+      },
+      {
+        "id": "skill:container orchestration",
+        "kind": "skill",
+        "label": "Container orchestration"
+      },
+      {
+        "id": "skill:data pipelines",
+        "kind": "skill",
+        "label": "Data pipelines"
+      },
+      {
+        "id": "skill:distributed systems",
+        "kind": "skill",
+        "label": "Distributed systems"
+      },
+      {
+        "id": "skill:feature engineering",
+        "kind": "skill",
+        "label": "Feature engineering"
+      },
+      {
+        "id": "skill:identity management",
+        "kind": "skill",
+        "label": "Identity management"
+      },
+      {
+        "id": "skill:incident response",
+        "kind": "skill",
+        "label": "Incident response"
+      },
+      {
+        "id": "skill:machine learning",
+        "kind": "skill",
+        "label": "Machine learning"
+      },
+      {
+        "id": "skill:mlops",
+        "kind": "skill",
+        "label": "MLOps"
+      },
+      {
+        "id": "skill:model evaluation",
+        "kind": "skill",
+        "label": "Model evaluation"
+      },
+      {
+        "id": "skill:observability",
+        "kind": "skill",
+        "label": "Observability"
+      },
+      {
+        "id": "skill:python",
+        "kind": "skill",
+        "label": "Python"
+      },
+      {
+        "id": "skill:security monitoring",
+        "kind": "skill",
+        "label": "Security monitoring"
+      },
+      {
+        "id": "skill:service reliability",
+        "kind": "skill",
+        "label": "Service reliability"
+      },
+      {
+        "id": "skill:synthetic protocol archaeology",
+        "kind": "skill",
+        "label": "Synthetic protocol archaeology"
+      },
+      {
+        "id": "skill:technical writing",
+        "kind": "skill",
+        "label": "Technical writing"
+      },
+      {
+        "id": "skill:threat modeling",
+        "kind": "skill",
+        "label": "Threat modeling"
+      }
+    ]
+  },
+  "warnings": []
+}
