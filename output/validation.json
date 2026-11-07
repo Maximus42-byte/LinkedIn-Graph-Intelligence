@@ -1,0 +1,362 @@
+{
+  "ablation": {
+    "activity": {
+      "cluster_ari": 1.0,
+      "rank_kendall_tau": 0.8666666666666666,
+      "remaining_edges": 45,
+      "top3_set_retained": true
+    },
+    "edu": {
+      "cluster_ari": 1.0,
+      "rank_kendall_tau": 0.7777777777777777,
+      "remaining_edges": 45,
+      "top3_set_retained": true
+    },
+    "org": {
+      "cluster_ari": 1.0,
+      "rank_kendall_tau": 0.37777777777777777,
+      "remaining_edges": 45,
+      "top3_set_retained": false
+    },
+    "semantic": {
+      "cluster_ari": 1.0,
+      "rank_kendall_tau": 0.6,
+      "remaining_edges": 45,
+      "top3_set_retained": false
+    },
+    "skill": {
+      "cluster_ari": 1.0,
+      "rank_kendall_tau": 0.6,
+      "remaining_edges": 45,
+      "top3_set_retained": true
+    }
+  },
+  "ground_truth": {
+    "caveat": "Recovery of structure built into synthetic fixtures does not measure real-world accuracy.",
+    "kind": "synthetic validation",
+    "n": 10,
+    "results": {
+      "embedding_kmeans": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "girvan_newman": {
+        "ari": 0.16666666666666666,
+        "nmi": 0.5419590771114817
+      },
+      "greedy_modularity": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "hdbscan": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "label_propagation": {
+        "ari": 0.0,
+        "nmi": 0.0
+      },
+      "louvain": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "nmf_topics": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "spectral": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "tfidf_kmeans": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      },
+      "ward": {
+        "ari": 0.8148148148148148,
+        "nmi": 0.9063841203195053
+      }
+    },
+    "status": "ok"
+  },
+  "null_models": {
+    "backbone": {
+      "density": 1.0,
+      "edges": 22,
+      "keep_fraction": 0.5,
+      "rule": "highest-weight edges of the combined graph",
+      "used": true
+    },
+    "caveat": "n=10 is too small for a statistically informative null comparison; empirical p-values and z-scores are descriptive only.",
+    "degree_preserving": {
+      "failures": 0,
+      "samples": 100,
+      "statistics": {
+        "modularity": {
+          "empirical_p_upper": 0.009900990099009901,
+          "null_mean": 0.18746762459201116,
+          "null_std": 0.03449219837265525,
+          "observed": 0.3722745615551503,
+          "z_score": 5.3579344223431855
+        },
+        "top_betweenness": {
+          "empirical_p_upper": 0.9702970297029703,
+          "null_mean": 0.3377777777777778,
+          "null_std": 0.09587774877968938,
+          "observed": 0.2222222222222222,
+          "z_score": -1.2052385149455525
+        },
+        "top_pagerank": {
+          "empirical_p_upper": 0.9900990099009901,
+          "null_mean": 0.15748941646128795,
+          "null_std": 0.013836236865448742,
+          "observed": 0.11884127700780382,
+          "z_score": -2.793255119099226
+        },
+        "top_weighted_degree": {
+          "empirical_p_upper": 0.9900990099009901,
+          "null_mean": 4.56029696244104,
+          "null_std": 0.43687978454112963,
+          "observed": 3.424797450871,
+          "z_score": -2.5991120480950967
+        }
+      }
+    },
+    "gnm": {
+      "failures": 0,
+      "samples": 100,
+      "statistics": {
+        "modularity": {
+          "empirical_p_upper": 0.009900990099009901,
+          "null_mean": 0.18512988947220507,
+          "null_std": 0.03843154904565111,
+          "observed": 0.3722745615551503,
+          "z_score": 4.8695583896616945
+        },
+        "top_betweenness": {
+          "empirical_p_upper": 0.9306930693069307,
+          "null_mean": 0.3255555555555555,
+          "null_std": 0.09606940376853315,
+          "observed": 0.2222222222222222,
+          "z_score": -1.0756112693517035
+        },
+        "top_pagerank": {
+          "empirical_p_upper": 0.9900990099009901,
+          "null_mean": 0.15296427172033358,
+          "null_std": 0.01948337873516993,
+          "observed": 0.11884127700780382,
+          "z_score": -1.7513900015161896
+        },
+        "top_weighted_degree": {
+          "empirical_p_upper": 0.9900990099009901,
+          "null_mean": 4.412519824116071,
+          "null_std": 0.6009455405773052,
+          "observed": 3.424797450871,
+          "z_score": -1.6436137828665878
+        }
+      }
+    },
+    "graph_edges": 22,
+    "graph_nodes": 10,
+    "iterations_requested": 100,
+    "observed": {
+      "modularity": 0.3722745615551503,
+      "top_betweenness": 0.2222222222222222,
+      "top_pagerank": 0.11884127700780382,
+      "top_weighted_degree": 3.424797450871
+    },
+    "statistically_informative": false
+  },
+  "perturbation": {
+    "added_edges_per_iteration": 0,
+    "baseline_ranking": [
+      "p03",
+      "p06",
+      "p01",
+      "p02",
+      "p10",
+      "p04",
+      "p05",
+      "p07",
+      "p09",
+      "p08"
+    ],
+    "edge_fraction": 0.1,
+    "iterations": 1000,
+    "kendall_tau_interval": [
+      -0.022222222222222223,
+      0.4222222222222222,
+      0.7777777777777777
+    ],
+    "kendall_tau_mean": 0.40884444444444445,
+    "per_person": {
+      "p01": {
+        "baseline_rank": 3,
+        "rank_interval": [
+          1.0,
+          4.0,
+          10.0
+        ],
+        "top3_frequency": 0.499
+      },
+      "p02": {
+        "baseline_rank": 4,
+        "rank_interval": [
+          1.0,
+          5.0,
+          10.0
+        ],
+        "top3_frequency": 0.356
+      },
+      "p03": {
+        "baseline_rank": 1,
+        "rank_interval": [
+          1.0,
+          2.0,
+          9.0
+        ],
+        "top3_frequency": 0.612
+      },
+      "p04": {
+        "baseline_rank": 6,
+        "rank_interval": [
+          2.0,
+          5.0,
+          10.0
+        ],
+        "top3_frequency": 0.268
+      },
+      "p05": {
+        "baseline_rank": 7,
+        "rank_interval": [
+          2.0,
+          6.0,
+          10.0
+        ],
+        "top3_frequency": 0.178
+      },
+      "p06": {
+        "baseline_rank": 2,
+        "rank_interval": [
+          1.0,
+          3.0,
+          10.0
+        ],
+        "top3_frequency": 0.55
+      },
+      "p07": {
+        "baseline_rank": 8,
+        "rank_interval": [
+          3.0,
+          6.0,
+          10.0
+        ],
+        "top3_frequency": 0.096
+      },
+      "p08": {
+        "baseline_rank": 10,
+        "rank_interval": [
+          5.0,
+          9.0,
+          10.0
+        ],
+        "top3_frequency": 0.0
+      },
+      "p09": {
+        "baseline_rank": 9,
+        "rank_interval": [
+          3.0,
+          7.0,
+          10.0
+        ],
+        "top3_frequency": 0.029
+      },
+      "p10": {
+        "baseline_rank": 5,
+        "rank_interval": [
+          1.0,
+          4.0,
+          10.0
+        ],
+        "top3_frequency": 0.412
+      }
+    },
+    "removed_edges_per_iteration": 4,
+    "top3_set_retention": 0.098
+  },
+  "ranking_definition": "Borda of weighted degree, weighted betweenness, and PageRank",
+  "weight_sensitivity": {
+    "baseline_weights": {
+      "activity": 0.15,
+      "edu": 0.1,
+      "org": 0.25,
+      "semantic": 0.25,
+      "skill": 0.25
+    },
+    "cluster_ari_interval": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "dirichlet_concentration": 20.0,
+    "iterations": 100,
+    "kendall_tau_interval": [
+      0.3988888888888889,
+      0.7333333333333333,
+      0.8899999999999995
+    ],
+    "per_person_rank_interval": {
+      "p01": [
+        1.0,
+        3.0,
+        5.0
+      ],
+      "p02": [
+        1.0,
+        5.0,
+        7.0
+      ],
+      "p03": [
+        1.0,
+        1.0,
+        5.0
+      ],
+      "p04": [
+        2.475,
+        6.0,
+        8.0
+      ],
+      "p05": [
+        2.0,
+        8.0,
+        9.0
+      ],
+      "p06": [
+        1.0,
+        3.0,
+        6.0
+      ],
+      "p07": [
+        6.0,
+        7.5,
+        9.0
+      ],
+      "p08": [
+        8.475,
+        10.0,
+        10.0
+      ],
+      "p09": [
+        5.0,
+        9.0,
+        10.0
+      ],
+      "p10": [
+        1.0,
+        5.0,
+        10.0
+      ]
+    },
+    "top3_set_retention": 0.39
+  }
+}

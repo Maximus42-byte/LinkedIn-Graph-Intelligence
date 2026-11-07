@@ -29,6 +29,10 @@ girvan_newman_max_cuts: 20
 hdbscan_min_cluster_size: 2
 perturbation_iterations: 1000
 null_iterations: 100
+null_backbone_density_threshold: 0.80
+null_backbone_keep_fraction: 0.50
+null_min_informative_n: 30
+weight_dirichlet_concentration: 20.0
 weight_iterations: 100
 perturbation_fraction: 0.10
 knn_k: 3
