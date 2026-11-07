@@ -1,5 +1,7 @@
 seed: 73
 reference_month: "2026-01"
+org_ignore_employer_share: 0.8
+similarity_knn_k: 3
 embedding_model: null
 paths:
   fixtures: data/fixtures

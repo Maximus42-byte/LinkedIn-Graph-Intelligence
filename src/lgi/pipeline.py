@@ -30,6 +30,8 @@ def _process(profiles: list[dict], config: dict, ground_truth_path: Path | None 
         raise ValueError("Source supplied no profiles")
     write_profiles(profiles, _path(config, "profiles"), _path(config, "flat"))
     bundle = build_graphs(profiles, config)
+    for warning in bundle["warnings"]:
+        print(f"Graph warning: {warning}")
     centrality = analyze_centrality(bundle["graphs"]["combined_manual"], config)
     clustering = cluster_profiles(profiles, bundle, config)
     validation = validate_analysis(bundle, centrality, clustering, config, ground_truth_path)

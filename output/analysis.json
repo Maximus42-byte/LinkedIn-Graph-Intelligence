@@ -83,21 +83,21 @@
     },
     "graph_comparison": {
       "org_degree_vs_engagement_degree": {
-        "p_value": 0.005677,
-        "spearman_rho": 0.797868
+        "p_value": 0.588433,
+        "spearman_rho": 0.195441
       },
       "org_degree_vs_reactions": {
-        "p_value": 0.563052,
-        "spearman_rho": 0.208589
+        "p_value": 0.20473,
+        "spearman_rho": 0.438663
       },
-      "org_engagement_edge_jaccard": 0.333333
+      "org_engagement_edge_jaccard": 0.764706
     },
     "people": [
       {
         "engagement_degree": 3,
         "engagement_weighted_degree": 9.0,
         "id": "p01",
-        "org_weighted_degree": 499.0,
+        "org_weighted_degree": 112.0,
         "post_count": 2,
         "reaction_count": 18,
         "tfidf_consistency": 0.444673,
@@ -107,7 +107,7 @@
         "engagement_degree": 2,
         "engagement_weighted_degree": 8.0,
         "id": "p02",
-        "org_weighted_degree": 427.0,
+        "org_weighted_degree": 112.0,
         "post_count": 2,
         "reaction_count": 16,
         "tfidf_consistency": 0.462085,
@@ -117,7 +117,7 @@
         "engagement_degree": 3,
         "engagement_weighted_degree": 11.0,
         "id": "p03",
-        "org_weighted_degree": 513.0,
+        "org_weighted_degree": 100.0,
         "post_count": 2,
         "reaction_count": 19,
         "tfidf_consistency": 0.518871,
@@ -127,7 +127,7 @@
         "engagement_degree": 3,
         "engagement_weighted_degree": 11.0,
         "id": "p04",
-        "org_weighted_degree": 499.0,
+        "org_weighted_degree": 112.0,
         "post_count": 2,
         "reaction_count": 12,
         "tfidf_consistency": 0.615475,
@@ -137,7 +137,7 @@
         "engagement_degree": 2,
         "engagement_weighted_degree": 8.0,
         "id": "p05",
-        "org_weighted_degree": 427.0,
+        "org_weighted_degree": 112.0,
         "post_count": 2,
         "reaction_count": 22,
         "tfidf_consistency": 0.357491,
@@ -147,7 +147,7 @@
         "engagement_degree": 3,
         "engagement_weighted_degree": 9.0,
         "id": "p06",
-        "org_weighted_degree": 503.0,
+        "org_weighted_degree": 90.0,
         "post_count": 2,
         "reaction_count": 18,
         "tfidf_consistency": 0.353489,
@@ -157,7 +157,7 @@
         "engagement_degree": 3,
         "engagement_weighted_degree": 11.0,
         "id": "p07",
-        "org_weighted_degree": 475.0,
+        "org_weighted_degree": 88.0,
         "post_count": 2,
         "reaction_count": 13,
         "tfidf_consistency": 0.796086,
@@ -167,7 +167,7 @@
         "engagement_degree": 2,
         "engagement_weighted_degree": 8.0,
         "id": "p08",
-        "org_weighted_degree": 403.0,
+        "org_weighted_degree": 88.0,
         "post_count": 2,
         "reaction_count": 12,
         "tfidf_consistency": 0.382827,
@@ -177,7 +177,7 @@
         "engagement_degree": 3,
         "engagement_weighted_degree": 9.0,
         "id": "p09",
-        "org_weighted_degree": 489.0,
+        "org_weighted_degree": 76.0,
         "post_count": 2,
         "reaction_count": 11,
         "tfidf_consistency": 0.0,
@@ -187,7 +187,7 @@
         "engagement_degree": 6,
         "engagement_weighted_degree": 12.0,
         "id": "p10",
-        "org_weighted_degree": 527.0,
+        "org_weighted_degree": 134.0,
         "post_count": 2,
         "reaction_count": 14,
         "tfidf_consistency": 0.420898,

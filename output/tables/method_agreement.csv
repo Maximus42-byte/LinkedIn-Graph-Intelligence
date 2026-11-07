@@ -1,6 +1,6 @@
 method_a,method_b,kendall_tau,spearman_rho
-degree,weighted_degree,,
-betweenness,pagerank,0.200821,0.208063
-pagerank,eigenvector,0.955556,0.987879
-constraint,effective_size,-0.155556,-0.139394
-closeness,harmonic,0.644444,0.781818
+degree,weighted_degree,0.581318,0.705993
+betweenness,pagerank,0.083045,0.068543
+pagerank,eigenvector,0.688889,0.769697
+constraint,effective_size,-0.6,-0.648485
+closeness,harmonic,0.511111,0.648485

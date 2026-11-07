@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime
 import json
 from pathlib import Path
@@ -28,8 +28,13 @@ def _overlap_months(a: dict, b: dict, reference: str) -> int:
     return max(0, last - first + 1)
 
 
-def _org_weight(a: dict, b: dict, reference: str) -> float:
-    return float(sum(_overlap_months(x, y, reference) for x in a["experience"] for y in b["experience"] if x["company"].casefold() == y["company"].casefold()))
+def _org_weight(a: dict, b: dict, reference: str, ignored: set[str]) -> float:
+    return float(sum(
+        _overlap_months(x, y, reference)
+        for x in a["experience"] for y in b["experience"]
+        if x["company"] and x["company"].casefold() == y["company"].casefold()
+        and x["company"].casefold() not in ignored
+    ))
 
 
 def _edu_weight(a: dict, b: dict) -> float:
@@ -48,6 +53,45 @@ def _edu_weight(a: dict, b: dict) -> float:
 def _jaccard(a: set[str], b: set[str]) -> float:
     union = a | b
     return len(a & b) / len(union) if union else 0.0
+
+
+def _ignored_employers(profiles: list[dict], maximum_share: float) -> list[dict]:
+    """A nearly universal employer identifies the cohort, not a close pair."""
+    if not 0 <= maximum_share <= 1:
+        raise ValueError("org_ignore_employer_share must be in [0, 1]")
+    holders: dict[str, set[str]] = defaultdict(set)
+    display: dict[str, str] = {}
+    for profile in profiles:
+        for job in profile["experience"]:
+            company = job["company"].strip()
+            if company:
+                key = company.casefold()
+                holders[key].add(profile["id"])
+                display.setdefault(key, company)
+    return [
+        {"company": display[key], "profiles": len(people), "share": round(len(people) / len(profiles), 9)}
+        for key, people in sorted(holders.items())
+        if len(people) / len(profiles) > maximum_share
+    ] if profiles else []
+
+
+def _add_knn(graph: nx.Graph, ids: list[str], candidates: dict[tuple[str, str], dict], k: int, threshold: float) -> None:
+    """Union each person's top-k positive ties; break equal scores by profile ID."""
+    if k < 1:
+        raise ValueError("similarity_knn_k must be positive")
+    chosen: set[tuple[str, str]] = set()
+    for pid in ids:
+        neighbours = []
+        for edge, data in candidates.items():
+            weight = data["weight"]
+            if pid in edge and weight > 0 and weight >= threshold:
+                other = edge[1] if edge[0] == pid else edge[0]
+                neighbours.append((weight, other, edge))
+        neighbours.sort(key=lambda row: (-row[0], row[1]))
+        chosen.update(edge for _, _, edge in neighbours[:k])
+    for left, right in sorted(chosen):
+        data = candidates[(left, right)]
+        _add(graph, left, right, data["weight"], threshold, **data["alternatives"])
 
 
 def _make_layer(ids: list[str]) -> nx.Graph:
@@ -112,6 +156,11 @@ def build_graphs(profiles: list[dict], config: dict) -> dict:
     graphs = {name: _make_layer(ids) for name in LAYERS}
     threshold = config["thresholds"]
     reference = config.get("reference_month", "2026-01")
+    ignored_employers = _ignored_employers(profiles, float(config.get("org_ignore_employer_share", 0.8)))
+    ignored_keys = {row["company"].casefold() for row in ignored_employers}
+    knn_k = int(config.get("similarity_knn_k", 3))
+    skill_candidates: dict[tuple[str, str], dict] = {}
+    semantic_candidates: dict[tuple[str, str], dict] = {}
     skill_sets = [{s.casefold() for s in p["skills"]} for p in profiles]
     skill_docs = [" ".join(sorted(values)) or "empty" for values in skill_sets]
     skill_tfidf = TfidfVectorizer(ngram_range=(1, 2)).fit_transform(skill_docs)
@@ -122,16 +171,18 @@ def build_graphs(profiles: list[dict], config: dict) -> dict:
         for j in range(i + 1, len(profiles)):
             b = profiles[j]
             left, right = a["id"], b["id"]
-            _add(graphs["org"], left, right, _org_weight(a, b, reference), threshold["org"])
+            _add(graphs["org"], left, right, _org_weight(a, b, reference, ignored_keys), threshold["org"])
             _add(graphs["edu"], left, right, _edu_weight(a, b), threshold["edu"])
             jaccard = _jaccard(skill_sets[i], skill_sets[j])
             tfidf = float(skill_cosine[i, j])
             skill_weight = jaccard if config["skill_metric"] == "jaccard" else tfidf
-            _add(graphs["skill"], left, right, skill_weight, threshold["skill"], jaccard=jaccard, tfidf_cosine=tfidf)
+            skill_candidates[(left, right)] = {"weight": skill_weight, "alternatives": {"jaccard": jaccard, "tfidf_cosine": tfidf}}
             lsa = float(semantic[i, j])
             semantic_alt = float(semantic_tfidf[i, j])
             semantic_weight = lsa if config["semantic_metric"] == "lsa" else semantic_alt
-            _add(graphs["semantic"], left, right, semantic_weight, threshold["semantic"], embedding_cosine=lsa, tfidf_cosine=semantic_alt)
+            semantic_candidates[(left, right)] = {"weight": semantic_weight, "alternatives": {"embedding_cosine": lsa, "tfidf_cosine": semantic_alt}}
+    _add_knn(graphs["skill"], ids, skill_candidates, knn_k, threshold["skill"])
+    _add_knn(graphs["semantic"], ids, semantic_candidates, knn_k, threshold["semantic"])
     interactions = Counter()
     known = set(ids)
     for profile in profiles:
@@ -147,7 +198,10 @@ def build_graphs(profiles: list[dict], config: dict) -> dict:
     bipartite, person_projection, skill_projection = _bipartite(profiles)
     multilayer = {pid: {name: round(float(graphs[name].degree(pid, weight="weight")), 12) for name in LAYERS} for pid in ids}
     warnings = [] if graphs["activity"].number_of_edges() else ["Activity layer skipped: no identified engagers supplied"]
-    return {"graphs": graphs, "bipartite": bipartite, "person_projection": person_projection, "skill_projection": skill_projection, "multilayer": multilayer, "embedding_method": embedding_method, "warnings": warnings}
+    if ignored_employers:
+        names = ", ".join(f"{row['company']} ({row['profiles']}/{len(profiles)})" for row in ignored_employers)
+        warnings.append(f"Org layer ignored prevalent employers: {names}")
+    return {"graphs": graphs, "ignored_employers": ignored_employers, "bipartite": bipartite, "person_projection": person_projection, "skill_projection": skill_projection, "multilayer": multilayer, "embedding_method": embedding_method, "warnings": warnings}
 
 
 def _node_link(graph: nx.Graph) -> dict:
@@ -168,7 +222,7 @@ def write_graph_json(bundle: dict, path: str | Path, metrics: dict | None = None
         node["roles"] = (roles or {}).get(pid, [])
         node["clusters"] = {name: labels.get(pid) for name, labels in (clusters or {}).items()}
         node["multilayer"] = bundle["multilayer"][pid]
-    output = {**combined, "layers": {name: _node_link(graph) for name, graph in sorted(graphs.items())}, "bipartite": _node_link(bundle["bipartite"]), "person_projection": _node_link(bundle["person_projection"]), "skill_projection": _node_link(bundle["skill_projection"]), "embedding_method": bundle["embedding_method"], "warnings": bundle["warnings"]}
+    output = {**combined, "layers": {name: _node_link(graph) for name, graph in sorted(graphs.items())}, "bipartite": _node_link(bundle["bipartite"]), "person_projection": _node_link(bundle["person_projection"]), "skill_projection": _node_link(bundle["skill_projection"]), "embedding_method": bundle["embedding_method"], "ignored_employers": bundle["ignored_employers"], "warnings": bundle["warnings"]}
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(output, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")

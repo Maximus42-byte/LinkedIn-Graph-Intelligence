@@ -72,3 +72,18 @@ def test_disconnected_graph_still_validates():
     assert result["ground_truth"] is None
     assert result["perturbation"]["iterations"] == 8
     assert len(result["perturbation"]["baseline_ranking"]) == len(ids)
+
+
+def test_tied_scores_use_average_ranks_and_shared_topk_cutoff():
+    from lgi.analysis.validation import _perturbation, _ranking, _topk_set
+
+    graph = nx.complete_graph(['a', 'b', 'c', 'd'])
+    nx.set_edge_attributes(graph, 1.0, 'weight')
+    order, metrics = _ranking(graph, seed=73)
+    ranks = metrics['aggregate_rank']
+    assert set(ranks.values()) == {2.5}
+    assert _topk_set(ranks, 3) == set(graph)
+    summary = _perturbation(graph, {'perturbation_iterations': 3, 'perturbation_fraction': 0.0}, 73, order, ranks)
+    assert summary['top3_set_retention'] == 1.0
+    assert summary['baseline_top3_set'] == sorted(graph)
+    assert all(row['top3_frequency'] == 1.0 for row in summary['per_person'].values())

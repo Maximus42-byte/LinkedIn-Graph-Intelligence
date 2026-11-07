@@ -12,7 +12,7 @@ from typing import Any
 
 import networkx as nx
 import numpy as np
-from scipy.stats import kendalltau
+from scipy.stats import kendalltau, rankdata
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
 from lgi.analysis.graphs import LAYERS, combine_with_weights
@@ -45,24 +45,34 @@ def _ranking_metrics(graph: nx.Graph, seed: int) -> dict[str, dict[str, float]]:
 
 
 def _ranking(graph: nx.Graph, seed: int) -> tuple[list[str], dict[str, dict[str, float]]]:
-    """Borda ranks keep unlike centrality scales from swallowing one another."""
+    """Use average ranks for tied centrality values before Borda aggregation."""
     metrics = _ranking_metrics(graph, seed)
     ids = sorted(graph.nodes)
-    rank_sum = {pid: 0 for pid in ids}
+    rank_sum = {pid: 0.0 for pid in ids}
     for values in metrics.values():
-        order = sorted(ids, key=lambda pid: (-values[pid], pid))
-        for position, pid in enumerate(order):
-            rank_sum[pid] += position
+        ranks = rankdata([-values[pid] for pid in ids], method="average")
+        for pid, rank in zip(ids, ranks):
+            rank_sum[pid] += float(rank)
+    aggregate = rankdata([rank_sum[pid] for pid in ids], method="average") if ids else []
+    metrics["aggregate_rank"] = {pid: float(rank) for pid, rank in zip(ids, aggregate)}
     return sorted(ids, key=lambda pid: (rank_sum[pid], pid)), metrics
 
 
-def _tau(reference: list[str], candidate: list[str]) -> float | None:
-    if len(reference) < 2:
+def _topk_set(ranks: dict[str, float], k: int) -> set[str]:
+    """Include every person tied at the requested cutoff."""
+    if not ranks or k <= 0:
+        return set()
+    cutoff = sorted(ranks.values())[min(k, len(ranks)) - 1]
+    return {pid for pid, rank in ranks.items() if rank <= cutoff}
+
+
+def _tau(reference: dict[str, float], candidate: dict[str, float]) -> float | None:
+    """Kendall tau-b accounts for ties without assigning arbitrary ID order."""
+    ids = sorted(reference)
+    if len(ids) < 2:
         return None
-    left = {pid: index for index, pid in enumerate(reference)}
-    right = {pid: index for index, pid in enumerate(candidate)}
     statistic = kendalltau(
-        [left[pid] for pid in reference], [right[pid] for pid in reference]
+        [reference[pid] for pid in ids], [candidate[pid] for pid in ids]
     ).statistic
     return None if np.isnan(statistic) else float(statistic)
 
@@ -115,43 +125,47 @@ def _perturb(graph: nx.Graph, fraction: float, rng: np.random.Generator) -> nx.G
     return result
 
 
-def _perturbation(graph: nx.Graph, config: dict[str, Any], seed: int, baseline: list[str]) -> dict[str, Any]:
+def _perturbation(graph: nx.Graph, config: dict[str, Any], seed: int, baseline: list[str], baseline_ranks: dict[str, float]) -> dict[str, Any]:
     iterations = max(0, int(config.get("perturbation_iterations", 1000)))
     fraction = float(config.get("perturbation_fraction", 0.10))
     rng = np.random.default_rng(seed + 101)
     ids = sorted(graph.nodes)
-    ranks: dict[str, list[int]] = {pid: [] for pid in ids}
+    ranks: dict[str, list[float]] = {pid: [] for pid in ids}
+    top3_counts = {pid: 0 for pid in ids}
     taus: list[float] = []
     top3_exact = 0
-    top3_reference = set(baseline[:3])
+    top3_reference = _topk_set(baseline_ranks, 3)
     edge_count = graph.number_of_edges()
     removed_count = min(edge_count, max(1, int(round(edge_count * fraction)))) if edge_count and fraction > 0 else 0
     possible_additions = len(ids) * (len(ids) - 1) // 2 - edge_count
     added_count = min(removed_count, possible_additions)
     for iteration in range(iterations):
         altered = _perturb(graph, fraction, rng)
-        order, _ = _ranking(altered, seed + iteration + 1)
-        positions = {pid: index + 1 for index, pid in enumerate(order)}
+        _, measures = _ranking(altered, seed + iteration + 1)
+        candidate_ranks = measures["aggregate_rank"]
+        candidate_top3 = _topk_set(candidate_ranks, 3)
         for pid in ids:
-            ranks[pid].append(positions[pid])
-        tau = _tau(baseline, order)
+            ranks[pid].append(candidate_ranks[pid])
+            top3_counts[pid] += pid in candidate_top3
+        tau = _tau(baseline_ranks, candidate_ranks)
         if tau is not None:
             taus.append(tau)
-        top3_exact += set(order[:3]) == top3_reference
+        top3_exact += candidate_top3 == top3_reference
     return {
         "iterations": iterations,
         "edge_fraction": fraction,
         "removed_edges_per_iteration": removed_count,
         "added_edges_per_iteration": added_count,
         "baseline_ranking": baseline,
+        "baseline_top3_set": sorted(top3_reference),
         "top3_set_retention": top3_exact / iterations if iterations else None,
         "kendall_tau_mean": float(np.mean(taus)) if taus else None,
         "kendall_tau_interval": _quantiles(taus),
         "per_person": {
             pid: {
-                "baseline_rank": baseline.index(pid) + 1,
+                "baseline_rank": baseline_ranks[pid],
                 "rank_interval": _quantiles(ranks[pid]),
-                "top3_frequency": sum(rank <= 3 for rank in ranks[pid]) / iterations if iterations else None,
+                "top3_frequency": top3_counts[pid] / iterations if iterations else None,
             }
             for pid in ids
         },
@@ -287,25 +301,26 @@ def _null_models(graph: nx.Graph, config: dict[str, Any], seed: int) -> dict[str
     }
 
 
-def _ablation(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, baseline: list[str], baseline_labels: dict[str, int]) -> dict[str, Any]:
+def _ablation(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, baseline_ranks: dict[str, float], baseline_labels: dict[str, int]) -> dict[str, Any]:
     ids = sorted(graphs["combined_manual"].nodes)
     base_weights = {layer: float(config["layer_weights"][layer]) for layer in LAYERS}
     result: dict[str, Any] = {}
     for layer in LAYERS:
         weights = {name: (0.0 if name == layer else value) for name, value in base_weights.items()}
         reduced = combine_with_weights(graphs, weights)
-        order, _ = _ranking(reduced, seed)
+        _, measures = _ranking(reduced, seed)
+        candidate_ranks = measures["aggregate_rank"]
         labels = _communities(reduced, seed)
         result[layer] = {
             "remaining_edges": reduced.number_of_edges(),
-            "rank_kendall_tau": _tau(baseline, order),
+            "rank_kendall_tau": _tau(baseline_ranks, candidate_ranks),
             "cluster_ari": _ari(baseline_labels, labels, ids),
-            "top3_set_retained": set(order[:3]) == set(baseline[:3]),
+            "top3_set_retained": _topk_set(candidate_ranks, 3) == _topk_set(baseline_ranks, 3),
         }
     return result
 
 
-def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, baseline: list[str], baseline_labels: dict[str, int]) -> dict[str, Any]:
+def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, baseline_ranks: dict[str, float], baseline_labels: dict[str, int]) -> dict[str, Any]:
     iterations = max(0, int(config.get("weight_iterations", 100)))
     concentration = float(config.get("weight_dirichlet_concentration", 20.0))
     manual = np.array([float(config["layer_weights"][name]) for name in LAYERS], dtype=float)
@@ -316,20 +331,20 @@ def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], see
     taus: list[float] = []
     aris: list[float] = []
     top3_exact = 0
-    ranks: dict[str, list[int]] = {pid: [] for pid in ids}
+    ranks: dict[str, list[float]] = {pid: [] for pid in ids}
     for iteration in range(iterations):
         sample = rng.dirichlet(alpha)
         weighted = combine_with_weights(graphs, dict(zip(LAYERS, sample)))
-        order, _ = _ranking(weighted, seed + iteration + 1)
+        _, measures = _ranking(weighted, seed + iteration + 1)
+        candidate_ranks = measures["aggregate_rank"]
         labels = _communities(weighted, seed + iteration + 1)
-        tau = _tau(baseline, order)
+        tau = _tau(baseline_ranks, candidate_ranks)
         if tau is not None:
             taus.append(tau)
         aris.append(_ari(baseline_labels, labels, ids))
-        top3_exact += set(order[:3]) == set(baseline[:3])
-        positions = {pid: index + 1 for index, pid in enumerate(order)}
+        top3_exact += _topk_set(candidate_ranks, 3) == _topk_set(baseline_ranks, 3)
         for pid in ids:
-            ranks[pid].append(positions[pid])
+            ranks[pid].append(candidate_ranks[pid])
     return {
         "iterations": iterations,
         "dirichlet_concentration": concentration,
@@ -386,14 +401,15 @@ def validate_analysis(
     graphs = bundle["graphs"]
     graph = graphs["combined_manual"]
     seed = int(config["seed"])
-    baseline, _ = _ranking(graph, seed)
+    baseline, baseline_metrics = _ranking(graph, seed)
+    baseline_ranks = baseline_metrics["aggregate_rank"]
     baseline_labels = _communities(graph, seed)
     ids = sorted(graph.nodes)
     return stable_numbers({
-        "ranking_definition": "Borda of weighted degree, weighted betweenness, and PageRank",
-        "perturbation": _perturbation(graph, config, seed, baseline),
+        "ranking_definition": "Borda of average ranks for weighted degree, weighted betweenness, and PageRank; top-k includes cutoff ties",
+        "perturbation": _perturbation(graph, config, seed, baseline, baseline_ranks),
         "null_models": _null_models(graph, config, seed),
-        "ablation": _ablation(graphs, config, seed, baseline, baseline_labels),
-        "weight_sensitivity": _weight_sensitivity(graphs, config, seed, baseline, baseline_labels),
+        "ablation": _ablation(graphs, config, seed, baseline_ranks, baseline_labels),
+        "weight_sensitivity": _weight_sensitivity(graphs, config, seed, baseline_ranks, baseline_labels),
         "ground_truth": _ground_truth(clustering, ids, ground_truth_path),
     })

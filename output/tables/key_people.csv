@@ -1,6 +1,6 @@
 rank,id,name,roles,borda,weighted_degree,betweenness,pagerank
-1,p03,Synthetic Persona 03,"hub, bridge, influencer",85,4.149541070143,0.027777777778,0.105423494582
-2,p06,Synthetic Persona 06,"hub, bridge, influencer",74,4.092122677149,0.027777777778,0.104293325979
-3,p01,Synthetic Persona 01,"hub, influencer",70,4.074380246713,0.0,0.103733997232
-4,p02,Synthetic Persona 02,peripheral,55,3.99520540255,0.0,0.101962244175
-5,p04,Synthetic Persona 04,peripheral,51,3.94958903545,0.0,0.101094189762
+1,p01,Synthetic Persona 01,"hub, influencer",88,2.627331565638,0.0,0.108956886072
+2,p10,Synthetic Persona 10,"hub, bridge, influencer",77,2.522611220499,0.555555555556,0.10531608449
+3,p02,Synthetic Persona 02,hub,66,2.496571440473,0.0,0.103387315967
+4,p05,Synthetic Persona 05,"bridge, influencer",64,2.479906226436,0.111111111111,0.104025639037
+5,p06,Synthetic Persona 06,peripheral,52,2.466747562948,0.0,0.103663399633
