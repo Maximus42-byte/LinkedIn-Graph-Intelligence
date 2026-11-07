@@ -26,3 +26,15 @@ def test_missing_sections_are_not_guessed() -> None:
     assert parsed['experience'] == []
     assert not any(parsed['coverage'].values())
     assert any('activity' in warning for warning in parsed['warnings'])
+
+
+def test_partially_visible_section_has_false_coverage() -> None:
+    html = '''<main><section id="experience"><li class="experience-item">
+    <h3 class="title">Synthetic Engineer</h3><span class="company">Fictional Works</span>
+    <time datetime="2020-01">2020-01</time><span class="end">Present</span>
+    </li></section></main>'''
+    parsed = parse_html(html, source='live', profile_id='p01')
+    assert len(parsed['experience']) == 1
+    assert parsed['experience'][0]['description'] == ''
+    assert parsed['coverage']['experience'] is False
+    assert any('experience' in warning for warning in parsed['warnings'])

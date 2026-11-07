@@ -1,11 +1,12 @@
 PYTHON := .venv/bin/python
 UV := uv
+PYTHON_VERSION ?= 3.12
 
 .PHONY: install fixtures run test clean
 
 install:
-	$(UV) venv --python 3.12 .venv
-	$(UV) pip install --python $(PYTHON) -r requirements.txt
+	test -x $(PYTHON) || $(UV) venv --offline --python $(PYTHON_VERSION) .venv
+	$(UV) pip install --offline --python $(PYTHON) -r requirements.txt
 
 fixtures:
 	PYTHONPATH=src $(PYTHON) -m lgi.fixtures_gen.generator --n 10

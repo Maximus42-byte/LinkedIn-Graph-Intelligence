@@ -56,10 +56,12 @@ class ExportAdapter:
         basic["summary"] = _get(row, "summary", "about")
         basic["profile_url"] = _get(row, "profile url", "public profile url", "url")
         owner["coverage"]["basic"] = all(basic.values())
+        position_skipped = False
         for row in _rows(self.directory / "Positions.csv", ("company", "title")):
             start = _month(_get(row, "started on", "start date", "start"))
             if not start:
                 owner["warnings"].append("Skipped position without a parseable start date")
+                position_skipped = True
                 continue
             owner["experience"].append({
                 "company": _get(row, "company name", "company"),
@@ -69,7 +71,7 @@ class ExportAdapter:
                 "location": _get(row, "location"),
                 "description": _get(row, "description"),
             })
-        owner["coverage"]["experience"] = bool(owner["experience"])
+        owner["coverage"]["experience"] = bool(owner["experience"]) and not position_skipped and all(all(job[key] for key in ("company", "title", "start", "location", "description")) for job in owner["experience"])
         for row in _rows(self.directory / "Education.csv", ("school", "degree")):
             try:
                 start = int(_get(row, "start date", "start year", "started on")[:4] or 0)
@@ -83,8 +85,13 @@ class ExportAdapter:
                 "start_year": start,
                 "end_year": end,
             })
-        owner["coverage"]["education"] = bool(owner["education"])
-        owner["skills"] = sorted({_get(row, "name", "skill").strip() for row in _rows(self.directory / "Skills.csv", ("name", "skill")) if _get(row, "name", "skill")}, key=str.casefold)
+        owner["coverage"]["education"] = bool(owner["education"]) and all(all(item[key] for key in ("school", "degree", "field", "start_year", "end_year")) for item in owner["education"])
+        unique_skills = {}
+        for row in _rows(self.directory / "Skills.csv", ("name", "skill")):
+            skill = _get(row, "name", "skill").strip()
+            if skill:
+                unique_skills.setdefault(skill.casefold(), skill)
+        owner["skills"] = sorted(unique_skills.values(), key=str.casefold)
         owner["coverage"]["skills"] = bool(owner["skills"])
         for section in ("basic", "experience", "education", "skills", "interests", "activity"):
             if not owner["coverage"][section]:

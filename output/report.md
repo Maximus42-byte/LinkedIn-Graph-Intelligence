@@ -42,7 +42,7 @@ The skill and semantic layers keep each profile's **3** highest-scoring neighbou
 | 3 | p02 | Synthetic Persona 02 | hub | 66 | 2.497 | 0.000 | 0.103 |
 | 4 | p05 | Synthetic Persona 05 | bridge, influencer | 64 | 2.480 | 0.111 | 0.104 |
 | 5 | p06 | Synthetic Persona 06 | peripheral | 52 | 2.467 | 0.000 | 0.104 |
-Borda and mean reciprocal rank aggregate all centrality methods. Roles use configurable quantiles; weighted degree breaks hub ties in a dense graph.
+Borda and mean reciprocal rank aggregate all centrality methods. Hub labels use weighted-degree quantiles; bridge and influencer labels use their configured metric quantiles.
 
 ## Method comparison
 
@@ -84,7 +84,7 @@ All pairwise clustering ARI/NMI scores are in `tables/clustering_pairwise.csv`. 
 | --- | --- | --- | --- | --- |
 | Edge perturbation | 1000 | 0.032 | 0.209 | — |
 | Weight sensitivity | 100 | 0.410 | 0.750 | 1.000 |
-Edge perturbation removed **3** edges and added **3** per draw. Its mean Kendall tau was **0.209** with a central interval of **-0.22–0.66**. Average ranks preserve score ties, and the top-three set includes all profiles tied at the cutoff.
+Edge perturbation removed **3** edges and added **3** per draw. Its mean Kendall tau was **0.209** with a central interval of **-0.22–0.66**. The stability ranking uses Borda of average ranks for weighted degree, weighted betweenness, and PageRank; top-k includes cutoff ties; the key-people table aggregates all centrality methods.
 | ID | Baseline rank | Rank low | Rank high | Top-three frequency |
 | --- | --- | --- | --- | --- |
 | p01 | 2.000 | 1.000 | 10.000 | 0.429 |

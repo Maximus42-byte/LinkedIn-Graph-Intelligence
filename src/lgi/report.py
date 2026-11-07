@@ -93,7 +93,7 @@ def write_report(profiles: list[dict], bundle: dict, centrality: dict, clusterin
         key_rows.append({"rank": row["rank"], "id": pid, "name": names[pid], "roles": ", ".join(row["roles"]), "borda": row["borda"], "mrr": row["mrr"], "weighted_degree": metric["weighted_degree"], "betweenness": metric["betweenness"], "pagerank": metric["pagerank"]})
     lines.append(_table(key_rows[:min(5, n)], [("rank", "Rank"), ("id", "ID"), ("name", "Person"), ("roles", "Roles"), ("borda", "Borda"), ("weighted_degree", "Weighted degree"), ("betweenness", "Betweenness"), ("pagerank", "PageRank")], tables / "key_people.csv"))
     _table(key_rows, [("rank", "Rank"), ("id", "ID"), ("name", "Person"), ("roles", "Roles"), ("borda", "Borda"), ("mrr", "MRR"), ("weighted_degree", "Weighted degree"), ("betweenness", "Betweenness"), ("pagerank", "PageRank")], tables / "all_people.csv")
-    lines.append("Borda and mean reciprocal rank aggregate all centrality methods. Roles use configurable quantiles; weighted degree breaks hub ties in a dense graph.")
+    lines.append("Borda and mean reciprocal rank aggregate all centrality methods. Hub labels use weighted-degree quantiles; bridge and influencer labels use their configured metric quantiles.")
     lines += ["", "## Method comparison", ""]
     pairs = [("degree", "weighted_degree"), ("betweenness", "pagerank"), ("pagerank", "eigenvector"), ("constraint", "effective_size"), ("closeness", "harmonic")]
     agreement = [{"method_a": a, "method_b": b, "kendall_tau": centrality["correlations"]["kendall"][a][b], "spearman_rho": centrality["correlations"]["spearman"][a][b]} for a, b in pairs]
@@ -115,7 +115,7 @@ def write_report(profiles: list[dict], bundle: dict, centrality: dict, clusterin
     lines += ["", "## Validation and stability", ""]
     stability_rows = [{"check": "Edge perturbation", "draws": perturb["iterations"], "top3_retention": perturb["top3_set_retention"], "kendall_tau": perturb["kendall_tau_mean"], "cluster_ari": None}, {"check": "Weight sensitivity", "draws": validation["weight_sensitivity"]["iterations"], "top3_retention": validation["weight_sensitivity"]["top3_set_retention"], "kendall_tau": validation["weight_sensitivity"]["kendall_tau_interval"][1] if validation["weight_sensitivity"]["kendall_tau_interval"] else None, "cluster_ari": validation["weight_sensitivity"]["cluster_ari_interval"][1] if validation["weight_sensitivity"]["cluster_ari_interval"] else None}]
     lines.append(_table(stability_rows, [("check", "Check"), ("draws", "Draws"), ("top3_retention", "Top-three retention"), ("kendall_tau", "Kendall tau (mean/median)"), ("cluster_ari", "Cluster ARI median")], tables / "stability_summary.csv"))
-    lines.append(f"Edge perturbation removed **{perturb['removed_edges_per_iteration']}** edges and added **{perturb['added_edges_per_iteration']}** per draw. Its mean Kendall tau was **{perturb['kendall_tau_mean']:.3f}** with a central interval of **{_interval(perturb['kendall_tau_interval'])}**. Average ranks preserve score ties, and the top-three set includes all profiles tied at the cutoff.")
+    lines.append(f"Edge perturbation removed **{perturb['removed_edges_per_iteration']}** edges and added **{perturb['added_edges_per_iteration']}** per draw. Its mean Kendall tau was **{perturb['kendall_tau_mean']:.3f}** with a central interval of **{_interval(perturb['kendall_tau_interval'])}**. The stability ranking uses {validation['ranking_definition']}; the key-people table aggregates all centrality methods.")
     rank_rows = [{"id": pid, **values, "rank_low": values["rank_interval"][0] if values["rank_interval"] else None, "rank_high": values["rank_interval"][2] if values["rank_interval"] else None} for pid, values in perturb["per_person"].items()]
     lines.append(_table(rank_rows, [("id", "ID"), ("baseline_rank", "Baseline rank"), ("rank_low", "Rank low"), ("rank_high", "Rank high"), ("top3_frequency", "Top-three frequency")], tables / "rank_intervals.csv"))
     null = validation["null_models"]
@@ -137,7 +137,10 @@ def write_report(profiles: list[dict], bundle: dict, centrality: dict, clusterin
         lines.append(_table(truth_rows, [("method", "Method"), ("ari", "ARI"), ("nmi", "NMI")], tables / "synthetic_ground_truth.csv"))
     lines += ["", "## Career, education, activity, and similarity findings", ""]
     career = analysis["career"]
-    lines.append(f"Dated job history yielded **{len(career['movement_graph']['edges'])}** company-to-company routes at observation month **{_fmt(career['as_of_month'])}**. Exactly **{len(career['bus_factor_one_skills'])}** recorded skill{"s" if len(career["bus_factor_one_skills"]) != 1 else ""} ha{"ve" if len(career["bus_factor_one_skills"]) != 1 else "s"} one holder.")
+    bus_count = len(career["bus_factor_one_skills"])
+    skill_noun = "skill" if bus_count == 1 else "skills"
+    holder_verb = "has" if bus_count == 1 else "have"
+    lines.append(f"Dated job history yielded **{len(career['movement_graph']['edges'])}** company-to-company routes at observation month **{_fmt(career['as_of_month'])}**. Exactly **{bus_count}** recorded {skill_noun} {holder_verb} one holder.")
     lines.append(_table(career["talent_sources"], [("company", "Talent source"), ("outbound_people", "Outbound people"), ("outbound_transitions", "Transitions")], tables / "talent_sources.csv"))
     lines.append(_table(career["bus_factor_one_skills"], [("skill", "Single-holder skill"), ("person_id", "Holder")], tables / "bus_factor.csv"))
     _table(career["skill_cooccurrence"], [("skill_a", "Skill A"), ("skill_b", "Skill B"), ("people_count", "People")], tables / "skill_cooccurrence.csv")
