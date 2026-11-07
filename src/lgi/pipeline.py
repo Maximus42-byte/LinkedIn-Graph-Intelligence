@@ -16,6 +16,7 @@ from lgi.fixtures_gen.generator import generate_fixtures
 from lgi.sources.export import ExportAdapter
 from lgi.sources.fixture import FixtureAdapter
 from lgi.sources.manual import ManualAdapter
+from lgi.sources.live import LiveAdapter, LiveSettings
 from lgi.store import write_profiles
 from lgi.report import write_report
 from lgi.plots import write_plots
@@ -65,6 +66,8 @@ def run_pipeline(args) -> None:
         profiles = list(ExportAdapter(_path(config, "export")).iter_profiles())
     elif args.source == "manual":
         profiles = list(ManualAdapter(_path(config, "manual"), anonymise=args.anonymise).iter_profiles())
+    elif args.source == "live":
+        profiles = list(LiveAdapter(args.urls, LiveSettings.from_config(config), acknowledged=args.i_understand_tos).iter_profiles())
     else:
-        raise NotImplementedError("Live adapter is added in phase 9")
+        raise ValueError(f"Unknown source: {args.source}")
     _process(profiles, config)

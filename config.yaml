@@ -47,6 +47,7 @@ role_thresholds:
   influencer_pagerank_quantile: 0.75
 live:
   user_agent: "LinkedIn-Graph-Intelligence/1.0 (research demo; contact: project maintainer)"
+  accept_language: "en-US,en;q=0.8"
   timeout_seconds: 10
   min_delay_seconds: 2.0
   jitter_seconds: 0.5
