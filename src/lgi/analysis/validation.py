@@ -240,14 +240,16 @@ def _null_models(graph: nx.Graph, config: dict[str, Any], seed: int) -> dict[str
     swapped_samples: list[dict[str, float]] = []
     gnm_samples: list[dict[str, float]] = []
     swap_failures = 0
+    swaps_per_node = max(1, int(config.get("null_swaps_per_node", 5)))
+    swaps_per_draw = max(1, min(m, swaps_per_node * n))
     for iteration in range(iterations):
         if m >= 2:
             swapped = backbone.copy()
             try:
                 nx.double_edge_swap(
                     swapped,
-                    nswap=max(1, m),
-                    max_tries=max(100, 40 * m),
+                    nswap=swaps_per_draw,
+                    max_tries=max(100, 50 * swaps_per_draw),
                     seed=int(rng.integers(0, 2**31 - 1)),
                 )
             except (nx.NetworkXAlgorithmError, nx.NetworkXError):
@@ -272,6 +274,7 @@ def _null_models(graph: nx.Graph, config: dict[str, Any], seed: int) -> dict[str
         caveat += " Degree-preserving edge swaps were infeasible for this topology."
     return {
         "iterations_requested": iterations,
+        "swaps_per_draw": swaps_per_draw,
         "graph_nodes": n,
         "graph_edges": m,
         "backbone": backbone_info,

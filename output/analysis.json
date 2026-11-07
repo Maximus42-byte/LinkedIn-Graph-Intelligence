@@ -1,0 +1,1950 @@
+{
+  "activity": {
+    "consistency_method": "Cosine of NMF topic mixtures for posts and projected skills; TF-IDF cosine as a lexical alternative.",
+    "engagement_graph": {
+      "directed": false,
+      "edges": [
+        {
+          "source": "p01",
+          "target": "p02",
+          "weight": 4.0
+        },
+        {
+          "source": "p01",
+          "target": "p03",
+          "weight": 4.0
+        },
+        {
+          "source": "p01",
+          "target": "p10",
+          "weight": 1.0
+        },
+        {
+          "source": "p02",
+          "target": "p03",
+          "weight": 4.0
+        },
+        {
+          "source": "p03",
+          "target": "p10",
+          "weight": 3.0
+        },
+        {
+          "source": "p04",
+          "target": "p05",
+          "weight": 4.0
+        },
+        {
+          "source": "p04",
+          "target": "p06",
+          "weight": 4.0
+        },
+        {
+          "source": "p04",
+          "target": "p10",
+          "weight": 3.0
+        },
+        {
+          "source": "p05",
+          "target": "p06",
+          "weight": 4.0
+        },
+        {
+          "source": "p06",
+          "target": "p10",
+          "weight": 1.0
+        },
+        {
+          "source": "p07",
+          "target": "p08",
+          "weight": 4.0
+        },
+        {
+          "source": "p07",
+          "target": "p09",
+          "weight": 4.0
+        },
+        {
+          "source": "p07",
+          "target": "p10",
+          "weight": 3.0
+        },
+        {
+          "source": "p08",
+          "target": "p09",
+          "weight": 4.0
+        },
+        {
+          "source": "p09",
+          "target": "p10",
+          "weight": 1.0
+        }
+      ]
+    },
+    "graph_comparison": {
+      "org_degree_vs_engagement_degree": {
+        "p_value": 0.005677,
+        "spearman_rho": 0.797868
+      },
+      "org_degree_vs_reactions": {
+        "p_value": 0.563052,
+        "spearman_rho": 0.208589
+      },
+      "org_engagement_edge_jaccard": 0.333333
+    },
+    "people": [
+      {
+        "engagement_degree": 3,
+        "engagement_weighted_degree": 9.0,
+        "id": "p01",
+        "org_weighted_degree": 499.0,
+        "post_count": 2,
+        "reaction_count": 18,
+        "tfidf_consistency": 0.444673,
+        "topic_consistency": 0.98757
+      },
+      {
+        "engagement_degree": 2,
+        "engagement_weighted_degree": 8.0,
+        "id": "p02",
+        "org_weighted_degree": 427.0,
+        "post_count": 2,
+        "reaction_count": 16,
+        "tfidf_consistency": 0.462085,
+        "topic_consistency": 0.992935
+      },
+      {
+        "engagement_degree": 3,
+        "engagement_weighted_degree": 11.0,
+        "id": "p03",
+        "org_weighted_degree": 513.0,
+        "post_count": 2,
+        "reaction_count": 19,
+        "tfidf_consistency": 0.518871,
+        "topic_consistency": 0.992495
+      },
+      {
+        "engagement_degree": 3,
+        "engagement_weighted_degree": 11.0,
+        "id": "p04",
+        "org_weighted_degree": 499.0,
+        "post_count": 2,
+        "reaction_count": 12,
+        "tfidf_consistency": 0.615475,
+        "topic_consistency": 0.943014
+      },
+      {
+        "engagement_degree": 2,
+        "engagement_weighted_degree": 8.0,
+        "id": "p05",
+        "org_weighted_degree": 427.0,
+        "post_count": 2,
+        "reaction_count": 22,
+        "tfidf_consistency": 0.357491,
+        "topic_consistency": 0.881747
+      },
+      {
+        "engagement_degree": 3,
+        "engagement_weighted_degree": 9.0,
+        "id": "p06",
+        "org_weighted_degree": 503.0,
+        "post_count": 2,
+        "reaction_count": 18,
+        "tfidf_consistency": 0.353489,
+        "topic_consistency": 0.228406
+      },
+      {
+        "engagement_degree": 3,
+        "engagement_weighted_degree": 11.0,
+        "id": "p07",
+        "org_weighted_degree": 475.0,
+        "post_count": 2,
+        "reaction_count": 13,
+        "tfidf_consistency": 0.796086,
+        "topic_consistency": 0.994637
+      },
+      {
+        "engagement_degree": 2,
+        "engagement_weighted_degree": 8.0,
+        "id": "p08",
+        "org_weighted_degree": 403.0,
+        "post_count": 2,
+        "reaction_count": 12,
+        "tfidf_consistency": 0.382827,
+        "topic_consistency": 0.950842
+      },
+      {
+        "engagement_degree": 3,
+        "engagement_weighted_degree": 9.0,
+        "id": "p09",
+        "org_weighted_degree": 489.0,
+        "post_count": 2,
+        "reaction_count": 11,
+        "tfidf_consistency": 0.0,
+        "topic_consistency": 0.891717
+      },
+      {
+        "engagement_degree": 6,
+        "engagement_weighted_degree": 12.0,
+        "id": "p10",
+        "org_weighted_degree": 527.0,
+        "post_count": 2,
+        "reaction_count": 14,
+        "tfidf_consistency": 0.420898,
+        "topic_consistency": 0.694859
+      }
+    ],
+    "post_topics": [
+      {
+        "dominant_topic": 0,
+        "id": "p01",
+        "post_id": "p01-a1",
+        "topic_weight": 0.52039
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p01",
+        "post_id": "p01-a2",
+        "topic_weight": 0.344696
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p02",
+        "post_id": "p02-a1",
+        "topic_weight": 0.344696
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p02",
+        "post_id": "p02-a2",
+        "topic_weight": 0.361759
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p03",
+        "post_id": "p03-a1",
+        "topic_weight": 0.361759
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p03",
+        "post_id": "p03-a2",
+        "topic_weight": 0.52039
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p04",
+        "post_id": "p04-a1",
+        "topic_weight": 0.5736
+      },
+      {
+        "dominant_topic": 2,
+        "id": "p04",
+        "post_id": "p04-a2",
+        "topic_weight": 0.874921
+      },
+      {
+        "dominant_topic": 2,
+        "id": "p05",
+        "post_id": "p05-a1",
+        "topic_weight": 0.874921
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p05",
+        "post_id": "p05-a2",
+        "topic_weight": 0.365186
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p06",
+        "post_id": "p06-a1",
+        "topic_weight": 0.365186
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p06",
+        "post_id": "p06-a2",
+        "topic_weight": 0.5736
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p07",
+        "post_id": "p07-a1",
+        "topic_weight": 0.114257
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p07",
+        "post_id": "p07-a2",
+        "topic_weight": 0.578636
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p08",
+        "post_id": "p08-a1",
+        "topic_weight": 0.578636
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p08",
+        "post_id": "p08-a2",
+        "topic_weight": 0.210529
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p09",
+        "post_id": "p09-a1",
+        "topic_weight": 0.054131
+      },
+      {
+        "dominant_topic": 1,
+        "id": "p09",
+        "post_id": "p09-a2",
+        "topic_weight": 0.088635
+      },
+      {
+        "dominant_topic": 0,
+        "id": "p10",
+        "post_id": "p10-a1",
+        "topic_weight": 0.175018
+      },
+      {
+        "dominant_topic": 2,
+        "id": "p10",
+        "post_id": "p10-a2",
+        "topic_weight": 0.296921
+      }
+    ],
+    "topic_method": "TF-IDF + NMF on post text",
+    "topics": [
+      {
+        "top_terms": [
+          "synthetic",
+          "checks",
+          "pipeline",
+          "imaginary",
+          "engineering"
+        ],
+        "topic_id": 0
+      },
+      {
+        "top_terms": [
+          "security",
+          "fictional",
+          "sandbox",
+          "team",
+          "distributed"
+        ],
+        "topic_id": 1
+      },
+      {
+        "top_terms": [
+          "cloud",
+          "infrastructure",
+          "clear",
+          "combined",
+          "container"
+        ],
+        "topic_id": 2
+      }
+    ],
+    "warnings": []
+  },
+  "career": {
+    "as_of_month": "2025-04",
+    "assumptions": [
+      "Ongoing tenure ends at the latest month observed in the input data.",
+      "A company move requires dated, nonoverlapping successive jobs; concurrent roles are excluded.",
+      "Skill gaps are missing common recorded skills, not proven skill deficiencies."
+    ],
+    "bus_factor_one_skills": [
+      {
+        "person_id": "p09",
+        "skill": "synthetic protocol archaeology"
+      }
+    ],
+    "common_skill_min_people": 5,
+    "education_fields": [
+      {
+        "field": "Fictional Computing",
+        "profile_count": 1
+      },
+      {
+        "field": "Fictional Systems Engineering",
+        "profile_count": 3
+      },
+      {
+        "field": "Imaginary Computer Science",
+        "profile_count": 3
+      },
+      {
+        "field": "Imaginary Information Security",
+        "profile_count": 3
+      }
+    ],
+    "education_schools": [
+      {
+        "profile_count": 3,
+        "school": "Cipher Bay Academy (Fictional)"
+      },
+      {
+        "profile_count": 2,
+        "school": "Cloudcastle Polytechnic (Fictional)"
+      },
+      {
+        "profile_count": 2,
+        "school": "Fable Coast Institute (Fictional)"
+      },
+      {
+        "profile_count": 3,
+        "school": "University of Imaginary Isles (Fictional)"
+      }
+    ],
+    "movement_graph": {
+      "directed": true,
+      "edges": [
+        {
+          "count": 3,
+          "people_count": 3,
+          "person_ids": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "source": "Cipherkeep Works (Fictional)",
+          "target": "FableForge Analytics (Fictional)"
+        },
+        {
+          "count": 4,
+          "people_count": 4,
+          "person_ids": [
+            "p04",
+            "p05",
+            "p06",
+            "p10"
+          ],
+          "source": "Cloudcastle Systems (Fictional)",
+          "target": "FableForge Analytics (Fictional)"
+        },
+        {
+          "count": 1,
+          "people_count": 1,
+          "person_ids": [
+            "p10"
+          ],
+          "source": "Moonbeam Modelworks (Fictional)",
+          "target": "Cloudcastle Systems (Fictional)"
+        },
+        {
+          "count": 3,
+          "people_count": 3,
+          "person_ids": [
+            "p01",
+            "p02",
+            "p03"
+          ],
+          "source": "Moonbeam Modelworks (Fictional)",
+          "target": "FableForge Analytics (Fictional)"
+        }
+      ]
+    },
+    "people": [
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p01",
+        "latest_seniority": "lead",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p02",
+        "latest_seniority": "senior",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p03",
+        "latest_seniority": "junior",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p04",
+        "latest_seniority": "manager/director",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p05",
+        "latest_seniority": "senior",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p06",
+        "latest_seniority": "mid",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p07",
+        "latest_seniority": "manager/director",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p08",
+        "latest_seniority": "senior",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 2,
+        "education_count": 1,
+        "id": "p09",
+        "latest_seniority": "mid",
+        "mean_role_tenure_months": 44.0,
+        "observed_role_months": 88,
+        "transition_count": 1
+      },
+      {
+        "dated_role_count": 3,
+        "education_count": 1,
+        "id": "p10",
+        "latest_seniority": "lead",
+        "mean_role_tenure_months": 29.33,
+        "observed_role_months": 88,
+        "transition_count": 2
+      }
+    ],
+    "roles": [
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p01",
+        "ongoing": true,
+        "seniority": "lead",
+        "start": "2022-03",
+        "tenure_months": 38,
+        "title": "Lead ML Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "end": "2022-02",
+        "id": "p01",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 50,
+        "title": "ML Engineer"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p02",
+        "ongoing": true,
+        "seniority": "senior",
+        "start": "2023-03",
+        "tenure_months": 26,
+        "title": "Senior ML Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "end": "2023-02",
+        "id": "p02",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 62,
+        "title": "ML Engineer"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p03",
+        "ongoing": true,
+        "seniority": "junior",
+        "start": "2021-03",
+        "tenure_months": 50,
+        "title": "Junior ML Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "end": "2021-02",
+        "id": "p03",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 38,
+        "title": "ML Engineer"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p04",
+        "ongoing": true,
+        "seniority": "manager/director",
+        "start": "2022-03",
+        "tenure_months": 38,
+        "title": "Platform Engineering Manager"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "end": "2022-02",
+        "id": "p04",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 50,
+        "title": "Systems Engineer"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p05",
+        "ongoing": true,
+        "seniority": "senior",
+        "start": "2023-03",
+        "tenure_months": 26,
+        "title": "Senior Platform Engineer"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "end": "2023-02",
+        "id": "p05",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 62,
+        "title": "Systems Engineer"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p06",
+        "ongoing": true,
+        "seniority": "mid",
+        "start": "2021-03",
+        "tenure_months": 50,
+        "title": "Platform Engineer"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "end": "2021-02",
+        "id": "p06",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 38,
+        "title": "Systems Engineer"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p07",
+        "ongoing": true,
+        "seniority": "manager/director",
+        "start": "2022-03",
+        "tenure_months": 38,
+        "title": "Security Director"
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "end": "2022-02",
+        "id": "p07",
+        "ongoing": false,
+        "seniority": "junior",
+        "start": "2018-01",
+        "tenure_months": 50,
+        "title": "Security Associate"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p08",
+        "ongoing": true,
+        "seniority": "senior",
+        "start": "2023-03",
+        "tenure_months": 26,
+        "title": "Senior Security Analyst"
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "end": "2023-02",
+        "id": "p08",
+        "ongoing": false,
+        "seniority": "junior",
+        "start": "2018-01",
+        "tenure_months": 62,
+        "title": "Security Associate"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p09",
+        "ongoing": true,
+        "seniority": "mid",
+        "start": "2021-03",
+        "tenure_months": 50,
+        "title": "Security Analyst"
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "end": "2021-02",
+        "id": "p09",
+        "ongoing": false,
+        "seniority": "junior",
+        "start": "2018-01",
+        "tenure_months": 38,
+        "title": "Security Associate"
+      },
+      {
+        "company": "FableForge Analytics (Fictional)",
+        "end": null,
+        "id": "p10",
+        "ongoing": true,
+        "seniority": "lead",
+        "start": "2022-01",
+        "tenure_months": 40,
+        "title": "Cross-team Integration Lead"
+      },
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "end": "2021-12",
+        "id": "p10",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2020-01",
+        "tenure_months": 24,
+        "title": "Platform Engineer"
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "end": "2019-12",
+        "id": "p10",
+        "ongoing": false,
+        "seniority": "mid",
+        "start": "2018-01",
+        "tenure_months": 24,
+        "title": "ML Engineer"
+      }
+    ],
+    "seniority_mapping": [
+      {
+        "category": "manager/director",
+        "pattern": "\\b(manager|director|head of|vp|vice president)\\b"
+      },
+      {
+        "category": "lead",
+        "pattern": "\\b(lead|principal|staff|architect)\\b"
+      },
+      {
+        "category": "senior",
+        "pattern": "\\b(senior|sr\\.?|experienced)\\b"
+      },
+      {
+        "category": "junior",
+        "pattern": "\\b(junior|jr\\.?|associate|entry.level)\\b"
+      },
+      {
+        "category": "intern",
+        "pattern": "\\b(intern|internship|trainee)\\b"
+      },
+      {
+        "category": "mid",
+        "pattern": "\\b(engineer|scientist|analyst|developer|designer|specialist|researcher)\\b"
+      }
+    ],
+    "skill_cooccurrence": [
+      {
+        "people_count": 10,
+        "skill_a": "python",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 4,
+        "skill_a": "data pipelines",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 4,
+        "skill_a": "data pipelines",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 4,
+        "skill_a": "observability",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 4,
+        "skill_a": "observability",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "cloud infrastructure",
+        "skill_b": "observability"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "cloud infrastructure",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "cloud infrastructure",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "data pipelines",
+        "skill_b": "mlops"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "data pipelines",
+        "skill_b": "model evaluation"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "distributed systems",
+        "skill_b": "observability"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "distributed systems",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "distributed systems",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "identity management",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "identity management",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "identity management",
+        "skill_b": "threat modeling"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "mlops",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "mlops",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "model evaluation",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "model evaluation",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "python",
+        "skill_b": "threat modeling"
+      },
+      {
+        "people_count": 3,
+        "skill_a": "technical writing",
+        "skill_b": "threat modeling"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "application security",
+        "skill_b": "identity management"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "application security",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "application security",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "application security",
+        "skill_b": "threat modeling"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "cloud infrastructure",
+        "skill_b": "container orchestration"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "cloud infrastructure",
+        "skill_b": "distributed systems"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "cloud infrastructure",
+        "skill_b": "service reliability"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "container orchestration",
+        "skill_b": "observability"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "container orchestration",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "container orchestration",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "data pipelines",
+        "skill_b": "feature engineering"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "data pipelines",
+        "skill_b": "machine learning"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "feature engineering",
+        "skill_b": "mlops"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "feature engineering",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "feature engineering",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "identity management",
+        "skill_b": "incident response"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "identity management",
+        "skill_b": "security monitoring"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "incident response",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "incident response",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "incident response",
+        "skill_b": "threat modeling"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "machine learning",
+        "skill_b": "mlops"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "machine learning",
+        "skill_b": "python"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "machine learning",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "mlops",
+        "skill_b": "model evaluation"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "observability",
+        "skill_b": "service reliability"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "python",
+        "skill_b": "security monitoring"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "python",
+        "skill_b": "service reliability"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "security monitoring",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "security monitoring",
+        "skill_b": "threat modeling"
+      },
+      {
+        "people_count": 2,
+        "skill_a": "service reliability",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "application security",
+        "skill_b": "incident response"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "application security",
+        "skill_b": "security monitoring"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "application security",
+        "skill_b": "synthetic protocol archaeology"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "container orchestration",
+        "skill_b": "distributed systems"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "container orchestration",
+        "skill_b": "service reliability"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "data pipelines",
+        "skill_b": "distributed systems"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "data pipelines",
+        "skill_b": "observability"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "distributed systems",
+        "skill_b": "model evaluation"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "distributed systems",
+        "skill_b": "service reliability"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "feature engineering",
+        "skill_b": "machine learning"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "feature engineering",
+        "skill_b": "model evaluation"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "identity management",
+        "skill_b": "synthetic protocol archaeology"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "incident response",
+        "skill_b": "security monitoring"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "incident response",
+        "skill_b": "synthetic protocol archaeology"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "machine learning",
+        "skill_b": "model evaluation"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "model evaluation",
+        "skill_b": "observability"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "python",
+        "skill_b": "synthetic protocol archaeology"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "synthetic protocol archaeology",
+        "skill_b": "technical writing"
+      },
+      {
+        "people_count": 1,
+        "skill_a": "synthetic protocol archaeology",
+        "skill_b": "threat modeling"
+      }
+    ],
+    "skill_gap_candidates": [
+      {
+        "id": "p01",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p02",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p03",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p04",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p05",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p06",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p07",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p08",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p09",
+        "missing_common_skills": []
+      },
+      {
+        "id": "p10",
+        "missing_common_skills": []
+      }
+    ],
+    "skill_holders": [
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p07",
+          "p09"
+        ],
+        "skill": "application security"
+      },
+      {
+        "coverage_fraction": 0.3,
+        "people_count": 3,
+        "person_ids": [
+          "p04",
+          "p05",
+          "p06"
+        ],
+        "skill": "cloud infrastructure"
+      },
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p05",
+          "p06"
+        ],
+        "skill": "container orchestration"
+      },
+      {
+        "coverage_fraction": 0.4,
+        "people_count": 4,
+        "person_ids": [
+          "p01",
+          "p02",
+          "p03",
+          "p10"
+        ],
+        "skill": "data pipelines"
+      },
+      {
+        "coverage_fraction": 0.3,
+        "people_count": 3,
+        "person_ids": [
+          "p04",
+          "p05",
+          "p10"
+        ],
+        "skill": "distributed systems"
+      },
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p01",
+          "p03"
+        ],
+        "skill": "feature engineering"
+      },
+      {
+        "coverage_fraction": 0.3,
+        "people_count": 3,
+        "person_ids": [
+          "p07",
+          "p08",
+          "p09"
+        ],
+        "skill": "identity management"
+      },
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p08",
+          "p09"
+        ],
+        "skill": "incident response"
+      },
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p01",
+          "p02"
+        ],
+        "skill": "machine learning"
+      },
+      {
+        "coverage_fraction": 0.3,
+        "people_count": 3,
+        "person_ids": [
+          "p01",
+          "p02",
+          "p03"
+        ],
+        "skill": "mlops"
+      },
+      {
+        "coverage_fraction": 0.3,
+        "people_count": 3,
+        "person_ids": [
+          "p02",
+          "p03",
+          "p10"
+        ],
+        "skill": "model evaluation"
+      },
+      {
+        "coverage_fraction": 0.4,
+        "people_count": 4,
+        "person_ids": [
+          "p04",
+          "p05",
+          "p06",
+          "p10"
+        ],
+        "skill": "observability"
+      },
+      {
+        "coverage_fraction": 1.0,
+        "people_count": 10,
+        "person_ids": [
+          "p01",
+          "p02",
+          "p03",
+          "p04",
+          "p05",
+          "p06",
+          "p07",
+          "p08",
+          "p09",
+          "p10"
+        ],
+        "skill": "python"
+      },
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p07",
+          "p08"
+        ],
+        "skill": "security monitoring"
+      },
+      {
+        "coverage_fraction": 0.2,
+        "people_count": 2,
+        "person_ids": [
+          "p04",
+          "p06"
+        ],
+        "skill": "service reliability"
+      },
+      {
+        "coverage_fraction": 0.1,
+        "people_count": 1,
+        "person_ids": [
+          "p09"
+        ],
+        "skill": "synthetic protocol archaeology"
+      },
+      {
+        "coverage_fraction": 1.0,
+        "people_count": 10,
+        "person_ids": [
+          "p01",
+          "p02",
+          "p03",
+          "p04",
+          "p05",
+          "p06",
+          "p07",
+          "p08",
+          "p09",
+          "p10"
+        ],
+        "skill": "technical writing"
+      },
+      {
+        "coverage_fraction": 0.3,
+        "people_count": 3,
+        "person_ids": [
+          "p07",
+          "p08",
+          "p09"
+        ],
+        "skill": "threat modeling"
+      }
+    ],
+    "talent_sources": [
+      {
+        "company": "Cloudcastle Systems (Fictional)",
+        "outbound_people": 4,
+        "outbound_transitions": 4
+      },
+      {
+        "company": "Moonbeam Modelworks (Fictional)",
+        "outbound_people": 4,
+        "outbound_transitions": 4
+      },
+      {
+        "company": "Cipherkeep Works (Fictional)",
+        "outbound_people": 3,
+        "outbound_transitions": 3
+      }
+    ]
+  },
+  "similarity": {
+    "cosine_matrix": [
+      [
+        1.0,
+        0.80658681,
+        0.76572491,
+        0.27688224,
+        0.31068023,
+        0.33765548,
+        0.14310094,
+        0.15380272,
+        0.15910158,
+        0.36166768
+      ],
+      [
+        0.80658681,
+        1.0,
+        0.77409512,
+        0.22504438,
+        0.44040808,
+        0.34514107,
+        0.14627339,
+        0.25433811,
+        0.16262876,
+        0.32573801
+      ],
+      [
+        0.76572491,
+        0.77409512,
+        1.0,
+        0.27163666,
+        0.30479434,
+        0.33125854,
+        0.14038987,
+        0.1508889,
+        0.15608738,
+        0.31263593
+      ],
+      [
+        0.27688224,
+        0.22504438,
+        0.27163666,
+        1.0,
+        0.66426606,
+        0.72300196,
+        0.14493737,
+        0.15577649,
+        0.16114335,
+        0.29641125
+      ],
+      [
+        0.31068023,
+        0.44040808,
+        0.30479434,
+        0.66426606,
+        1.0,
+        0.85625652,
+        0.15354717,
+        0.26698566,
+        0.17071584,
+        0.34963241
+      ],
+      [
+        0.33765548,
+        0.34514107,
+        0.33125854,
+        0.72300196,
+        0.85625652,
+        1.0,
+        0.16687912,
+        0.17935915,
+        0.18553849,
+        0.33965979
+      ],
+      [
+        0.14310094,
+        0.14627339,
+        0.14038987,
+        0.14493737,
+        0.15354717,
+        0.16687912,
+        1.0,
+        0.80218407,
+        0.80392994,
+        0.09419628
+      ],
+      [
+        0.15380272,
+        0.25433811,
+        0.1508889,
+        0.15577649,
+        0.26698566,
+        0.17935915,
+        0.80218407,
+        1.0,
+        0.89482347,
+        0.10124074
+      ],
+      [
+        0.15910158,
+        0.16262876,
+        0.15608738,
+        0.16114335,
+        0.17071584,
+        0.18553849,
+        0.80392994,
+        0.89482347,
+        1.0,
+        0.10491349
+      ],
+      [
+        0.36166768,
+        0.32573801,
+        0.31263593,
+        0.29641125,
+        0.34963241,
+        0.33965979,
+        0.09419628,
+        0.10124074,
+        0.10491349,
+        1.0
+      ]
+    ],
+    "cosine_method": "TF-IDF cosine over skills, job titles, headline, and summary",
+    "ids": [
+      "p01",
+      "p02",
+      "p03",
+      "p04",
+      "p05",
+      "p06",
+      "p07",
+      "p08",
+      "p09",
+      "p10"
+    ],
+    "jaccard_matrix": [
+      [
+        1.0,
+        0.71428571,
+        0.71428571,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.18181818,
+        0.33333333
+      ],
+      [
+        0.71428571,
+        1.0,
+        0.71428571,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.18181818,
+        0.5
+      ],
+      [
+        0.71428571,
+        0.71428571,
+        1.0,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.18181818,
+        0.5
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        1.0,
+        0.71428571,
+        0.71428571,
+        0.2,
+        0.2,
+        0.18181818,
+        0.5
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.71428571,
+        1.0,
+        0.71428571,
+        0.2,
+        0.2,
+        0.18181818,
+        0.5
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.71428571,
+        0.71428571,
+        1.0,
+        0.2,
+        0.2,
+        0.18181818,
+        0.33333333
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        1.0,
+        0.71428571,
+        0.625,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.71428571,
+        1.0,
+        0.625,
+        0.2
+      ],
+      [
+        0.18181818,
+        0.18181818,
+        0.18181818,
+        0.18181818,
+        0.18181818,
+        0.18181818,
+        0.625,
+        0.625,
+        1.0,
+        0.18181818
+      ],
+      [
+        0.33333333,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.33333333,
+        0.2,
+        0.2,
+        0.18181818,
+        1.0
+      ]
+    ],
+    "jaccard_method": "Jaccard similarity over casefolded declared skill sets",
+    "knn_graph": {
+      "directed": false,
+      "edges": [
+        {
+          "selected_by": [
+            "p01",
+            "p02"
+          ],
+          "source": "p01",
+          "target": "p02",
+          "weight": 0.80658681
+        },
+        {
+          "selected_by": [
+            "p01",
+            "p03"
+          ],
+          "source": "p01",
+          "target": "p03",
+          "weight": 0.76572491
+        },
+        {
+          "selected_by": [
+            "p01",
+            "p10"
+          ],
+          "source": "p01",
+          "target": "p10",
+          "weight": 0.36166768
+        },
+        {
+          "selected_by": [
+            "p02",
+            "p03"
+          ],
+          "source": "p02",
+          "target": "p03",
+          "weight": 0.77409512
+        },
+        {
+          "selected_by": [
+            "p02",
+            "p05"
+          ],
+          "source": "p02",
+          "target": "p05",
+          "weight": 0.44040808
+        },
+        {
+          "selected_by": [
+            "p06"
+          ],
+          "source": "p02",
+          "target": "p06",
+          "weight": 0.34514107
+        },
+        {
+          "selected_by": [
+            "p03"
+          ],
+          "source": "p03",
+          "target": "p06",
+          "weight": 0.33125854
+        },
+        {
+          "selected_by": [
+            "p04",
+            "p05"
+          ],
+          "source": "p04",
+          "target": "p05",
+          "weight": 0.66426606
+        },
+        {
+          "selected_by": [
+            "p04",
+            "p06"
+          ],
+          "source": "p04",
+          "target": "p06",
+          "weight": 0.72300196
+        },
+        {
+          "selected_by": [
+            "p04"
+          ],
+          "source": "p04",
+          "target": "p10",
+          "weight": 0.29641125
+        },
+        {
+          "selected_by": [
+            "p05",
+            "p06"
+          ],
+          "source": "p05",
+          "target": "p06",
+          "weight": 0.85625652
+        },
+        {
+          "selected_by": [
+            "p08"
+          ],
+          "source": "p05",
+          "target": "p08",
+          "weight": 0.26698566
+        },
+        {
+          "selected_by": [
+            "p10"
+          ],
+          "source": "p05",
+          "target": "p10",
+          "weight": 0.34963241
+        },
+        {
+          "selected_by": [
+            "p07"
+          ],
+          "source": "p06",
+          "target": "p07",
+          "weight": 0.16687912
+        },
+        {
+          "selected_by": [
+            "p09"
+          ],
+          "source": "p06",
+          "target": "p09",
+          "weight": 0.18553849
+        },
+        {
+          "selected_by": [
+            "p10"
+          ],
+          "source": "p06",
+          "target": "p10",
+          "weight": 0.33965979
+        },
+        {
+          "selected_by": [
+            "p07",
+            "p08"
+          ],
+          "source": "p07",
+          "target": "p08",
+          "weight": 0.80218407
+        },
+        {
+          "selected_by": [
+            "p07",
+            "p09"
+          ],
+          "source": "p07",
+          "target": "p09",
+          "weight": 0.80392994
+        },
+        {
+          "selected_by": [
+            "p08",
+            "p09"
+          ],
+          "source": "p08",
+          "target": "p09",
+          "weight": 0.89482347
+        }
+      ]
+    },
+    "knn_k": 3,
+    "neighbours": [
+      {
+        "id": "p01",
+        "neighbour_ids": [
+          "p02",
+          "p03",
+          "p10"
+        ],
+        "similarities": [
+          0.80658681,
+          0.76572491,
+          0.36166768
+        ]
+      },
+      {
+        "id": "p02",
+        "neighbour_ids": [
+          "p01",
+          "p03",
+          "p05"
+        ],
+        "similarities": [
+          0.80658681,
+          0.77409512,
+          0.44040808
+        ]
+      },
+      {
+        "id": "p03",
+        "neighbour_ids": [
+          "p02",
+          "p01",
+          "p06"
+        ],
+        "similarities": [
+          0.77409512,
+          0.76572491,
+          0.33125854
+        ]
+      },
+      {
+        "id": "p04",
+        "neighbour_ids": [
+          "p06",
+          "p05",
+          "p10"
+        ],
+        "similarities": [
+          0.72300196,
+          0.66426606,
+          0.29641125
+        ]
+      },
+      {
+        "id": "p05",
+        "neighbour_ids": [
+          "p06",
+          "p04",
+          "p02"
+        ],
+        "similarities": [
+          0.85625652,
+          0.66426606,
+          0.44040808
+        ]
+      },
+      {
+        "id": "p06",
+        "neighbour_ids": [
+          "p05",
+          "p04",
+          "p02"
+        ],
+        "similarities": [
+          0.85625652,
+          0.72300196,
+          0.34514107
+        ]
+      },
+      {
+        "id": "p07",
+        "neighbour_ids": [
+          "p09",
+          "p08",
+          "p06"
+        ],
+        "similarities": [
+          0.80392994,
+          0.80218407,
+          0.16687912
+        ]
+      },
+      {
+        "id": "p08",
+        "neighbour_ids": [
+          "p09",
+          "p07",
+          "p05"
+        ],
+        "similarities": [
+          0.89482347,
+          0.80218407,
+          0.26698566
+        ]
+      },
+      {
+        "id": "p09",
+        "neighbour_ids": [
+          "p08",
+          "p07",
+          "p06"
+        ],
+        "similarities": [
+          0.89482347,
+          0.80392994,
+          0.18553849
+        ]
+      },
+      {
+        "id": "p10",
+        "neighbour_ids": [
+          "p01",
+          "p05",
+          "p06"
+        ],
+        "similarities": [
+          0.36166768,
+          0.34963241,
+          0.33965979
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

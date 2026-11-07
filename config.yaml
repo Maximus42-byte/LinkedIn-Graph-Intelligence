@@ -36,6 +36,8 @@ weight_dirichlet_concentration: 20.0
 weight_iterations: 100
 perturbation_fraction: 0.10
 knn_k: 3
+activity_topics: 3
+null_swaps_per_node: 5
 role_thresholds:
   hub_degree_quantile: 0.75
   bridge_betweenness_quantile: 0.75

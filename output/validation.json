@@ -165,7 +165,8 @@
       "top_pagerank": 0.11884127700780382,
       "top_weighted_degree": 3.424797450871
     },
-    "statistically_informative": false
+    "statistically_informative": false,
+    "swaps_per_draw": 22
   },
   "perturbation": {
     "added_edges_per_iteration": 0,

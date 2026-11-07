@@ -8,6 +8,9 @@ from lgi.analysis.graphs import build_graphs, write_graph_json
 from lgi.analysis.centrality import analyze_centrality
 from lgi.analysis.clustering import cluster_profiles
 from lgi.analysis.validation import validate_analysis
+from lgi.analysis.career import analyze_career
+from lgi.analysis.activity import analyze_activity
+from lgi.analysis.similarity import analyze_similarity
 from lgi.config import load_config
 from lgi.fixtures_gen.generator import generate_fixtures
 from lgi.sources.export import ExportAdapter
@@ -28,6 +31,9 @@ def _process(profiles: list[dict], config: dict, ground_truth_path: Path | None 
     centrality = analyze_centrality(bundle["graphs"]["combined_manual"], config)
     clustering = cluster_profiles(profiles, bundle, config)
     validation = validate_analysis(bundle, centrality, clustering, config, ground_truth_path)
+    analysis = {"career": analyze_career(profiles), "activity": analyze_activity(profiles, bundle["graphs"], config), "similarity": analyze_similarity(profiles, config)}
+    analysis_path = _path(config, "output") / "analysis.json"
+    analysis_path.write_text(json.dumps(analysis, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
     validation_path = _path(config, "output") / "validation.json"
     validation_path.parent.mkdir(parents=True, exist_ok=True)
     validation_path.write_text(json.dumps(validation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
