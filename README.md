@@ -70,11 +70,13 @@ Installation time depends on the package source and whether wheels are cached. T
 | Graph layers | Overlapping shared past employer, education overlap, skill Jaccard versus TF-IDF cosine, offline semantic LSA versus TF-IDF cosine, observed engagement; manual weights versus equal-normalised combination. Person–skill bipartite graph and both projections are exported. |
 | Sparse edge rule | An employer appearing in more than `org_ignore_employer_share: 0.8` of profiles is ignored in `G_org`. `G_skill` and `G_semantic` retain each profile's top `similarity_knn_k: 3` positive neighbours that meet their configured minimum weights, then symmetrise by union. Equal scores break by profile ID. These rules were selected without using ground-truth ARI. |
 | Key people | Degree, weighted degree, betweenness, closeness, harmonic, eigenvector, PageRank, Katz, k-core, Burt constraint, effective size; Borda and mean reciprocal rank, Kendall and Spearman agreement, configurable role labels. |
-| Clustering | Louvain, greedy modularity, label propagation, modularity-selected Girvan–Newman cut, spectral; TF-IDF KMeans and Ward, embedding KMeans, HDBSCAN, NMF topics; silhouette/elbow k selection, modularity and feature scores, pairwise ARI/NMI, skill families. |
-| Validation | Configured edge perturbations, degree-preserving and G(n,m) nulls, layer ablation, Dirichlet weight draws, fixture-only ground-truth ARI/NMI. Average ranks and inclusive tied top-k cutoffs prevent arbitrary ID ordering in stability checks. |
+| Clustering | Louvain, greedy modularity, label propagation, Girvan–Newman, spectral; TF-IDF KMeans and Ward, embedding KMeans, real sklearn HDBSCAN, NMF topics; silhouette/elbow k selection and pairwise ARI/NMI. Girvan–Newman uses unweighted edge betweenness to propose cuts, then weighted modularity on the same combined graph to choose one. |
+| Validation | Exact top-three retention remains primary; mean overlap, nominal chance overlap, top-one retention, Kendall mean/median, and 5th–95th percentile rank intervals with actual min/max add context. Average ranks and inclusive cutoff ties are used. Nulls, ablation, weight draws, and synthetic ground-truth ARI/NMI are also reported. |
 | Other findings | Rule-based seniority and transitions, education and skill co-occurrence, recorded-skill gaps and single-holder skills; post NMF topics, engagement comparison and topic/lexical consistency; cosine/Jaccard matrices and a k-nearest-colleagues graph. |
 
-`requirements.txt` is the single dependency list. `sentence-transformers` can be installed separately with pip if needed; only a model already available at the configured local path is considered. The default fallback is TF-IDF + TruncatedSVD (LSA), with no download.
+The configured reference month `2026-01` is the inclusive end month used for open-ended job overlap and career tenure; it is an analysis cutoff, not the latest activity date.
+
+`requirements.txt` is the main dependency list with minimum versions. [`requirements-lock.txt`](requirements-lock.txt) records the tested Python 3.12 environment from `pip freeze`. `sentence-transformers` can be installed separately with pip if needed; only a model already available at the configured local path is considered. The default fallback is TF-IDF + TruncatedSVD (LSA), with no download.
 
 ## Results excerpt from the generated report
 
@@ -102,12 +104,12 @@ These values come from the committed synthetic **n=10** run in [`output/report.m
 
 ### Stability summary
 
-| Check | Draws | Top-three retention | Kendall tau (mean/median) | Cluster ARI median |
-| --- | --- | --- | --- | --- |
-| Edge perturbation | 1000 | 0.032 | 0.209 | — |
-| Weight sensitivity | 100 | 0.410 | 0.750 | 1.000 |
+| Check | Draws | Exact top-three retention | Mean top-three overlap | Chance overlap | Top-one retention | Kendall tau mean | Kendall tau median | Cluster ARI median |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Edge perturbation | 1000 | 0.032 | 1.229 | 0.900 | 0.104 | 0.209 | 0.205 | — |
+| Weight sensitivity | 100 | 0.410 | 2.540 | 0.900 | 0.470 | 0.739 | 0.750 | 1.000 |
 
-The stability ranking uses an average-rank Borda of weighted degree, weighted betweenness and PageRank, while the key-people table aggregates all centrality methods. Edge perturbation removed and added **3** edges per draw. The low **3.2%** top-three retention is reported as observed, not tuned away. At this node count the null-model p-values and z-scores are descriptive only. The complete tables and limitations are in the generated report.
+The stability ranking uses weighted degree, weighted betweenness and PageRank, while the key-people ranking aggregates all centrality methods. The added overlap and top-one checks were introduced after the low exact top-three result; the primary metric is unchanged. In the generated run, topic consistency misses the designed mismatch **p09**, while lexical consistency flags it. The synthetic three-cluster ceiling and the Girvan–Newman result are reported in [`output/report.md`](output/report.md).
 
 ## Alternate inputs and larger fixtures
 

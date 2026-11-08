@@ -87,3 +87,32 @@ def test_tied_scores_use_average_ranks_and_shared_topk_cutoff():
     assert summary['top3_set_retention'] == 1.0
     assert summary['baseline_top3_set'] == sorted(graph)
     assert all(row['top3_frequency'] == 1.0 for row in summary['per_person'].values())
+    assert summary['top3_mean_overlap'] == 4.0  # inclusive cutoff ties
+    assert summary['top3_chance_overlap'] == 9 / 4  # nominal exact-k chance
+    assert summary['top1_set_retention'] == 1.0
+    for row in summary['per_person'].values():
+        assert row['rank_interval'] == [2.5, 2.5, 2.5]
+        assert row['rank_min'] == row['rank_max'] == 2.5
+
+
+def test_three_cluster_ceiling_and_mismatch_label_stay_in_validation(tmp_path):
+    from lgi.analysis.validation import _ground_truth
+
+    ids = [f'p{number:02d}' for number in range(1, 11)]
+    teams = ['ML'] * 3 + ['Platform'] * 3 + ['Security'] * 3 + ['Bridge']
+    truth = {
+        'profiles': {pid: {'team': team} for pid, team in zip(ids, teams)},
+        'post_skill_mismatch_ids': ['p09'],
+    }
+    path = tmp_path / 'synthetic_labels.json'
+    path.write_text(json.dumps(truth))
+    labels = {pid: index // 3 for index, pid in enumerate(ids[:9])}
+    labels['p10'] = 0
+    result = _ground_truth({'labels': {'recovered': labels}}, ids, path)
+    ceiling = result['three_cluster_ceiling']
+    assert result['truth_label_count'] == 4
+    assert len(ceiling['candidate_merges']) == 3
+    assert result['results']['recovered']['ari'] == ceiling['ari']
+    assert result['results']['recovered']['nmi'] == ceiling['nmi']
+    assert result['results']['recovered']['recovered_three_teams'] is True
+    assert result['post_skill_mismatch_ids'] == ['p09']

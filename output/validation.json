@@ -35,49 +35,84 @@
     "caveat": "Recovery of structure built into synthetic fixtures does not measure real-world accuracy.",
     "kind": "synthetic validation",
     "n": 10,
+    "post_skill_mismatch_ids": [
+      "p09"
+    ],
     "results": {
       "embedding_kmeans": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "girvan_newman": {
         "ari": 0.166666667,
-        "nmi": 0.541959077
+        "nmi": 0.541959077,
+        "recovered_three_teams": false
       },
       "greedy_modularity": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "hdbscan": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "label_propagation": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "louvain": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "nmf_topics": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "spectral": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "tfidf_kmeans": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       },
       "ward": {
         "ari": 0.814814815,
-        "nmi": 0.90638412
+        "nmi": 0.90638412,
+        "recovered_three_teams": true
       }
     },
-    "status": "ok"
+    "status": "ok",
+    "three_cluster_ceiling": {
+      "ari": 0.814814815,
+      "candidate_merges": [
+        {
+          "ari": 0.814814815,
+          "bridge_into": "ML",
+          "nmi": 0.90638412
+        },
+        {
+          "ari": 0.814814815,
+          "bridge_into": "Platform",
+          "nmi": 0.90638412
+        },
+        {
+          "ari": 0.814814815,
+          "bridge_into": "Security",
+          "nmi": 0.90638412
+        }
+      ],
+      "nmi": 0.90638412
+    },
+    "truth_label_count": 4
   },
   "null_models": {
     "backbone": {
@@ -180,6 +215,9 @@
       "p08",
       "p09"
     ],
+    "baseline_top1_set": [
+      "p10"
+    ],
     "baseline_top3_set": [
       "p01",
       "p05",
@@ -199,8 +237,10 @@
         "rank_interval": [
           1.0,
           4.0,
-          10.0
+          9.5
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.429
       },
       "p02": {
@@ -210,6 +250,8 @@
           4.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.413
       },
       "p03": {
@@ -219,6 +261,8 @@
           6.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.283
       },
       "p04": {
@@ -228,6 +272,8 @@
           6.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.275
       },
       "p05": {
@@ -235,8 +281,10 @@
         "rank_interval": [
           1.0,
           4.0,
-          10.0
+          9.5
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.409
       },
       "p06": {
@@ -246,33 +294,41 @@
           6.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.219
       },
       "p07": {
         "baseline_rank": 6.0,
         "rank_interval": [
-          1.0,
+          2.0,
           7.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.232
       },
       "p08": {
         "baseline_rank": 8.5,
         "rank_interval": [
-          1.0,
+          2.0,
           7.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.255
       },
       "p09": {
         "baseline_rank": 10.0,
         "rank_interval": [
-          1.0,
+          2.0,
           8.0,
           10.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.166
       },
       "p10": {
@@ -282,10 +338,15 @@
           4.5,
           9.0
         ],
+        "rank_max": 10.0,
+        "rank_min": 1.0,
         "top3_frequency": 0.391
       }
     },
     "removed_edges_per_iteration": 3,
+    "top1_set_retention": 0.104,
+    "top3_chance_overlap": 0.9,
+    "top3_mean_overlap": 1.229,
     "top3_set_retention": 0.032
   },
   "ranking_definition": "Borda of average ranks for weighted degree, weighted betweenness, and PageRank; top-k includes cutoff ties",
@@ -309,6 +370,7 @@
       0.75,
       0.977272727
     ],
+    "kendall_tau_mean": 0.738824491,
     "per_person_rank_interval": {
       "p01": [
         1.0,
@@ -361,6 +423,9 @@
         6.0
       ]
     },
+    "top1_set_retention": 0.47,
+    "top3_chance_overlap": 0.9,
+    "top3_mean_overlap": 2.54,
     "top3_set_retention": 0.41
   }
 }

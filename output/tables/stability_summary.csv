@@ -1,3 +1,3 @@
-check,draws,top3_retention,kendall_tau,cluster_ari
-Edge perturbation,1000,0.032,0.209090961,
-Weight sensitivity,100,0.41,0.75,1.0
+check,draws,top3_retention,top3_mean_overlap,top3_chance_overlap,top1_retention,kendall_tau_mean,kendall_tau_median,cluster_ari_median
+Edge perturbation,1000,0.032,1.229,0.9,0.104,0.209090961,0.204545455,
+Weight sensitivity,100,0.41,2.54,0.9,0.47,0.738824491,0.75,1.0

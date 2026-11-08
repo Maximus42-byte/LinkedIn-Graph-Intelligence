@@ -199,7 +199,12 @@ def build_profiles(n: int = 10, seed: int = 73) -> tuple[list[dict[str, Any]], d
         profile = _profile(index, team, team_index, teams, seed)
         profiles.append(profile)
         labels[profile["id"]] = {"team": team, "role": profile["experience"][0]["title"]}
-    ground_truth = {"seed": seed, "n": n, "profiles": labels}
+    ground_truth = {
+        "seed": seed,
+        "n": n,
+        "profiles": labels,
+        "post_skill_mismatch_ids": ["p09"] if n >= 9 else [],
+    }
     return profiles, ground_truth
 
 

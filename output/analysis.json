@@ -352,9 +352,9 @@
     "warnings": []
   },
   "career": {
-    "as_of_month": "2025-04",
+    "as_of_month": "2026-01",
     "assumptions": [
-      "Ongoing tenure ends at the latest month observed in the input data.",
+      "Ongoing tenure ends at the configured reference month.",
       "A company move requires dated, nonoverlapping successive jobs; concurrent roles are excluded.",
       "Skill gaps are missing common recorded skills, not proven skill deficiencies."
     ],
@@ -455,8 +455,8 @@
         "education_count": 1,
         "id": "p01",
         "latest_seniority": "lead",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -464,8 +464,8 @@
         "education_count": 1,
         "id": "p02",
         "latest_seniority": "senior",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -473,8 +473,8 @@
         "education_count": 1,
         "id": "p03",
         "latest_seniority": "junior",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -482,8 +482,8 @@
         "education_count": 1,
         "id": "p04",
         "latest_seniority": "manager/director",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -491,8 +491,8 @@
         "education_count": 1,
         "id": "p05",
         "latest_seniority": "senior",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -500,8 +500,8 @@
         "education_count": 1,
         "id": "p06",
         "latest_seniority": "mid",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -509,8 +509,8 @@
         "education_count": 1,
         "id": "p07",
         "latest_seniority": "manager/director",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -518,8 +518,8 @@
         "education_count": 1,
         "id": "p08",
         "latest_seniority": "senior",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -527,8 +527,8 @@
         "education_count": 1,
         "id": "p09",
         "latest_seniority": "mid",
-        "mean_role_tenure_months": 44.0,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 48.5,
+        "observed_role_months": 97,
         "transition_count": 1
       },
       {
@@ -536,8 +536,8 @@
         "education_count": 1,
         "id": "p10",
         "latest_seniority": "lead",
-        "mean_role_tenure_months": 29.33,
-        "observed_role_months": 88,
+        "mean_role_tenure_months": 32.33,
+        "observed_role_months": 97,
         "transition_count": 2
       }
     ],
@@ -549,7 +549,7 @@
         "ongoing": true,
         "seniority": "lead",
         "start": "2022-03",
-        "tenure_months": 38,
+        "tenure_months": 47,
         "title": "Lead ML Engineer"
       },
       {
@@ -569,7 +569,7 @@
         "ongoing": true,
         "seniority": "senior",
         "start": "2023-03",
-        "tenure_months": 26,
+        "tenure_months": 35,
         "title": "Senior ML Engineer"
       },
       {
@@ -589,7 +589,7 @@
         "ongoing": true,
         "seniority": "junior",
         "start": "2021-03",
-        "tenure_months": 50,
+        "tenure_months": 59,
         "title": "Junior ML Engineer"
       },
       {
@@ -609,7 +609,7 @@
         "ongoing": true,
         "seniority": "manager/director",
         "start": "2022-03",
-        "tenure_months": 38,
+        "tenure_months": 47,
         "title": "Platform Engineering Manager"
       },
       {
@@ -629,7 +629,7 @@
         "ongoing": true,
         "seniority": "senior",
         "start": "2023-03",
-        "tenure_months": 26,
+        "tenure_months": 35,
         "title": "Senior Platform Engineer"
       },
       {
@@ -649,7 +649,7 @@
         "ongoing": true,
         "seniority": "mid",
         "start": "2021-03",
-        "tenure_months": 50,
+        "tenure_months": 59,
         "title": "Platform Engineer"
       },
       {
@@ -669,7 +669,7 @@
         "ongoing": true,
         "seniority": "manager/director",
         "start": "2022-03",
-        "tenure_months": 38,
+        "tenure_months": 47,
         "title": "Security Director"
       },
       {
@@ -689,7 +689,7 @@
         "ongoing": true,
         "seniority": "senior",
         "start": "2023-03",
-        "tenure_months": 26,
+        "tenure_months": 35,
         "title": "Senior Security Analyst"
       },
       {
@@ -709,7 +709,7 @@
         "ongoing": true,
         "seniority": "mid",
         "start": "2021-03",
-        "tenure_months": 50,
+        "tenure_months": 59,
         "title": "Security Analyst"
       },
       {
@@ -729,7 +729,7 @@
         "ongoing": true,
         "seniority": "lead",
         "start": "2022-01",
-        "tenure_months": 40,
+        "tenure_months": 49,
         "title": "Cross-team Integration Lead"
       },
       {

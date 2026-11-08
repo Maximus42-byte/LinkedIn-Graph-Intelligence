@@ -134,7 +134,10 @@ def _perturbation(graph: nx.Graph, config: dict[str, Any], seed: int, baseline: 
     top3_counts = {pid: 0 for pid in ids}
     taus: list[float] = []
     top3_exact = 0
+    top1_exact = 0
+    top3_overlap_total = 0
     top3_reference = _topk_set(baseline_ranks, 3)
+    top1_reference = _topk_set(baseline_ranks, 1)
     edge_count = graph.number_of_edges()
     removed_count = min(edge_count, max(1, int(round(edge_count * fraction)))) if edge_count and fraction > 0 else 0
     possible_additions = len(ids) * (len(ids) - 1) // 2 - edge_count
@@ -144,6 +147,9 @@ def _perturbation(graph: nx.Graph, config: dict[str, Any], seed: int, baseline: 
         _, measures = _ranking(altered, seed + iteration + 1)
         candidate_ranks = measures["aggregate_rank"]
         candidate_top3 = _topk_set(candidate_ranks, 3)
+        candidate_top1 = _topk_set(candidate_ranks, 1)
+        top3_overlap_total += len(candidate_top3 & top3_reference)
+        top1_exact += candidate_top1 == top1_reference
         for pid in ids:
             ranks[pid].append(candidate_ranks[pid])
             top3_counts[pid] += pid in candidate_top3
@@ -158,13 +164,19 @@ def _perturbation(graph: nx.Graph, config: dict[str, Any], seed: int, baseline: 
         "added_edges_per_iteration": added_count,
         "baseline_ranking": baseline,
         "baseline_top3_set": sorted(top3_reference),
+        "baseline_top1_set": sorted(top1_reference),
         "top3_set_retention": top3_exact / iterations if iterations else None,
+        "top3_mean_overlap": top3_overlap_total / iterations if iterations else None,
+        "top3_chance_overlap": min(3, len(ids)) ** 2 / len(ids) if ids else None,
+        "top1_set_retention": top1_exact / iterations if iterations else None,
         "kendall_tau_mean": float(np.mean(taus)) if taus else None,
         "kendall_tau_interval": _quantiles(taus),
         "per_person": {
             pid: {
                 "baseline_rank": baseline_ranks[pid],
-                "rank_interval": _quantiles(ranks[pid]),
+                "rank_interval": [float(value) for value in np.quantile(ranks[pid], [0.05, 0.5, 0.95])] if ranks[pid] else None,
+                "rank_min": min(ranks[pid]) if ranks[pid] else None,
+                "rank_max": max(ranks[pid]) if ranks[pid] else None,
                 "top3_frequency": top3_counts[pid] / iterations if iterations else None,
             }
             for pid in ids
@@ -331,6 +343,10 @@ def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], see
     taus: list[float] = []
     aris: list[float] = []
     top3_exact = 0
+    top1_exact = 0
+    top3_overlap_total = 0
+    baseline_top3 = _topk_set(baseline_ranks, 3)
+    baseline_top1 = _topk_set(baseline_ranks, 1)
     ranks: dict[str, list[float]] = {pid: [] for pid in ids}
     for iteration in range(iterations):
         sample = rng.dirichlet(alpha)
@@ -342,21 +358,29 @@ def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], see
         if tau is not None:
             taus.append(tau)
         aris.append(_ari(baseline_labels, labels, ids))
-        top3_exact += _topk_set(candidate_ranks, 3) == _topk_set(baseline_ranks, 3)
+        candidate_top3 = _topk_set(candidate_ranks, 3)
+        top3_exact += candidate_top3 == baseline_top3
+        top3_overlap_total += len(candidate_top3 & baseline_top3)
+        top1_exact += _topk_set(candidate_ranks, 1) == baseline_top1
         for pid in ids:
             ranks[pid].append(candidate_ranks[pid])
     return {
         "iterations": iterations,
         "dirichlet_concentration": concentration,
         "baseline_weights": dict(zip(LAYERS, [float(value) for value in manual])),
+        "kendall_tau_mean": float(np.mean(taus)) if taus else None,
         "kendall_tau_interval": _quantiles(taus),
         "cluster_ari_interval": _quantiles(aris),
         "top3_set_retention": top3_exact / iterations if iterations else None,
+        "top3_mean_overlap": top3_overlap_total / iterations if iterations else None,
+        "top3_chance_overlap": min(3, len(ids)) ** 2 / len(ids) if ids else None,
+        "top1_set_retention": top1_exact / iterations if iterations else None,
         "per_person_rank_interval": {pid: _quantiles(ranks[pid]) for pid in ids},
     }
 
 
 def _ground_truth(clustering: dict[str, Any], ids: list[str], path: str | Path | None) -> dict[str, Any] | None:
+    """Read fixture-only labels here, including the designed mismatch and ceiling."""
     if path is None:
         return None
     truth = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -375,10 +399,40 @@ def _ground_truth(clustering: dict[str, Any], ids: list[str], path: str | Path |
             "ari": float(adjusted_rand_score(true_labels, predicted)),
             "nmi": float(normalized_mutual_info_score(true_labels, predicted)),
         }
+    teams = sorted(set(true_labels) - {"Bridge"})
+    bridge_ids = [pid for pid in ids if profiles[pid]["team"] == "Bridge"]
+    ceiling = None
+    if len(teams) == 3 and bridge_ids:
+        merges = []
+        for team in teams:
+            merged = [team if label == "Bridge" else label for label in true_labels]
+            merges.append({
+                "bridge_into": team,
+                "ari": float(adjusted_rand_score(true_labels, merged)),
+                "nmi": float(normalized_mutual_info_score(true_labels, merged)),
+            })
+        ceiling = {
+            "ari": max(row["ari"] for row in merges),
+            "nmi": max(row["nmi"] for row in merges),
+            "candidate_merges": merges,
+        }
+    if ceiling is not None:
+        for method, labels in sorted(clustering.get("labels", {}).items()):
+            if method not in methods or "ari" not in methods[method]:
+                continue
+            team_clusters = [set(labels[pid] for pid in ids if profiles[pid]["team"] == team) for team in teams]
+            methods[method]["recovered_three_teams"] = (
+                all(len(clusters) == 1 for clusters in team_clusters)
+                and len({next(iter(clusters)) for clusters in team_clusters}) == len(teams)
+            )
+    mismatch_ids = sorted(set(truth.get("post_skill_mismatch_ids", [])) & set(ids))
     return {
         "kind": "synthetic validation",
         "status": "ok",
         "n": len(ids),
+        "truth_label_count": len(set(true_labels)),
+        "three_cluster_ceiling": ceiling,
+        "post_skill_mismatch_ids": mismatch_ids,
         "results": methods,
         "caveat": "Recovery of structure built into synthetic fixtures does not measure real-world accuracy.",
     }

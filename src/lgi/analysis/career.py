@@ -10,7 +10,7 @@ from collections import Counter, defaultdict
 from itertools import combinations
 import math
 import re
-from typing import Any, Iterable
+from typing import Any
 
 
 # Rules are checked in order, so a title such as "Senior Engineering Manager"
@@ -38,28 +38,6 @@ def _month_index(value: str | None) -> int | None:
         return None
     year, month = (int(part) for part in value.split("-"))
     return year * 12 + month - 1
-
-
-def _month_string(index: int) -> str:
-    year, zero_based_month = divmod(index, 12)
-    return f"{year:04d}-{zero_based_month + 1:02d}"
-
-
-def _observation_month(profiles: Iterable[dict[str, Any]]) -> int | None:
-    """Use the latest date in the input rather than the machine's wall clock."""
-    months: list[int] = []
-    for profile in profiles:
-        for job in profile.get("experience", []):
-            for field in ("start", "end"):
-                parsed = _month_index(job.get(field))
-                if parsed is not None:
-                    months.append(parsed)
-        for item in profile.get("activity", []):
-            date = item.get("date", "")
-            parsed = _month_index(date[:7]) if isinstance(date, str) else None
-            if parsed is not None:
-                months.append(parsed)
-    return max(months) if months else None
 
 
 def _clean_skills(profile: dict[str, Any]) -> set[str]:
@@ -104,10 +82,12 @@ def _transition_rows(profiles: list[dict[str, Any]]) -> tuple[list[dict[str, Any
     return transitions, sources, person_count
 
 
-def analyze_career(profiles: list[dict[str, Any]]) -> dict[str, Any]:
-    """Summarise careers without using fixture labels or guessing missing dates."""
+def analyze_career(profiles: list[dict[str, Any]], reference_month: str) -> dict[str, Any]:
+    """Use the configured reference month for every ongoing tenure."""
     ordered = sorted(profiles, key=lambda profile: str(profile["id"]))
-    observed_month = _observation_month(ordered)
+    observed_month = _month_index(reference_month)
+    if observed_month is None:
+        raise ValueError("reference_month must be YYYY-MM")
     role_rows: list[dict[str, Any]] = []
     person_rows: list[dict[str, Any]] = []
     school_counts: Counter[str] = Counter()
@@ -185,7 +165,7 @@ def analyze_career(profiles: list[dict[str, Any]]) -> dict[str, Any]:
         for profile in ordered
     ]
     return {
-        "as_of_month": _month_string(observed_month) if observed_month is not None else None,
+        "as_of_month": reference_month,
         "seniority_mapping": [{"category": label, "pattern": pattern} for label, pattern in SENIORITY_RULES],
         "roles": role_rows,
         "people": person_rows,
@@ -202,7 +182,7 @@ def analyze_career(profiles: list[dict[str, Any]]) -> dict[str, Any]:
         "skill_gap_candidates": gap_candidates,
         "common_skill_min_people": common_min_people,
         "assumptions": [
-            "Ongoing tenure ends at the latest month observed in the input data.",
+            "Ongoing tenure ends at the configured reference month.",
             "A company move requires dated, nonoverlapping successive jobs; concurrent roles are excluded.",
             "Skill gaps are missing common recorded skills, not proven skill deficiencies.",
         ],

@@ -41,9 +41,12 @@ def profiles():
 
 
 def test_career_transitions_and_skill_coverage():
-    result = analyze_career(profiles())
+    result = analyze_career(profiles(), "2024-03")
     assert normalise_seniority("Senior Engineering Manager") == "manager/director"
     assert result["as_of_month"] == "2024-03"
+    later = analyze_career(profiles(), "2026-01")
+    assert later["as_of_month"] == "2026-01"
+    assert later["roles"][1]["tenure_months"] > result["roles"][1]["tenure_months"]
     assert result["people"][0]["transition_count"] == 1
     assert result["education_schools"] == [{"school": "Fictional U", "profile_count": 2}]
     assert {row["skill"] for row in result["bus_factor_one_skills"]} == {"machine learning", "statistics", "security", "threat modeling"}
@@ -71,7 +74,7 @@ def test_similarity_is_symmetric_and_has_no_self_edges():
 
 def test_missing_data_stays_serializable():
     result = {
-        "career": analyze_career([]),
+        "career": analyze_career([], "2024-03"),
         "activity": analyze_activity([], None),
         "similarity": analyze_similarity([], {"knn_k": 3}),
     }

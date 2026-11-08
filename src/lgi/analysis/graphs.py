@@ -155,7 +155,7 @@ def build_graphs(profiles: list[dict], config: dict) -> dict:
     ids = [p["id"] for p in profiles]
     graphs = {name: _make_layer(ids) for name in LAYERS}
     threshold = config["thresholds"]
-    reference = config.get("reference_month", "2026-01")
+    reference = config["reference_month"]
     ignored_employers = _ignored_employers(profiles, float(config.get("org_ignore_employer_share", 0.8)))
     ignored_keys = {row["company"].casefold() for row in ignored_employers}
     knn_k = int(config.get("similarity_knn_k", 3))
