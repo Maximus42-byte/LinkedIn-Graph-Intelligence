@@ -4,13 +4,18 @@
 
 ## اجرا
 
-پیش‌نیاز: Python 3.11+ و `uv` با بسته‌های موجود در cache محلی. از ریشهٔ مخزن:
+پیش‌نیاز: Python 3.11+؛ نصب وابستگی‌ها با `pip` انجام می‌شود. از ریشهٔ مخزن:
 
 ```bash
-make install
+python3 --version
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 make run
 make test
 ```
+
+`make install` نیز محیط مجازی را با `python3 -m venv` می‌سازد و با `pip` نصب می‌کند. اگر `make` در دسترس نبود، `PYTHONPATH=src python -m lgi.cli run --source fixture` را اجرا کنید.
 
 `make run` بدون اینترنت کار می‌کند و منبع آن `fixture` است. برای تولید نمونهٔ بزرگ‌تر می‌توان از `.venv/bin/python` همراه `PYTHONPATH=src` و گزینهٔ `--n 50` یا `--n 500` استفاده کرد؛ اجرای تحلیل روی نمونه‌های بزرگ‌تر زمان بیشتری می‌برد. adapterهای `export` و `manual` فقط ورودی‌ای را می‌خوانند که کاربر خودش فراهم کند. adapter `live` خاموش است و فقط با `--source live --i-understand-tos` و فایل URL کاربر فعال می‌شود؛ ممکن است `robots.txt`، صفحهٔ ورود یا شرایط استفاده مانع درخواست شوند.
 

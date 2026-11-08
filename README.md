@@ -29,15 +29,25 @@ flowchart LR
 
 ## Quick start
 
-Python 3.11+ and `uv` are required; the Makefile defaults to Python 3.12 (`make install PYTHON_VERSION=3.11` selects 3.11 when available). Dependency installation uses `uv --offline`; packages must already be in the local cache or supplied by your own package source. The pipeline and tests themselves need no internet.
+From the repository root, check that `python3 --version` reports Python 3.11 or newer, then create and activate a virtual environment. Installation uses plain pip. Once dependencies are installed, the fixture pipeline and tests run without internet access.
 
 ```bash
-make install
+python3 --version
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 make run
 make test
 ```
 
-The measured warm-cache run in this workspace took **0.02 seconds** for `make install`, **12.28 seconds** for `make run`, and **14.40 seconds** for `make test` (all tests passed). Times depend on the machine and cache. `make fixtures` regenerates the committed-size synthetic fixture set from the configured seed. `make clean` removes derived profiles and output files; `make run` recreates them.
+`make install` performs the same virtual-environment creation and pip installation, with an explicit error if `python3` is older than 3.11. If `make` is unavailable, use these commands in the activated environment:
+
+```bash
+PYTHONPATH=src python -m lgi.cli run --source fixture
+PYTHONPATH=src python -m pytest -q
+```
+
+Installation time depends on the package source and whether wheels are cached. The fixture run and test suite each took about 15 seconds in this workspace; other machines may differ. `make fixtures` regenerates the committed-size synthetic fixture set from the configured seed. `make clean` removes derived profiles and output files; `make run` recreates them.
 
 ## Repository and outputs
 
@@ -64,7 +74,7 @@ The measured warm-cache run in this workspace took **0.02 seconds** for `make in
 | Validation | Configured edge perturbations, degree-preserving and G(n,m) nulls, layer ablation, Dirichlet weight draws, fixture-only ground-truth ARI/NMI. Average ranks and inclusive tied top-k cutoffs prevent arbitrary ID ordering in stability checks. |
 | Other findings | Rule-based seniority and transitions, education and skill co-occurrence, recorded-skill gaps and single-holder skills; post NMF topics, engagement comparison and topic/lexical consistency; cosine/Jaccard matrices and a k-nearest-colleagues graph. |
 
-`sentence-transformers` is optional in [`requirements-optional.txt`](requirements-optional.txt). Only a model already available at the configured local path is considered; the default fallback is TF-IDF + TruncatedSVD (LSA), with no download.
+`requirements.txt` is the single dependency list. `sentence-transformers` can be installed separately with pip if needed; only a model already available at the configured local path is considered. The default fallback is TF-IDF + TruncatedSVD (LSA), with no download.
 
 ## Results excerpt from the generated report
 

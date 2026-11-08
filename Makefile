@@ -1,12 +1,11 @@
 PYTHON := .venv/bin/python
-UV := uv
-PYTHON_VERSION ?= 3.12
 
 .PHONY: install fixtures run test clean
 
 install:
-	test -x $(PYTHON) || $(UV) venv --offline --python $(PYTHON_VERSION) .venv
-	$(UV) pip install --offline --python $(PYTHON) -r requirements.txt
+	@python3 -c 'import sys; version = sys.version_info; sys.exit("Python 3.11 or newer is required; found %s.%s." % version[:2] if version < (3, 11) else 0)'
+	python3 -m venv .venv
+	$(PYTHON) -m pip install -r requirements.txt
 
 fixtures:
 	PYTHONPATH=src $(PYTHON) -m lgi.fixtures_gen.generator --n 10
