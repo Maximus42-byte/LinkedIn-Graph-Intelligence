@@ -12,9 +12,27 @@ from lgi.report import _table
 SECTIONS = ("basic", "experience", "education", "skills", "interests", "activity")
 
 
+def combined_graph_composition_rows(bundle: dict, weights: dict[str, float]) -> list[dict]:
+    """Show each layer's maximum contribution after the real combination rules."""
+    equal_weight = 1.0 / len(weights)
+    rows = []
+    for layer, manual_weight in weights.items():
+        edge_count = bundle["graphs"][layer].number_of_edges()
+        active = edge_count > 0
+        rows.append({
+            "layer": layer,
+            "edges": edge_count,
+            "manual_effective_weight": manual_weight if active else 0.0,
+            "equal_effective_weight": equal_weight if active else 0.0,
+            "status": "entered both combined graphs" if active else "empty; skipped",
+        })
+    return rows
+
+
 def write_real_tables(
     profiles: list[dict], bundle: dict, centrality: dict, clustering: dict,
     validation: dict, output: Path, *, anonymised: bool, raw_profiles: list[dict],
+    weights: dict[str, float],
 ) -> dict[str, str]:
     """Use the synthetic report's table writer, with real-source values only."""
     tables = output / "tables"
@@ -59,6 +77,11 @@ def write_real_tables(
     add("graph_stats", graph_rows, [
         ("layer", "Layer"), ("nodes", "Nodes"), ("edges", "Edges"), ("density", "Density"),
         ("components", "Components"), ("mean_edge_weight", "Mean edge weight"),
+    ])
+    add("combined_graph_composition", combined_graph_composition_rows(bundle, weights), [
+        ("layer", "Layer"), ("edges", "Edges"),
+        ("manual_effective_weight", "Manual effective weight"),
+        ("equal_effective_weight", "Equal effective weight"), ("status", "Status"),
     ])
     names = {p["id"]: p["basic"]["name"] for p in profiles}
     people = []

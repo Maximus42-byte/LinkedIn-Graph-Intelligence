@@ -9,12 +9,14 @@ import subprocess
 from types import SimpleNamespace
 from unittest.mock import Mock
 
+import networkx as nx
 import pytest
 
 from lgi.analysis.graphs import build_graphs
 from lgi.config import load_config
 from lgi.real_coverage import apply_real_coverage
 from lgi.real_pipeline import run_real_pipeline
+from lgi.real_tables import combined_graph_composition_rows
 from lgi.schema import empty_profile, validate_profile
 from lgi.secrets import anonymise_profile, load_secrets, pseudonym
 from lgi.sources.export import ExportAdapter
@@ -257,6 +259,7 @@ def test_real_openalex_pipeline_has_coauthor_layer_and_no_key(tmp_path: Path, mo
         "graph_stats", "clustering_quality", "clustering_pairwise", "k_selection",
         "stability_summary", "rank_intervals", "null_models", "ablation",
         "coverage", "key_people", "method_agreement", "all_centrality_correlations", "all_people",
+        "combined_graph_composition",
     ):
         assert (table_dir / f"{name}.csv").exists(), name
     with (table_dir / "graph_stats.csv").open(newline="") as handle:
@@ -275,6 +278,17 @@ def test_real_openalex_pipeline_has_coauthor_layer_and_no_key(tmp_path: Path, mo
     assert "Skipped analyses and evidence:" in report
     assert "Skill co-occurrence, skill-gap and bus-factor tables" in report
     assert "Nearest-colleague table and similarity heatmaps" in report
+    composition_section = report.split("## Combined graph composition\n", 1)[1].split("\n## ", 1)[0]
+    with (table_dir / "combined_graph_composition.csv").open(newline="") as handle:
+        composition = {row["layer"]: row for row in csv.DictReader(handle)}
+    assert set(composition) == {*config["layer_weights"], "coauthor"}
+    assert {name for name, row in composition.items() if row["status"] == "entered both combined graphs"} == {"skill", "coauthor"}
+    assert float(composition["skill"]["manual_effective_weight"]) == config["layer_weights"]["skill"]
+    assert float(composition["coauthor"]["manual_effective_weight"]) == config["real"]["coauthor_weight"]
+    assert float(composition["skill"]["equal_effective_weight"]) == pytest.approx(1 / len(composition))
+    assert all(float(row["manual_effective_weight"]) == 0 for row in composition.values() if row["status"] == "empty; skipped")
+    assert "| coauthor | 1 | 0.250 | 0.167 | entered both combined graphs |" in composition_section
+    assert "| edu | 0 | 0.000 | 0.000 | empty; skipped |" in composition_section
     assert len(graph["layers"]["coauthor"]["links"]) == 1
     assert graph["layers"]["coauthor"]["links"][0]["weight"] == 1.0
     assert json.loads((repo / "output_real/validation.json").read_text())["ground_truth"] is None
@@ -324,3 +338,18 @@ def test_empty_real_sections_are_uncovered_with_specific_warnings() -> None:
     anonymised_missing_fields = anonymise_profile(profile, b"fictional-salt")
     assert not anonymised_missing_fields["coverage"]["skills"]
     assert not anonymised_missing_fields["coverage"]["activity"]
+
+
+def test_combined_graph_composition_scales_only_layers_with_edges() -> None:
+    present = nx.Graph()
+    present.add_edge("a", "b", weight=42.0)
+    empty = nx.Graph()
+    empty.add_nodes_from(("a", "b"))
+    rows = combined_graph_composition_rows(
+        {"graphs": {"org": present, "edu": empty, "coauthor": present}},
+        {"org": 0.2, "edu": 0.3, "coauthor": 0.5},
+    )
+    assert [row["layer"] for row in rows] == ["org", "edu", "coauthor"]
+    assert [row["manual_effective_weight"] for row in rows] == [0.2, 0.0, 0.5]
+    assert [row["equal_effective_weight"] for row in rows] == pytest.approx([1 / 3, 0.0, 1 / 3])
+    assert rows[1]["status"] == "empty; skipped"

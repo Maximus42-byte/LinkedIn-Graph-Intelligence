@@ -123,11 +123,18 @@ def _report(
         "",
         _table(["Source field warning", "Profiles"], [[warning, count] for warning, count in sorted(warnings.items())]),
         "",
-        "## Graph and people",
+        "## Graph statistics",
         "",
         rendered_tables["graph_stats"],
         "",
-        "Combined graph weights use the configured layer weights and per-layer maximum normalisation.",
+        "## Combined graph composition",
+        "",
+        rendered_tables["combined_graph_composition"],
+        "",
+        "Effective weights are the maximum contribution of a layer to one edge after normalisation. Manual edges are divided by the layer maximum; equal-scheme edges use min-max normalisation, or 1 when all layer edges have the same weight.",
+        "Empty layers contribute zero to both combined graphs, and their configured coefficients are not redistributed to active layers.",
+        "",
+        "## Key people",
         "",
         rendered_tables["key_people"],
         "",
@@ -291,7 +298,7 @@ def run_real_pipeline(args, config: dict) -> None:
     write_graph_json(bundle, output / "graph.json", metrics=centrality["metrics"], roles=centrality["roles"], clusters=clustering["labels"])
     rendered_tables = write_real_tables(
         profiles, bundle, centrality, clustering, validation, output,
-        anonymised=anon, raw_profiles=raw_profiles,
+        anonymised=anon, raw_profiles=raw_profiles, weights=weights,
     )
     _csv(output / "tables/seniority.csv", ["seniority", "people"], [
         {"seniority": label, "people": count} for label, count in sorted(seniority.items())
