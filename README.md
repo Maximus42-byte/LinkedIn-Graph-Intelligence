@@ -11,7 +11,8 @@ An offline-first Python demonstration that parses profile sections, stores valid
 | Adapter | Basic | Experience | Education | Skills | Interests | Activity | Source and limits |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `fixture` (default) | Complete | Complete | Complete | Complete | Complete | Complete | Generated, visibly synthetic HTML; parsed, not copied directly from generator records. |
-| `export` | Owner if supplied; connection stubs partial | Owner if dated positions supplied | Owner if supplied | Owner if supplied | Unavailable | Unavailable | Official export CSVs from the user's own account. Connection rows expose only name, company and position, so coverage stays false for missing fields. |
+| `export` (opt-in) | Owner if supplied; connection stubs partial | Owner dated positions; stubs have undated employer/title with false coverage | Owner if supplied | Owner if supplied | Owner if matching file exists | Owner if Shares, Comments or Reactions files provide dates | Owner-downloaded account CSVs. Connection stubs expose only supplied fields; other sections remain uncovered. |
+| `openalex` (opt-in) | Author name and ID; partial | Affiliation years only; job title unavailable | Unavailable | Derived author topics | Unavailable | Dated publications, not reactions | Official OpenAlex API; **not LinkedIn data**. |
 | `manual` | As supplied | As supplied | As supplied | As supplied | As supplied | As supplied | User-created schema JSON; validation rejects malformed records. |
 | `live` (opt-in) | Publicly visible fields only | If visible | If visible | If visible | If visible | If visible | Code exists but was tested only with mocked HTTP. Robots disallow, an authwall, or missing sections yield false coverage and warnings. |
 
@@ -122,11 +123,34 @@ PYTHONPATH=src .venv/bin/python -m lgi.cli run --source fixture --n 50
 PYTHONPATH=src .venv/bin/python -m lgi.cli run --source fixture --n 500
 ```
 
-For an official export of **your own account**, place `Profile.csv`, `Positions.csv`, `Education.csv`, `Skills.csv` and `Connections.csv` in `data/export/`, then run:
+## Real data (opt-in, local outputs)
+
+The default `make run` remains offline and synthetic. Neither real mode reads the fixture labels or changes committed files under `data/profiles.*` or `output/`. Both write profiles to `data/real_profiles.json` and reports, graphs, validation and tables to `output_real/`. These paths, the raw input directory and API cache are gitignored. No real source was run during development; tests use fictional CSVs and mocked HTTP.
+
+Copy the template to the ignored secrets path and edit it locally. For OpenAlex, obtain your own free key through the [official authentication instructions](https://help.openalex.org/api/authentication/). Check the [current API terms and limits](https://help.openalex.org/api/authentication/) before use. Never commit the secrets file or paste the key in a public issue, log or message. The `anon_salt` field is optional; if empty, the program creates a stable random salt in an ignored file. Keep that file private and backed up if you need repeatable pseudonyms. On Unix, use `chmod 600` for the secrets file.
+
+```bash
+mkdir -p data/real
+cp secrets.example.json data/real/secrets.json
+chmod 600 data/real/secrets.json
+```
+
+For an official LinkedIn export **downloaded by the account owner**, put the CSV files in `data/real/export/`, then run `make run-export` or:
 
 ```bash
 PYTHONPATH=src .venv/bin/python -m lgi.cli run --source export
 ```
+
+The adapter detects actual CSV headers after optional note lines and logs the files and columns it found. It maps owner profile, positions, education, skills, and any matching interests or dated Shares, Comments and Reactions files. Connections become honest stubs with a structured connected date and undated employer/title; the graph links connections to each other when their fields support it. Connection data describes other people and must stay local.
+
+For OpenAlex, set `openalex_api_key` in the local secrets JSON, then provide an institution name or OpenAlex ID. The CLI uses the official API and a capped request budget. It caches raw responses in `data/real/openalex_cache/`; reruns use cached responses without further requests unless `--refresh` is set. The API uses the documented [author and work filters](https://help.openalex.org/api/filtering/) and [100-record pages](https://help.openalex.org/api/paging/). **OpenAlex is publication metadata, not LinkedIn data.**
+
+```bash
+make run-openalex INSTITUTION="Your institution name"
+PYTHONPATH=src .venv/bin/python -m lgi.cli run --source openalex --institution "Your institution name" --year-from 2020 --max-authors 30 --max-requests 20
+```
+
+Use `--secrets /path/to/ignored/secrets.json` to select another ignored JSON file. OpenAlex refuses a missing or placeholder key before any request. Anonymisation is **on by default** for both real modes: keyed hashes replace names, URLs, employers, institutions and skill/topic labels, while prose and titles are removed. Shared hashed values can still form graph edges. Text-dependent analyses are skipped; the real report names the missing evidence. `--no-anonymise` permits local identifiable output only when you intentionally need title-based analysis. Treat the input, cache, salt and real outputs as private, including when anonymised.
 
 For manual input, put one or more JSON files conforming to [`schema.py`](src/lgi/schema.py) in `data/manual/`. Optional `--anonymise` replaces only names and profile URLs with stable hashes; inspect or remove identifying free text yourself.
 

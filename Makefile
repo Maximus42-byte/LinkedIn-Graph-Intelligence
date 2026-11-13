@@ -1,6 +1,6 @@
 PYTHON := .venv/bin/python
 
-.PHONY: install fixtures run test clean
+.PHONY: install fixtures run run-export run-openalex test clean
 
 install:
 	@python3 -c 'import sys; version = sys.version_info; sys.exit("Python 3.11 or newer is required; found %s.%s." % version[:2] if version < (3, 11) else 0)'
@@ -12,6 +12,13 @@ fixtures:
 
 run:
 	PYTHONPATH=src $(PYTHON) -m lgi.cli run --source fixture
+
+run-export:
+	PYTHONPATH=src $(PYTHON) -m lgi.cli run --source export
+
+run-openalex:
+	@test -n "$(INSTITUTION)" || (echo 'Set INSTITUTION, for example: make run-openalex INSTITUTION="Example University"' >&2; exit 2)
+	PYTHONPATH=src $(PYTHON) -m lgi.cli run --source openalex --institution "$(INSTITUTION)"
 
 test:
 	PYTHONPATH=src $(PYTHON) -m pytest -q

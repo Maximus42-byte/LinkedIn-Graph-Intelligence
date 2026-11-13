@@ -53,3 +53,7 @@ live:
   jitter_seconds: 0.5
   max_attempts: 3
   backoff_seconds: 1.0
+
+real:
+  coauthor_weight: 0.25
+  export_ignore_employer_share: 1.0

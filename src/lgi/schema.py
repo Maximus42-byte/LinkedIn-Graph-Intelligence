@@ -7,7 +7,7 @@ import re
 from typing import Any
 
 SECTIONS = ("basic", "experience", "education", "skills", "interests", "activity")
-SOURCES = {"fixture", "export", "manual", "live"}
+SOURCES = {"fixture", "export", "manual", "live", "openalex"}
 BASIC_KEYS = {"name", "headline", "location", "summary", "profile_url"}
 EXPERIENCE_KEYS = {"company", "title", "start", "end", "location", "description"}
 EDUCATION_KEYS = {"school", "degree", "field", "start_year", "end_year"}
@@ -48,7 +48,13 @@ def _month(value: Any, where: str) -> None:
 
 def validate_profile(profile: dict[str, Any]) -> dict[str, Any]:
     """Reject malformed values before they can corrupt graph calculations."""
-    _keys(profile, {"id", "source", *SECTIONS, "coverage", "warnings"}, "profile")
+    required = {"id", "source", *SECTIONS, "coverage", "warnings"}
+    if set(profile) not in (required, required | {"connected_date"}):
+        raise ValueError("profile has unexpected keys")
+    if "connected_date" in profile:
+        _string(profile["connected_date"], "connected_date")
+        if profile["connected_date"]:
+            date.fromisoformat(profile["connected_date"])
     _string(profile["id"], "id")
     if not profile["id"]:
         raise ValueError("id cannot be empty")
@@ -64,7 +70,10 @@ def validate_profile(profile: dict[str, Any]) -> dict[str, Any]:
         _keys(row, EXPERIENCE_KEYS, "experience row")
         for key in EXPERIENCE_KEYS - {"end"}:
             _string(row[key], f"experience.{key}")
-        _month(row["start"], "experience.start")
+        if row["start"] != "":
+            _month(row["start"], "experience.start")
+        elif profile["source"] != "export" or profile["coverage"]["experience"]:
+            raise ValueError("undated experience is allowed only on incomplete export stubs")
         if row["end"] is not None:
             _month(row["end"], "experience.end")
             if row["end"] < row["start"]:
@@ -91,7 +100,7 @@ def validate_profile(profile: dict[str, Any]) -> dict[str, Any]:
             date.fromisoformat(row["date"])
         except ValueError as error:
             raise ValueError("activity.date must be YYYY-MM-DD") from error
-        if row["type"] not in {"post", "share", "comment"}:
+        if row["type"] not in {"post", "share", "comment", "reaction", "publication"}:
             raise ValueError("invalid activity type")
         if type(row["reaction_count"]) is not int or row["reaction_count"] < 0:
             raise ValueError("reaction_count must be nonnegative")

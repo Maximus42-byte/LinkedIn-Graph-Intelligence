@@ -315,9 +315,10 @@ def _null_models(graph: nx.Graph, config: dict[str, Any], seed: int) -> dict[str
 
 def _ablation(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, baseline_ranks: dict[str, float], baseline_labels: dict[str, int]) -> dict[str, Any]:
     ids = sorted(graphs["combined_manual"].nodes)
-    base_weights = {layer: float(config["layer_weights"][layer]) for layer in LAYERS}
+    layers = tuple(config.get("validation_layers", LAYERS))
+    base_weights = {layer: float(config["layer_weights"][layer]) for layer in layers}
     result: dict[str, Any] = {}
-    for layer in LAYERS:
+    for layer in layers:
         weights = {name: (0.0 if name == layer else value) for name, value in base_weights.items()}
         reduced = combine_with_weights(graphs, weights)
         _, measures = _ranking(reduced, seed)
@@ -335,7 +336,8 @@ def _ablation(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, ba
 def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], seed: int, baseline_ranks: dict[str, float], baseline_labels: dict[str, int]) -> dict[str, Any]:
     iterations = max(0, int(config.get("weight_iterations", 100)))
     concentration = float(config.get("weight_dirichlet_concentration", 20.0))
-    manual = np.array([float(config["layer_weights"][name]) for name in LAYERS], dtype=float)
+    layers = tuple(config.get("validation_layers", LAYERS))
+    manual = np.array([float(config["layer_weights"][name]) for name in layers], dtype=float)
     manual = manual / manual.sum()
     alpha = np.maximum(manual * concentration, 1e-6)
     rng = np.random.default_rng(seed + 307)
@@ -350,7 +352,7 @@ def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], see
     ranks: dict[str, list[float]] = {pid: [] for pid in ids}
     for iteration in range(iterations):
         sample = rng.dirichlet(alpha)
-        weighted = combine_with_weights(graphs, dict(zip(LAYERS, sample)))
+        weighted = combine_with_weights(graphs, dict(zip(layers, sample)))
         _, measures = _ranking(weighted, seed + iteration + 1)
         candidate_ranks = measures["aggregate_rank"]
         labels = _communities(weighted, seed + iteration + 1)
@@ -367,7 +369,7 @@ def _weight_sensitivity(graphs: dict[str, nx.Graph], config: dict[str, Any], see
     return {
         "iterations": iterations,
         "dirichlet_concentration": concentration,
-        "baseline_weights": dict(zip(LAYERS, [float(value) for value in manual])),
+        "baseline_weights": dict(zip(layers, [float(value) for value in manual])),
         "kendall_tau_mean": float(np.mean(taus)) if taus else None,
         "kendall_tau_interval": _quantiles(taus),
         "cluster_ari_interval": _quantiles(aris),

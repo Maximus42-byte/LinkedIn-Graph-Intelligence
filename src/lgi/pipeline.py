@@ -52,6 +52,10 @@ def _process(profiles: list[dict], config: dict, ground_truth_path: Path | None 
 def run_pipeline(args) -> None:
     """Keep generated scale runs isolated from the committed default fixtures."""
     config = load_config(args.config)
+    if args.source in {"export", "openalex"}:
+        from lgi.real_pipeline import run_real_pipeline
+        run_real_pipeline(args, config)
+        return
     if args.source == "fixture":
         if args.n == 10:
             profiles = list(FixtureAdapter(_path(config, "fixtures")).iter_profiles())

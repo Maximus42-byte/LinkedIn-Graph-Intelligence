@@ -12,7 +12,7 @@ A producer would enqueue profile URLs. Workers would fetch, parse, and write by 
 
 ## C. Storage strategy at scale
 
-Immutable raw HTML would live in object storage such as S3/MinIO so a schema or parser change can trigger re-parsing. Normalised, schema-versioned profiles would live in PostgreSQL or MongoDB. Neo4j could serve interactive graph traversal; an edge list in Parquet is simpler for batch analysis. Parquet/lakehouse tables would support analytical scans. Real-person retention would need minimisation, access control, deletion requests, and removal of raw as well as derived records. This repository stores only synthetic default data.
+Immutable raw HTML would live in object storage such as S3/MinIO so a schema or parser change can trigger re-parsing. Normalised, schema-versioned profiles would live in PostgreSQL or MongoDB. Neo4j could serve interactive graph traversal; an edge list in Parquet is simpler for batch analysis. Parquet/lakehouse tables would support analytical scans. Real-person retention would need minimisation, access control, deletion requests, and removal of raw as well as derived records. The committed default data are synthetic; opt-in real runs use ignored local paths.
 
 ## D. Analysis design and assumptions
 
@@ -33,3 +33,11 @@ At a much larger scale, sparse matrices, approximate betweenness, Leiden communi
 ## E. Next steps outside this brief
 
 A dashboard/API, a real queue and databases, and richer job-title NER could be added after permissions, data rights, and evaluation on an authorised dataset are established. They are not implemented here.
+
+## F. Opt-in real sources
+
+Owner-downloaded LinkedIn CSVs are read from `data/real/export/`; the export adapter discovers headers after note lines, records which columns were present, and never supplies missing dates. Connection rows are stubs and receive undated shared-employer weight 1 when a company matches. The real export uses `real.export_ignore_employer_share: 1.0` so connection-to-connection ties are retained; the synthetic threshold is unchanged. Connection-only graph statistics appear in the separate real report. The source has no fixture ground truth.
+
+OpenAlex uses an owner-supplied key from an ignored JSON file, official API requests only, a request cap, retries on 429/5xx, and an ignored raw response cache. Author selection sorts by works count and then ID. Publications supply coauthorship counts and title text when anonymisation is off. Topics are derived, not declared skills; affiliation years are observations, not job dates. The real coauthor weight is `real.coauthor_weight: 0.25`; synthetic layer weights and output are unchanged. No live OpenAlex API call was made here.
+
+Real runs write only `data/real_profiles.json`, `output_real/`, and the ignored `data/real/` cache/salt. Anonymisation is on by default and uses persistent HMAC salt so equal employer, institution and skill labels remain equal after hashing. It strips prose and titles, which removes semantic/title evidence and limits interpretation of feature clusters. A user can opt out with `--no-anonymise` only for local use. The key is never put into reports or cache; the CLI refuses a missing, placeholder, or git-visible secret file. The operator must retain or delete inputs, cache and derived real data according to the participants' privacy rights.

@@ -23,6 +23,8 @@ def _month_number(value: str) -> int:
 
 
 def _overlap_months(a: dict, b: dict, reference: str) -> int:
+    if not a["start"] or not b["start"]:
+        return 1
     first = max(_month_number(a["start"]), _month_number(b["start"]))
     last = min(_month_number(a["end"] or reference), _month_number(b["end"] or reference))
     return max(0, last - first + 1)
@@ -109,7 +111,8 @@ def _combine(graphs: dict[str, nx.Graph], weights: dict[str, float], scheme: str
     ids = sorted(next(iter(graphs.values())).nodes)
     result = _make_layer(ids)
     normalised: dict[str, dict[tuple[str, str], float]] = {}
-    for layer in LAYERS:
+    layers = tuple(layer for layer in weights if layer in graphs)
+    for layer in layers:
         edges = {(min(a, b), max(a, b)): float(data["weight"]) for a, b, data in graphs[layer].edges(data=True)}
         values = list(edges.values())
         if not values:
@@ -122,7 +125,7 @@ def _combine(graphs: dict[str, nx.Graph], weights: dict[str, float], scheme: str
             normalised[layer] = {edge: value / high for edge, value in edges.items()}
     all_edges = set().union(*(set(edges) for edges in normalised.values()))
     for edge in sorted(all_edges):
-        score = sum(weights[layer] * normalised[layer].get(edge, 0.0) for layer in LAYERS)
+        score = sum(weights[layer] * normalised[layer].get(edge, 0.0) for layer in layers)
         if score > 0:
             result.add_edge(*edge, weight=round(score, 12))
     return result
@@ -144,8 +147,10 @@ def _bipartite(profiles: list[dict]) -> tuple[nx.Graph, nx.Graph, nx.Graph]:
             bipartite.add_edge(person, node, weight=1.0)
     people = [node for node, data in bipartite.nodes(data=True) if data["kind"] == "person"]
     skills = [node for node, data in bipartite.nodes(data=True) if data["kind"] == "skill"]
-    person_projection = nx.bipartite.weighted_projected_graph(bipartite, people)
-    skill_projection = nx.bipartite.weighted_projected_graph(bipartite, skills)
+    person_projection = nx.bipartite.weighted_projected_graph(bipartite, people) if skills else nx.Graph()
+    person_projection.add_nodes_from(people)
+    skill_projection = nx.bipartite.weighted_projected_graph(bipartite, skills) if people and skills else nx.Graph()
+    skill_projection.add_nodes_from(skills)
     return bipartite, person_projection, skill_projection
 
 
@@ -165,8 +170,12 @@ def build_graphs(profiles: list[dict], config: dict) -> dict:
     skill_docs = [" ".join(sorted(values)) or "empty" for values in skill_sets]
     skill_tfidf = TfidfVectorizer(ngram_range=(1, 2)).fit_transform(skill_docs)
     skill_cosine = cosine_similarity(skill_tfidf)
-    semantic_texts = [" ".join([p["basic"]["headline"], p["basic"]["summary"], *[job["title"] for job in p["experience"]]]) for p in profiles]
-    semantic, semantic_tfidf, embedding_method = semantic_similarity(semantic_texts, config)
+    semantic_texts = [" ".join([p["basic"]["headline"], p["basic"]["summary"], *[job["title"] for job in p["experience"]], *[item["text"] for item in p["activity"] if item["type"] == "publication"]]) for p in profiles]
+    if any(text.strip() for text in semantic_texts):
+        semantic, semantic_tfidf, embedding_method = semantic_similarity(semantic_texts, config)
+    else:
+        semantic = semantic_tfidf = np.zeros((len(profiles), len(profiles)))
+        embedding_method = "none (no role or summary text)"
     for i, a in enumerate(profiles):
         for j in range(i + 1, len(profiles)):
             b = profiles[j]

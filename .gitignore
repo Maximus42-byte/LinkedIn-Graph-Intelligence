@@ -6,3 +6,8 @@
 data/raw/
 data/manual/
 data/export/
+data/real/
+data/real_profiles.json
+output_real/
+secrets.json
+*salt*
