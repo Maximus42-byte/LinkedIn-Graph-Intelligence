@@ -14,7 +14,7 @@ def test_export_owner_and_connection_stub() -> None:
     assert profiles[0]['coverage']['skills']
     assert profiles[1]['basic']['headline'] == 'Synthetic Engineer at Imaginary Cloud Works'
     assert not profiles[1]['coverage']['experience']
-    assert not profiles[1]['coverage']['basic']
+    assert profiles[1]['coverage']['basic']
 
 
 def test_manual_anonymisation_is_stable(tmp_path: Path) -> None:

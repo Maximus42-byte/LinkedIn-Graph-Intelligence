@@ -16,6 +16,7 @@ from lgi.analysis.centrality import analyze_centrality
 from lgi.analysis.clustering import cluster_profiles
 from lgi.analysis.graphs import _add_knn, _combine, build_graphs, write_graph_json
 from lgi.analysis.validation import validate_analysis
+from lgi.real_tables import write_real_tables
 from lgi.secrets import anonymise_profile, load_secrets, pseudonym
 from lgi.sources.export import ExportAdapter
 from lgi.sources.openalex import OpenAlexAdapter
@@ -77,23 +78,30 @@ def _report(
     institution: str = "",
     seniority: Counter[str] | None = None,
     connection_ids: set[str] | None = None,
+    rendered_tables: dict[str, str],
 ) -> None:
     graph = bundle["graphs"]["combined_manual"]
-    sections = ("basic", "experience", "education", "skills", "interests", "activity")
-    coverage = [
-        {"section": section, "covered": sum(p["coverage"][section] for p in profiles), "total": len(profiles)}
-        for section in sections
-    ]
     companies = Counter(
         job["company"] for p in profiles if connection_ids is None or p["id"] in connection_ids
         for job in p["experience"] if job["company"]
     )
-    ranking = centrality["aggregate"][:10]
-    rank_rows = [[row["rank"], row["id"], ", ".join(row["roles"]), f"{centrality['metrics'][row['id']]['weighted_degree']:.3f}"] for row in ranking]
     community = clustering["labels"].get("louvain", {})
     community_rows = [[pid, label] for pid, label in sorted(community.items())]
-    pairwise = sorted(clustering["comparisons"], key=lambda row: (-row["ari"], row["method_a"], row["method_b"]))[:10]
-    pair_rows = [[row["method_a"], row["method_b"], f"{row['ari']:.3f}", f"{row['nmi']:.3f}"] for row in pairwise]
+    warnings = Counter(warning for profile in profiles for warning in profile["warnings"])
+    _csv(path.parent / "tables/source_warnings.csv", ["warning", "profiles"], [
+        {"warning": warning, "profiles": count} for warning, count in sorted(warnings.items())
+    ])
+    _csv(path.parent / "tables/communities.csv", ["id", "louvain_community"], [
+        {"id": pid, "louvain_community": label} for pid, label in sorted(community.items())
+    ])
+    _csv(path.parent / "tables/top_companies.csv", ["company", "profile_records"], [
+        {"company": name, "profile_records": count} for name, count in companies.most_common(10)
+    ])
+    publication_dates = {
+        item["post_id"]: item["date"]
+        for profile in profiles for item in profile["activity"]
+        if item["type"] == "publication"
+    }
     stability = validation["perturbation"]
     nulls = validation["null_models"]
     abr = validation["ablation"]
@@ -108,17 +116,24 @@ def _report(
         "",
         "## Coverage",
         "",
-        _table(["Section", "Covered", "Participants"], [[row["section"], row["covered"], row["total"]] for row in coverage]),
+        rendered_tables["coverage"],
         "",
-        "Coverage means the source supplied that section completely enough for this schema. False coverage does not mean the person lacks the attribute.",
+        "Coverage means at least one identifying record was supplied for a section; optional text is not required. False coverage does not mean the person lacks the attribute.",
+        "The text-removal column reports when supplied prose was removed by anonymisation, separately from coverage. Hashed names, employers, institutions and publication IDs still count as identifying fields.",
+        "",
+        _table(["Source field warning", "Profiles"], [[warning, count] for warning, count in sorted(warnings.items())]),
         "",
         "## Graph and people",
         "",
-        _table(["Layer", "Edges"], [[name, item.number_of_edges()] for name, item in sorted(bundle["graphs"].items())]),
+        rendered_tables["graph_stats"],
         "",
         "Combined graph weights use the configured layer weights and per-layer maximum normalisation.",
         "",
-        _table(["Rank", "ID", "Roles", "Weighted degree"], rank_rows),
+        rendered_tables["key_people"],
+        "",
+        "## Centrality method agreement",
+        "",
+        rendered_tables["method_agreement"],
         "",
         _table(["ID", "Louvain community"], community_rows),
         "",
@@ -134,9 +149,21 @@ def _report(
         "",
         "## Clustering and validation",
         "",
-        _table(["Method A", "Method B", "ARI", "NMI"], pair_rows),
+        rendered_tables["k_selection"],
         "",
+        rendered_tables["clustering_quality"],
+        "",
+        "All pairwise clustering results are in tables/clustering_pairwise.csv.",
         "These ARI/NMI values compare computed partitions with each other. No real-data ground truth was supplied, so ground-truth ARI/NMI was skipped.",
+        "",
+        rendered_tables["stability_summary"],
+        "",
+        rendered_tables["rank_intervals"],
+        "",
+        rendered_tables["null_models"],
+        "",
+        rendered_tables["ablation"],
+        "",
         f"Edge perturbation: {stability['iterations']} draws; exact top-three retention {stability['top3_set_retention']}; mean overlap {stability['top3_mean_overlap']}; top-one retention {stability['top1_set_retention']}.",
         f"Weight sensitivity: {sensitivity['iterations']} draws; exact top-three retention {sensitivity['top3_set_retention']}; median cluster ARI {sensitivity['cluster_ari_interval'][1] if sensitivity['cluster_ari_interval'] else 'undefined'}.",
         f"Null models: {nulls['degree_preserving']['samples']} degree-preserving samples and {nulls['gnm']['samples']} G(n,m) samples. {nulls['caveat']}",
@@ -159,9 +186,31 @@ def _report(
             "OpenAlex data is publication metadata, not LinkedIn profile data. Topics are derived, not declared skills; affiliation years are not employment dates.",
             "Education and interests are unavailable. Publications are not reactions and citation counts are not reactions.",
             "The selected author and work sample can omit collaborations outside the request budget and year window.",
+            f"Publication dates are copied unchanged from OpenAlex publication_date. Among {len(publication_dates)} distinct selected works, {sum(day.endswith('-01') for day in publication_dates.values())} have day 01. This pipeline cannot determine whether those first-of-month dates are exact or reflect upstream date precision.",
         ])
+    lines.append("Skipped analyses and evidence:")
     if anonymised:
-        lines.append("Free-text and title-dependent layers were skipped because anonymisation removed that text.")
+        lines.append("- Role and work-title semantic similarity: anonymisation removed titles and other prose. Hashed categories still support exact-overlap comparisons.")
+    if not bundle["graphs"]["edu"].number_of_edges():
+        lines.append("- Education overlap graph: no pair had usable shared education evidence.")
+    if not bundle["graphs"]["activity"].number_of_edges():
+        lines.append("- Engagement graph: no participant-to-participant engager IDs were supplied.")
+    if source == "export":
+        lines.extend([
+            "- Career tenure, transitions and talent-source table: connection stubs lack employment dates.",
+            "- Skill co-occurrence, skill-gap and bus-factor tables: connection stubs lack declared skills.",
+            "- Activity topics, engagement-person table and post/skill consistency: connection stubs lack post activity and declared skills.",
+        ])
+    else:
+        lines.extend([
+            "- Job-title seniority, career transitions and talent-source table: OpenAlex supplies affiliation observations, not job titles or employment dates.",
+            "- Skill co-occurrence, skill-gap and bus-factor tables: OpenAlex topics are derived labels, not declared skills.",
+            "- Activity topics, engagement-person table and post/skill consistency: publications are not social posts, and no participant engagement IDs are supplied.",
+        ])
+    lines.extend([
+        "- Nearest-colleague table and similarity heatmaps: the real pipeline builds graph similarities but does not run the separate talent-matching analysis.",
+        "- Synthetic ground-truth table: no real reference labels were supplied.",
+    ])
     lines.extend(bundle["warnings"])
     lines.extend(clustering["warnings"])
     lines.extend(["", "This report describes only fields observed in this real-data run. It is separate from the committed synthetic report."])
@@ -240,17 +289,20 @@ def run_real_pipeline(args, config: dict) -> None:
     _write_json(output / "validation.json", validation)
     _write_json(output / "clustering.json", clustering)
     write_graph_json(bundle, output / "graph.json", metrics=centrality["metrics"], roles=centrality["roles"], clusters=clustering["labels"])
-    coverage = [{"section": section, "covered": sum(p["coverage"][section] for p in profiles), "participants": len(profiles)}
-                for section in ("basic", "experience", "education", "skills", "interests", "activity")]
-    _csv(output / "tables/coverage.csv", ["section", "covered", "participants"], coverage)
-    _csv(output / "tables/key_people.csv", ["rank", "id", "borda", "mrr", "roles"], [
-        {**row, "roles": ";".join(row["roles"])} for row in centrality["aggregate"]
+    rendered_tables = write_real_tables(
+        profiles, bundle, centrality, clustering, validation, output,
+        anonymised=anon, raw_profiles=raw_profiles,
+    )
+    _csv(output / "tables/seniority.csv", ["seniority", "people"], [
+        {"seniority": label, "people": count} for label, count in sorted(seniority.items())
     ])
-    _csv(output / "tables/method_agreement.csv", ["method_a", "method_b", "ari", "nmi"], clustering["comparisons"])
     if args.source == "export":
         _csv(output / "tables/connections.csv", ["id", "connected_date"], [
             {"id": p["id"], "connected_date": p.get("connected_date", "")} for p in profiles[1:]
         ])
+    else:
+        (output / "tables/connections.csv").unlink(missing_ok=True)
     _report(output / "report.md", args.source, profiles, bundle, centrality, clustering, validation,
-            anonymised=anon, institution=institution, seniority=seniority, connection_ids=connection_ids)
+            anonymised=anon, institution=institution, seniority=seniority,
+            connection_ids=connection_ids, rendered_tables=rendered_tables)
     print(f"Processed {len(profiles)} real-source profiles; outputs are in {output} and {profiles_path}")

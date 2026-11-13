@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
+from lgi.real_coverage import apply_real_coverage
 from lgi.schema import empty_profile, validate_profile
 
 
@@ -114,13 +115,10 @@ class ExportAdapter:
         basic["location"] = _get(row, "location", "geo location")
         basic["summary"] = _get(row, "summary", "about")
         basic["profile_url"] = _get(row, "profile url", "public profile url", "url")
-        owner["coverage"]["basic"] = all(basic.values())
-        skipped = False
         for row in tables.get("positions", []):
             start = _month(_get(row, "started on", "start date", "start"))
             if not start:
-                owner["warnings"].append("Skipped position without a parseable start date")
-                skipped = True
+                owner["warnings"].append("experience.start: position row skipped because the source start date was missing or unparseable")
                 continue
             owner["experience"].append({
                 "company": _get(row, "company name", "company"),
@@ -130,10 +128,6 @@ class ExportAdapter:
                 "location": _get(row, "location"),
                 "description": _get(row, "description"),
             })
-        owner["coverage"]["experience"] = bool(owner["experience"]) and not skipped and all(
-            all(job[key] for key in ("company", "title", "start", "location", "description"))
-            for job in owner["experience"]
-        )
         for row in tables.get("education", []):
             try:
                 start = int(_get(row, "start date", "start year", "started on")[:4] or 0)
@@ -147,25 +141,19 @@ class ExportAdapter:
                 "start_year": start,
                 "end_year": end,
             })
-        owner["coverage"]["education"] = bool(owner["education"]) and all(
-            all(item[key] for key in ("school", "degree", "field", "start_year", "end_year"))
-            for item in owner["education"]
-        )
         owner["skills"] = sorted({
             _get(row, "name", "skill").strip()
             for row in tables.get("skills", []) if _get(row, "name", "skill").strip()
         }, key=str.casefold)
-        owner["coverage"]["skills"] = bool(owner["skills"])
         owner["interests"] = sorted({
             _get(row, "name", "interest").strip()
             for row in tables.get("interests", []) if _get(row, "name", "interest").strip()
         }, key=str.casefold)
-        owner["coverage"]["interests"] = bool(owner["interests"])
         for kind, activity_kind in (("shares", "share"), ("comments", "comment"), ("reactions", "reaction")):
             for index, row in enumerate(tables.get(kind, [])):
                 published = _day(_get(row, "date", "shared date", "comment date", "reaction date", "created date"))
                 if not published:
-                    owner["warnings"].append(f"Skipped {kind} row without parseable date")
+                    owner["warnings"].append(f"activity.date: {kind} row skipped because the source date was missing or unparseable")
                     continue
                 raw_count = _get(row, "reaction count", "likes")
                 owner["activity"].append({
@@ -176,11 +164,7 @@ class ExportAdapter:
                     "reaction_count": int(raw_count) if raw_count.isdigit() else 0,
                     "engaged_ids": [],
                 })
-        owner["coverage"]["activity"] = bool(owner["activity"])
-        for section, covered in owner["coverage"].items():
-            if not covered:
-                owner["warnings"].append(f"{section} incomplete or unavailable in export")
-        yield validate_profile(owner)
+        yield validate_profile(apply_real_coverage(owner))
         for index, row in enumerate(tables.get("connections", []), 2):
             stub = empty_profile(f"p{index:02d}", "export")
             name = " ".join(x for x in (_get(row, "first name", "firstname"), _get(row, "last name", "lastname")) if x)
@@ -194,5 +178,4 @@ class ExportAdapter:
                     "location": "", "description": "",
                 })
             stub["connected_date"] = _day(_get(row, "connected on", "connected date", "date"))
-            stub["warnings"].append("Connection stub: employer and title are undated; other sections unavailable")
-            yield validate_profile(stub)
+            yield validate_profile(apply_real_coverage(stub))

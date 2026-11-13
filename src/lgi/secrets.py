@@ -12,6 +12,8 @@ import shutil
 import stat
 import subprocess
 
+from lgi.real_coverage import apply_real_coverage
+
 
 PLACEHOLDER_KEY = "PASTE_YOUR_OPENALEX_API_KEY_HERE"
 
@@ -83,30 +85,24 @@ def anonymise_profile(profile: dict, salt: bytes) -> dict:
     p = copy.deepcopy(profile)
     p["id"] = pseudonym(salt, "person", profile["id"])
     basic = p["basic"]
-    basic["name"] = pseudonym(salt, "person", basic["name"] or profile["id"])
+    basic["name"] = pseudonym(salt, "person", basic["name"]) if basic["name"].strip() else ""
     basic["profile_url"] = pseudonym(salt, "url", basic["profile_url"]) if basic["profile_url"] else ""
     basic["headline"] = ""
     basic["summary"] = ""
     basic["location"] = ""
     for job in p["experience"]:
-        job["company"] = pseudonym(salt, "employer", job["company"]) if job["company"] else ""
+        job["company"] = pseudonym(salt, "employer", job["company"]) if job["company"].strip() else ""
         job["title"] = ""
         job["location"] = ""
         job["description"] = ""
     for school in p["education"]:
-        school["school"] = pseudonym(salt, "institution", school["school"]) if school["school"] else ""
+        school["school"] = pseudonym(salt, "institution", school["school"]) if school["school"].strip() else ""
         school["degree"] = ""
         school["field"] = ""
-    p["skills"] = [pseudonym(salt, "skill", value) for value in p["skills"]]
-    p["interests"] = []
+    p["skills"] = [pseudonym(salt, "skill", value) if value.strip() else value for value in p["skills"]]
+    p["interests"] = [pseudonym(salt, "interest", value) if value.strip() else value for value in p["interests"]]
     for post in p["activity"]:
-        post["post_id"] = pseudonym(salt, "work", post["post_id"])
+        post["post_id"] = pseudonym(salt, "work", post["post_id"]) if post["post_id"].strip() else ""
         post["text"] = ""
         post["engaged_ids"] = [pseudonym(salt, "person", value) for value in post["engaged_ids"]]
-    for key in ("basic", "experience", "education", "interests", "activity"):
-        p["coverage"][key] = False
-    p["warnings"] = [
-        "Anonymised: identifiers replaced with keyed hashes and free text removed",
-        *[f"{section} incomplete or unavailable" for section, covered in p["coverage"].items() if not covered],
-    ]
-    return p
+    return apply_real_coverage(p)

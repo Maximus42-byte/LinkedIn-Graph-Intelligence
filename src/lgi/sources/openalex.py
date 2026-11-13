@@ -18,6 +18,7 @@ from urllib.parse import quote
 
 import requests
 
+from lgi.real_coverage import apply_real_coverage
 from lgi.schema import empty_profile, validate_profile
 
 
@@ -185,8 +186,6 @@ class OpenAlexAdapter:
             profile = empty_profile(aid, "openalex")
             profile["basic"]["name"] = str(author.get("display_name") or "")
             profile["basic"]["profile_url"] = str(author["id"])
-            profile["coverage"]["basic"] = bool(profile["basic"]["name"])
-            profile["warnings"].append("OpenAlex does not provide job titles; experience title is unavailable")
             for affiliation in author.get("affiliations", []):
                 institution = affiliation.get("institution") or {}
                 years = sorted(int(year) for year in affiliation.get("years", []) if str(year).isdigit())
@@ -200,18 +199,17 @@ class OpenAlexAdapter:
                     "location": "",
                     "description": "",
                 })
-            profile["warnings"].append("Affiliation years are annual observations, not employment dates")
             profile["skills"] = sorted({
                 str(item["display_name"])
                 for item in author.get("topics", [])
                 if item.get("display_name")
             }, key=str.casefold)
-            if profile["skills"]:
-                profile["coverage"]["skills"] = True
-                profile["warnings"].append("Skills are derived from OpenAlex topics, not declared skills")
             for work in by_author.get(aid, []):
                 date = str(work.get("publication_date") or "")
                 if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+                    profile["warnings"].append(
+                        "activity.date: publication skipped because OpenAlex publication_date was missing or malformed"
+                    )
                     continue
                 profile["activity"].append({
                     "post_id": _id(str(work["id"])),
@@ -222,8 +220,4 @@ class OpenAlexAdapter:
                     "engaged_ids": [],
                 })
             profile["activity"].sort(key=lambda row: (row["date"], row["post_id"]))
-            profile["coverage"]["activity"] = bool(profile["activity"])
-            profile["warnings"].append("Publications are not social posts; citations are not reactions")
-            for section in ("education", "interests"):
-                profile["warnings"].append(f"{section} unavailable in OpenAlex")
-            yield validate_profile(profile)
+            yield validate_profile(apply_real_coverage(profile))

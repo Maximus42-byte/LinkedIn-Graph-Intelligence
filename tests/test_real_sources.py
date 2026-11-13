@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
 import subprocess
@@ -12,8 +13,9 @@ import pytest
 
 from lgi.analysis.graphs import build_graphs
 from lgi.config import load_config
+from lgi.real_coverage import apply_real_coverage
 from lgi.real_pipeline import run_real_pipeline
-from lgi.schema import validate_profile
+from lgi.schema import empty_profile, validate_profile
 from lgi.secrets import anonymise_profile, load_secrets, pseudonym
 from lgi.sources.export import ExportAdapter
 from lgi.sources.openalex import OpenAlexAdapter
@@ -141,7 +143,10 @@ def test_openalex_retry_cache_mapping_and_budget(tmp_path: Path, monkeypatch: py
     assert profiles[0]["activity"][0]["reaction_count"] == 0
     assert not profiles[0]["coverage"]["education"]
     assert not profiles[0]["coverage"]["interests"]
-    assert not profiles[0]["coverage"]["experience"]
+    assert profiles[0]["coverage"]["experience"]
+    assert profiles[0]["coverage"]["basic"]
+    assert profiles[0]["coverage"]["activity"]
+    assert profiles[0]["activity"][0]["date"] == "2024-03-05"
     assert all(key not in file.read_text() for file in (tmp_path / "cache").glob("*.json"))
     second_session = Mock()
     second_session.headers = {}
@@ -175,12 +180,19 @@ def test_anonymisation_stable_and_no_names(tmp_path: Path) -> None:
         "education": [], "skills": ["Fictional Graph Theory"], "interests": [],
         "activity": [{"post_id": "W9", "date": "2024-03-05", "type": "publication", "text": "Imaginary graph study", "reaction_count": 0, "engaged_ids": []}],
         "coverage": {"basic": False, "experience": False, "education": False, "skills": True, "interests": False, "activity": True},
-        "warnings": ["Mira Quill incomplete at Imaginary Academy"],
+        "warnings": ["Mira Quill incomplete at Imaginary Academy", "activity.date: publication skipped because OpenAlex publication_date was missing or malformed"],
     }
     validate_profile(profile)
     first = anonymise_profile(profile, b"fictional-salt")
     second = anonymise_profile(profile, b"fictional-salt")
     assert first == second
+    assert all(first["coverage"][section] for section in ("basic", "experience", "skills", "activity"))
+    assert not first["coverage"]["education"]
+    assert not first["coverage"]["interests"]
+    assert any("experience.title: job title not provided by OpenAlex" == warning for warning in first["warnings"])
+    assert any("education.school: education not provided by OpenAlex" == warning for warning in first["warnings"])
+    assert "activity.date: publication skipped because OpenAlex publication_date was missing or malformed" in first["warnings"]
+    assert all("incomplete or unavailable" not in warning for warning in first["warnings"])
     assert first["experience"][0]["company"] == pseudonym(b"fictional-salt", "employer", "Imaginary Academy")
     content = json.dumps(first)
     for raw in ("Mira Quill", "Imaginary Academy", "Imaginary graph study", "https://openalex.org"):
@@ -240,6 +252,29 @@ def test_real_openalex_pipeline_has_coauthor_layer_and_no_key(tmp_path: Path, mo
     )
     run_real_pipeline(args, config)
     graph = json.loads((repo / "output_real/graph.json").read_text())
+    table_dir = repo / "output_real/tables"
+    for name in (
+        "graph_stats", "clustering_quality", "clustering_pairwise", "k_selection",
+        "stability_summary", "rank_intervals", "null_models", "ablation",
+        "coverage", "key_people", "method_agreement", "all_centrality_correlations", "all_people",
+    ):
+        assert (table_dir / f"{name}.csv").exists(), name
+    with (table_dir / "graph_stats.csv").open(newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    assert any(row["layer"] == "coauthor" and row["edges"] == "1" for row in rows)
+    with (table_dir / "coverage.csv").open(newline="") as handle:
+        coverage_rows = {row["section"]: row for row in csv.DictReader(handle)}
+    for section in ("basic", "experience", "skills", "activity"):
+        assert coverage_rows[section]["covered"] == "2"
+    assert coverage_rows["experience"]["text_removed_by_anonymisation"] == "False"
+    assert coverage_rows["activity"]["text_removed_by_anonymisation"] == "True"
+    report = (repo / "output_real/report.md").read_text()
+    assert "Publication dates are copied unchanged" in report
+    assert "text-removal column" in report
+    assert "job title not provided by OpenAlex" in report
+    assert "Skipped analyses and evidence:" in report
+    assert "Skill co-occurrence, skill-gap and bus-factor tables" in report
+    assert "Nearest-colleague table and similarity heatmaps" in report
     assert len(graph["layers"]["coauthor"]["links"]) == 1
     assert graph["layers"]["coauthor"]["links"][0]["weight"] == 1.0
     assert json.loads((repo / "output_real/validation.json").read_text())["ground_truth"] is None
@@ -269,3 +304,23 @@ def test_real_outputs_refuse_symlinks(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="must not be symlinks"):
         run_real_pipeline(args, config)
     assert list((repo / "output").iterdir()) == []
+
+
+def test_empty_real_sections_are_uncovered_with_specific_warnings() -> None:
+    profile = apply_real_coverage(empty_profile("A77", "openalex"))
+    assert not any(profile["coverage"].values())
+    assert "basic.name: name not provided by OpenAlex" in profile["warnings"]
+    assert "experience.company: employer or institution not provided by OpenAlex" in profile["warnings"]
+    assert "activity: no activity provided by OpenAlex" in profile["warnings"]
+    anonymised = anonymise_profile(profile, b"fictional-salt")
+    assert not anonymised["coverage"]["basic"]
+    assert anonymised["basic"]["name"] == ""
+    assert all("incomplete or unavailable" not in warning for warning in profile["warnings"])
+    profile["skills"] = [""]
+    profile["activity"] = [{
+        "post_id": "", "date": "2024-03-05", "type": "publication", "text": "",
+        "reaction_count": 0, "engaged_ids": [],
+    }]
+    anonymised_missing_fields = anonymise_profile(profile, b"fictional-salt")
+    assert not anonymised_missing_fields["coverage"]["skills"]
+    assert not anonymised_missing_fields["coverage"]["activity"]
