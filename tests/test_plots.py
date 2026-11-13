@@ -30,7 +30,7 @@ def test_required_plots_from_fixture_results(tmp_path):
     paths = write_plots(profiles, bundle, centrality, clustering, validation, analysis, config, tmp_path)
 
     expected = {
-        "graph_combined", "graph", "similarity_heatmap", "centrality_ranking",
+        "graph", "similarity_heatmap", "centrality_ranking",
         "dendrogram", "stability", "rank_correlation_heatmap",
     }
     assert set(paths) == expected
@@ -38,4 +38,3 @@ def test_required_plots_from_fixture_results(tmp_path):
         assert path.exists()
         assert path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
         assert path.stat().st_size > 1000
-    assert paths["graph"].read_bytes() == paths["graph_combined"].read_bytes()

@@ -9,6 +9,7 @@ With n=10, these results are illustrative and not statistically meaningful.
 ## Data and coverage
 
 All fixture pages carry a visible SYNTHETIC banner and a synthetic meta tag.
+
 | Section | Covered | Profiles | Fraction |
 | --- | --- | --- | --- |
 | basic | 10 | 10 | 1.000 |
@@ -18,7 +19,9 @@ All fixture pages carry a visible SYNTHETIC banner and a synthetic meta tag.
 | interests | 10 | 10 | 1.000 |
 | activity | 10 | 10 | 1.000 |
 
+
 ## Graph statistics
+
 
 | Layer | Nodes | Edges | Density | Components | Mean edge weight |
 | --- | --- | --- | --- | --- | --- |
@@ -29,12 +32,14 @@ All fixture pages carry a visible SYNTHETIC banner and a synthetic meta tag.
 | activity | 10 | 15 | 0.333 | 1 | 3.200 |
 | combined_manual | 10 | 28 | 0.622 | 1 | 0.413 |
 | combined_equal | 10 | 24 | 0.533 | 1 | 0.406 |
+
 Semantic vectors used **TF-IDF + TruncatedSVD (LSA)**. Skill edges retain both Jaccard and TF-IDF cosine; semantic edges retain embedding and TF-IDF cosine alternatives. The chosen skill metric is **jaccard** and semantic metric is **lsa**.
 The org layer ignores employers present in more than **80%** of profiles; ignored: **FableForge Analytics (Fictional) (10/10 profiles)**. Shared past employers still contribute when dates overlap.
 The skill and semantic layers keep each profile's **3** highest-scoring neighbours with positive weight at least **0.050** and **0.050**, respectively. An edge survives if either endpoint selects the other; equal scores are broken by profile ID.
 The configured reference month **2026-01** is the inclusive end month for open-ended employment in graph overlap and career tenure; it is an analysis cutoff, not the latest activity date.
 
 ## Key people and roles
+
 
 | Rank | ID | Person | Roles | Borda | Weighted degree | Betweenness | PageRank |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -43,10 +48,12 @@ The configured reference month **2026-01** is the inclusive end month for open-e
 | 3 | p02 | Synthetic Persona 02 | hub | 66 | 2.497 | 0.000 | 0.103 |
 | 4 | p05 | Synthetic Persona 05 | bridge, influencer | 64 | 2.480 | 0.111 | 0.104 |
 | 5 | p06 | Synthetic Persona 06 | peripheral | 52 | 2.467 | 0.000 | 0.104 |
+
 Borda and mean reciprocal rank aggregate all centrality methods. Hub labels use weighted-degree quantiles; bridge and influencer labels use their configured metric quantiles.
 Weighted degree has coefficient of variation **0.105**; the absolute weighted-degree gap between key-people ranks **1** and **5** is **0.161**. These near-ties are consistent with unstable ranks, but do not establish a cause.
 
 ## Method comparison
+
 
 | Method A | Method B | Kendall tau | Spearman rho |
 | --- | --- | --- | --- |
@@ -55,6 +62,7 @@ Weighted degree has coefficient of variation **0.105**; the absolute weighted-de
 | pagerank | eigenvector | 0.689 | 0.770 |
 | constraint | effective_size | -0.600 | -0.648 |
 | closeness | harmonic | 0.511 | 0.648 |
+
 Constraint and effective size have Kendall tau **-0.600**. A negative association is expected because greater constraint corresponds to fewer effective nonredundant contacts.
 Their negative tau here is not method disagreement.
 Manual-weight and equal-normalised graph rankings have Kendall tau **0.689**. The two graph exports are retained in `graph.json`.
@@ -62,12 +70,15 @@ Manual-weight and equal-normalised graph rankings have Kendall tau **0.689**. Th
 ## Clustering results
 
 Feature k selection chose **3** groups; silhouette choice **3**, elbow choice **3**.
+
 | k | Silhouette | Inertia |
 | --- | --- | --- |
 | 2 | 0.215 | 5.058 |
 | 3 | 0.283 | 3.281 |
 | 4 | 0.249 | 2.483 |
 | 5 | 0.215 | 1.908 |
+
+
 | Method | Clusters | Noise | Modularity | Silhouette | Davies–Bouldin |
 | --- | --- | --- | --- | --- | --- |
 | louvain | 3 | 0 | 0.461 | — | — |
@@ -80,6 +91,7 @@ Feature k selection chose **3** groups; silhouette choice **3**, elbow choice **
 | embedding_kmeans | 3 | 0 | — | 0.353 | 0.983 |
 | hdbscan | 3 | 0 | — | 0.353 | 0.983 |
 | nmf_topics | 3 | 0 | — | 0.280 | 1.102 |
+
 All pairwise clustering ARI/NMI scores are in `tables/clustering_pairwise.csv`. The skill projection yielded **3** skill families. Feature embeddings used **TF-IDF + TruncatedSVD (LSA)**.
 **9 of 10** clustering methods produced an identical partition (embedding_kmeans, greedy_modularity, hdbscan, label_propagation, louvain, nmf_topics, spectral, tfidf_kmeans, ward). Agreement on these clean synthetic fixtures shows shared recovery of designed structure; it does not establish accuracy on real profiles.
 On this data, sklearn HDBSCAN returned the same partition as embedding KMeans. The HDBSCAN labels are its own estimator output, with no substituted fallback.
@@ -87,13 +99,16 @@ Girvan–Newman selected candidate cuts using NetworkX's default unweighted edge
 
 ## Validation and stability
 
+
 | Check | Draws | Exact top-three retention | Mean top-three overlap | Chance overlap | Top-one retention | Kendall tau mean | Kendall tau median | Cluster ARI median |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Edge perturbation | 1000 | 0.032 | 1.229 | 0.900 | 0.104 | 0.209 | 0.205 | — |
 | Weight sensitivity | 100 | 0.410 | 2.540 | 0.900 | 0.470 | 0.739 | 0.750 | 1.000 |
+
 Mean overlap counts shared members with the baseline top-three set; the nominal chance level is k×k/n = **0.900** for k=**3** among n=**10** profiles when each set has exactly k members. Cutoff ties are included in the observed sets. The overlap and top-one measures were added after seeing low exact top-three retention; exact retention remains the primary metric.
 Edge perturbation removed **3** edges and added **3** per draw. Its mean Kendall tau was **0.209** with a central interval of **-0.22–0.66**. The stability ranking uses Borda of average ranks for weighted degree, weighted betweenness, and PageRank; top-k includes cutoff ties.
 The two rankings can differ because the key-people table aggregates all centrality methods while the stability ranking aggregates only weighted degree, weighted betweenness, and PageRank.
+
 | ID | Key-people rank | Stability rank | Rank 5th pct | Rank 95th pct | Rank min | Rank max | Top-three frequency |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | p01 | 1 | 2.000 | 1.000 | 9.500 | 1.000 | 10.000 | 0.429 |
@@ -106,6 +121,8 @@ The two rankings can differ because the key-people table aggregates all centrali
 | p08 | 9 | 8.500 | 2.000 | 10.000 | 1.000 | 10.000 | 0.255 |
 | p09 | 10 | 10.000 | 2.000 | 10.000 | 1.000 | 10.000 | 0.166 |
 | p10 | 2 | 1.000 | 1.000 | 9.000 | 1.000 | 10.000 | 0.391 |
+
+
 | Null model | Statistic | Samples | Observed | Null mean | z | Empirical upper p |
 | --- | --- | --- | --- | --- | --- | --- |
 | degree_preserving | modularity | 100 | 0.461 | 0.223 | 5.215 | 0.010 |
@@ -116,7 +133,9 @@ The two rankings can differ because the key-people table aggregates all centrali
 | gnm | top_weighted_degree | 100 | 2.627 | 3.954 | -2.393 | 1.000 |
 | gnm | top_betweenness | 100 | 0.556 | 0.448 | 0.937 | 0.248 |
 | gnm | top_pagerank | 100 | 0.109 | 0.161 | -2.434 | 1.000 |
+
 n=10 is too small for a statistically informative null comparison; empirical p-values and z-scores are descriptive only.
+
 | Dropped layer | Edges left | Rank Kendall tau | Cluster ARI | Top-three retained |
 | --- | --- | --- | --- | --- |
 | org | 28 | 0.854 | 1.000 | yes |
@@ -124,8 +143,10 @@ n=10 is too small for a statistically informative null comparison; empirical p-v
 | skill | 25 | 0.584 | 1.000 | no |
 | semantic | 21 | 0.477 | 1.000 | no |
 | activity | 26 | 0.719 | 1.000 | yes |
+
 Dirichlet weight draws gave a rank Kendall tau interval of **0.36–0.98** and a cluster ARI interval of **0.66–1.00**.
 **Synthetic validation:** comparison with labels used to construct the fixtures. It measures recovery of built-in structure, not real-world accuracy.
+
 | Method | ARI | Three-cluster ARI ceiling | NMI | Three-cluster NMI ceiling |
 | --- | --- | --- | --- | --- |
 | embedding_kmeans | 0.815 | 0.815 | 0.906 | 0.906 |
@@ -138,20 +159,26 @@ Dirichlet weight draws gave a rank Kendall tau interval of **0.36–0.98** and a
 | spectral | 0.815 | 0.815 | 0.906 | 0.906 |
 | tfidf_kmeans | 0.815 | 0.815 | 0.906 | 0.906 |
 | ward | 0.815 | 0.815 | 0.906 | 0.906 |
+
 The fixture truth has **4** labels, while **9** methods returned **3** clusters. The three-cluster ceiling is the best ARI **0.815** and NMI **0.906** across the **3** possible Bridge-to-team merges.
 Methods at that ceiling (embedding_kmeans, greedy_modularity, hdbscan, label_propagation, louvain, nmf_topics, spectral, tfidf_kmeans, ward) recovered all three designed teams. Methods below it: girvan_newman.
 
 ## Career, education, activity, and similarity findings
 
 Dated job history yielded **4** company-to-company routes at observation month **2026-01**. Exactly **1** recorded skill has one holder.
+
 | Talent source | Outbound people | Transitions |
 | --- | --- | --- |
 | Cloudcastle Systems (Fictional) | 4 | 4 |
 | Moonbeam Modelworks (Fictional) | 4 | 4 |
 | Cipherkeep Works (Fictional) | 3 | 3 |
+
+
 | Single-holder skill | Holder |
 | --- | --- |
 | synthetic protocol archaeology | p09 |
+
+
 | ID | Posts | Reactions | Engagement degree | Topic consistency | Lexical consistency |
 | --- | --- | --- | --- | --- | --- |
 | p01 | 2 | 18 | 9.000 | 0.988 | 0.445 |
@@ -164,16 +191,20 @@ Dated job history yielded **4** company-to-company routes at observation month *
 | p08 | 2 | 12 | 8.000 | 0.951 | 0.383 |
 | p09 | 2 | 11 | 9.000 | 0.892 | 0.000 |
 | p10 | 2 | 14 | 12.000 | 0.695 | 0.421 |
+
 Organisational and engagement degree have Spearman rho **0.195**; their edge sets have Jaccard **0.765**. Topic and lexical consistency are both shown because their judgments can differ.
 The fixture generator marked **p09** as the designed post/skill mismatch. The flag rule below selects the lowest available score for each measure, including ties.
 Topic consistency flags none and misses p09 of the designed mismatch profiles. Lowest scores: Synthetic Persona 06 (p06, 0.228), Synthetic Persona 10 (p10, 0.695), Synthetic Persona 05 (p05, 0.882).
 Lexical consistency flags p09 and misses none of the designed mismatch profiles. Lowest scores: Synthetic Persona 09 (p09, 0.000), Synthetic Persona 06 (p06, 0.353), Synthetic Persona 05 (p05, 0.357).
+
 | Post topic | Top terms |
 | --- | --- |
 | 0 | synthetic, checks, pipeline, imaginary, engineering |
 | 1 | security, fictional, sandbox, team, distributed |
 | 2 | cloud, infrastructure, clear, combined, container |
+
 The positive-similarity nearest-colleague graph used k=**3** and contains **19 edges**. Its cosine and Jaccard matrices are visualised in `similarity_heatmap.png`.
+
 | ID | Nearest colleagues | Cosine values |
 | --- | --- | --- |
 | p01 | p02, p03, p10 | 0.80658681, 0.76572491, 0.36166768 |
@@ -186,6 +217,7 @@ The positive-similarity nearest-colleague graph used k=**3** and contains **19 e
 | p08 | p09, p07, p05 | 0.89482347, 0.80218407, 0.26698566 |
 | p09 | p08, p07, p06 | 0.89482347, 0.80392994, 0.18553849 |
 | p10 | p01, p05, p06 | 0.36166768, 0.34963241, 0.33965979 |
+
 
 ## Limitations
 

@@ -2,6 +2,8 @@
 
 An offline-first Python demonstration that parses profile sections, stores validated records, and compares graph and feature analyses of a small fictional organisation. The default pipeline reads generated HTML fixtures through the real parser, then produces layer graphs, centrality and clustering comparisons, stability checks, plots, and a report generated from computed results.
 
+![Combined synthetic profile graph](output/graph.png)
+
 ## Data source and honesty statement
 
 **The committed profiles are synthetic.** All fixture people, employers, schools, skills, posts, and interactions were generated for this task; every fixture page has a visible `SYNTHETIC` banner and `<meta name="synthetic" content="true">`. No real LinkedIn profile was fetched during development, and `make run` makes no network request. [`data/ground_truth.json`](data/ground_truth.json) contains designed fixture labels and is read only by validation, never extraction or ordinary analysis. Agreement with those labels says only whether the pipeline recovers the structure built into the fixtures.
@@ -58,7 +60,7 @@ Installation time depends on the package source and whether wheels are cached. T
 | [`data/fixtures/`](data/fixtures/) | Committed synthetic HTML profiles; [`data/ground_truth.json`](data/ground_truth.json) is validation-only. |
 | [`data/profiles.json`](data/profiles.json), [`data/profiles.csv/`](data/profiles.csv/) | Parsed profile records and section-specific flat CSV tables. |
 | [`output/graph.json`](output/graph.json) | Node-link combined graph with metrics, role and cluster labels, all layers, bipartite graph and projections. |
-| [`output/graph.png`](output/graph.png), [`output/graph_combined.png`](output/graph_combined.png) | Same generated combined-graph view, coloured by Louvain community and sized by PageRank. |
+| [`output/graph.png`](output/graph.png) | Combined-graph view, coloured by Louvain community and sized by PageRank. |
 | [`output/`](output/) | Similarity heatmap, centrality ranking, rank-correlation heatmap, dendrogram, stability plot; `analysis.json` and `validation.json`. |
 | [`output/report.md`](output/report.md), [`output/tables/`](output/tables/) | Generated report and CSVs for its tables. |
 | [`notes.md`](notes.md) | Assumptions, HTTP behavior, queue design, storage and scale choices. |

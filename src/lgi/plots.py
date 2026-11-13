@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from math import ceil
 from pathlib import Path
-from shutil import copyfile
 from typing import Any
 
 import matplotlib
@@ -232,13 +231,10 @@ def write_plots(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     paths = {name: output_dir / f"{name}.png" for name in (
-        "graph_combined", "similarity_heatmap", "centrality_ranking", "dendrogram",
+        "graph", "similarity_heatmap", "centrality_ranking", "dendrogram",
         "stability", "rank_correlation_heatmap",
     )}
-    _graph_plot(profiles, bundle, centrality, clustering, config, paths["graph_combined"])
-    # The brief's generic filename points to the same computed combined view.
-    paths["graph"] = output_dir / "graph.png"
-    copyfile(paths["graph_combined"], paths["graph"])
+    _graph_plot(profiles, bundle, centrality, clustering, config, paths["graph"])
     _similarity_plot(profiles, analysis, paths["similarity_heatmap"])
     _ranking_plot(profiles, centrality, paths["centrality_ranking"])
     _dendrogram_plot(profiles, paths["dendrogram"])

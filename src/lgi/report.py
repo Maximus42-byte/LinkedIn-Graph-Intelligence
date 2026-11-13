@@ -36,7 +36,8 @@ def _table(rows: list[dict], columns: list[tuple[str, str]], path: Path) -> str:
     for row in rows:
         values = [_fmt(row.get(key)).replace("|", "\\|").replace("\n", " ") for key, _ in columns]
         lines.append("| " + " | ".join(values) + " |")
-    return "\n".join(lines)
+    rendered = "\n".join(lines)
+    return f"\n{rendered}\n"
 
 
 def _interval(values: list[float] | None) -> str:
